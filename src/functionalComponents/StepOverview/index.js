@@ -10,7 +10,7 @@ import Chip from "@material-ui/core/Chip";
 
 import Button from "components/CustomButtons/Button.js";
 
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+import { getTimeString } from "utils/date"
 
 const styles = theme => ({
   categoryList: {
@@ -31,13 +31,6 @@ const days = [
   "Samstag",
   "Sonntag"
 ];
-
-const getTimeString = isoDate => {
-  const date = new Date(isoDate);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  return `${hours}:${!minutes ? "00" : minutes}`;
-};
 
 const useStyles = makeStyles(styles);
 

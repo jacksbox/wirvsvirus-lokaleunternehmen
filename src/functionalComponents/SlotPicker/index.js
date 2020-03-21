@@ -4,17 +4,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-const getTimeString = isoDate => {
-  const date = new Date(isoDate);
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  return `${hours}:${!minutes ? "00" : minutes}`;
-};
-
-const formatSlot = slot => {
-  const formattedSlot = `${getTimeString(slot.start)} Uhr - ${getTimeString(slot.stop)} Uhr`;
-  return formattedSlot;
-};
+import { getTimeString, formatSlot } from "utils/date"
 
 const SlotPicker = ({ day, slot, slots, handleChange }) => {
   return (
