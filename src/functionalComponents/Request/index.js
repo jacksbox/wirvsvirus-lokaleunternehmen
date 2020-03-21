@@ -9,6 +9,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import StepOverview from "functionalComponents/Request/StepOverview";
 import StepOrder from "functionalComponents/Request/StepOrder";
 import StepSlot from "functionalComponents/Request/StepSlot";
+import StepSuccess from "functionalComponents/Request/StepSuccess";
 
 const styles = theme => ({
   cardTitle: {
@@ -21,7 +22,7 @@ const steps = {
   0: StepOverview,
   1: StepOrder,
   2: StepSlot,
-  3: StepOverview
+  3: StepSuccess
 }
 
 const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, formValues, day, handleDayChange }) => {
@@ -30,13 +31,12 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
   return (
     <Card>
       <CardHeader color="info">
-        <h4 className={classes.cardTitle}>
+        <h3 className={classes.cardTitle}>
           <strong>{unternehmen.name}</strong>
-        </h4>
+        </h3>
       </CardHeader>
       <CardBody>
         <StepComponent
-          displayThankYou={requestStep === 3}
           nextStep={nextStep}
           prevStep={prevStep}
           handleChange={handleChange}

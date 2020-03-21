@@ -26,18 +26,18 @@ const StepSlot = ({
           handleDayChange={handleDayChange}
           day={day}
         />
-        {day > -1 && (
-          <>
-            <br />
-            <br />
-            <Divider />
-            <SlotPicker
-              day={day}
-              slots={unternehmen.available_time_slots}
-              slot={formValues.slot}
-              handleChange={handleChange}
-            />
-          </>
+        <br />
+        <br />
+        <Divider />
+        {day > -1 ? (
+          <SlotPicker
+            day={day}
+            slots={unternehmen.available_time_slots}
+            slot={formValues.slot}
+            handleChange={handleChange}
+          />
+        ) : (
+          <h4>Wähle ein Datum um freie Timeslots zu finden.</h4>
         )}
       </Grid>
       <Grid item md={12}>

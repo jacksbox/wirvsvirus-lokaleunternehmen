@@ -8,8 +8,9 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
 
-import Success from "components/Typography/Success.js";
 import Button from "components/CustomButtons/Button.js";
+
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
 
 const styles = theme => ({
   categoryList: {
@@ -51,12 +52,11 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
           ))}
         </div>
       )}
-      {displayThankYou && <Success><h3>Danke! Ihr Slot ist für Sie bereit!</h3></Success>}
       <Grid container spacing={2}>
         <Grid item md={7}>
           <h5>Beschreibung</h5>
           <p>{unternehmen.beschreibung}</p>
-          <Button onClick={() => nextStep()} color="primary">Anfrage erstellen</Button>
+          <Button onClick={() => nextStep()} color="success">Anfrage erstellen</Button>
         </Grid>
         <Grid item md={5}>
           <h5>Öffnungszeiten</h5>

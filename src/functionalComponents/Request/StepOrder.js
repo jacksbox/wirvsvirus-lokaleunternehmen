@@ -11,6 +11,7 @@ const StepOverview = ({ nextStep, prevStep, handleChange, formValues }) => {
       <Grid container spacing={2}>
         <Grid item md={12}>
           <h5> Anfrage Details</h5>
+          <p>Trage hier ein welche Produkte du haben möchtest.</p>
         </Grid>
         <Grid item md={6}>
           <CustomInput
