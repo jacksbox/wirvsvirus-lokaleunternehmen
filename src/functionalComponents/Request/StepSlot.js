@@ -19,8 +19,8 @@ const StepSlot = ({
 }) => (
   <>
     <Grid container spacing={2}>
-      <Grid item md={12}>
-        <h5>Timeslot wählen</h5>
+      <Grid item md={6}>
+        <h5>Pickup-Zeit</h5>
         <DayPicker
           slots={unternehmen.available_time_slots}
           handleDayChange={handleDayChange}
@@ -37,8 +37,12 @@ const StepSlot = ({
             handleChange={handleChange}
           />
         ) : (
-          <h4>Wähle ein Datum um freie Timeslots zu finden.</h4>
+          <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
         )}
+      </Grid>
+      <Grid item md={6}>
+        <h5>Ihre Bestellung</h5>
+        <p>{formValues.text}</p>
       </Grid>
       <Grid item md={12}>
         <Button onClick={() => prevStep()}>zurück</Button>

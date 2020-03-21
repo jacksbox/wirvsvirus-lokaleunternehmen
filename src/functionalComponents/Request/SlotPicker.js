@@ -21,12 +21,13 @@ const formatSlot = slot => {
 const SlotPicker = ({ day, slot, slots, handleChange }) => {
   return (
     <div>
-      <RadioGroup name="slot" value={slot} onChange={handleChange}>
+      <RadioGroup name="slot" value={`${slot}`} onChange={handleChange}>
         {slots[day].map(slot => (
             <FormControlLabel
               value={`${slot.id}`}
               control={<Radio />}
               label={formatSlot(slot)}
+              key={slot.id}
             />
         ))}
       </RadioGroup>

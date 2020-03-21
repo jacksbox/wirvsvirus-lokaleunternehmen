@@ -48,7 +48,7 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
       {unternehmen.categories && (
         <div className={classes.categoryList}>
           {unternehmen.categories.map(category => (
-            <Chip color="info" label={category} key={category} />
+            <Chip label={category} key={category} />
           ))}
         </div>
       )}
@@ -56,7 +56,7 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
         <Grid item md={7}>
           <h5>Beschreibung</h5>
           <p>{unternehmen.beschreibung}</p>
-          <Button onClick={() => nextStep()} color="success">Anfrage erstellen</Button>
+          <Button onClick={() => nextStep()} color="info">Bestellung aufgeben</Button>
         </Grid>
         <Grid item md={5}>
           <h5>Öffnungszeiten</h5>

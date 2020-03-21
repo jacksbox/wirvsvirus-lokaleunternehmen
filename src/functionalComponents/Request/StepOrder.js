@@ -10,7 +10,7 @@ const StepOverview = ({ nextStep, prevStep, handleChange, formValues }) => {
     <>
       <Grid container spacing={2}>
         <Grid item md={12}>
-          <h5> Anfrage Details</h5>
+          <h5>Bestellungs-Details</h5>
           <p>Trage hier ein welche Produkte du haben möchtest.</p>
         </Grid>
         <Grid item md={6}>
@@ -42,8 +42,8 @@ const StepOverview = ({ nextStep, prevStep, handleChange, formValues }) => {
 
         <Grid item md={12}>
           <Button onClick={() => prevStep()}>zurück</Button>
-          <Button onClick={() => nextStep()} color="primary">
-            Timeslot wählen
+          <Button onClick={() => nextStep()} color="info">
+            Pickup-Zeit wählen
           </Button>
         </Grid>
       </Grid>
