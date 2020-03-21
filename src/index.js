@@ -24,8 +24,8 @@ import apiClient from 'utils/apiClient'
 import { API_URL } from 'consts'
 
 // core components
-import Admin from "layouts/Admin.js";
-import RTL from "layouts/RTL.js";
+import Business from "layouts/Business.js";
+import Customer from "layouts/Customer.js";
 
 import "assets/css/material-dashboard-react.css?v=1.8.0";
 
@@ -38,9 +38,9 @@ apiClient.instance.get('/users')
 ReactDOM.render(
   <Router history={hist}>
     <Switch>
-      <Route path="/admin" component={Admin} />
-      <Route path="/rtl" component={RTL} />
-      <Redirect from="/" to="/admin/dashboard" />
+      <Route path="/customer" component={Customer} />
+      <Route path="/business" component={Business} />
+      <Redirect from="/" to="/customer" />
     </Switch>
   </Router>,
   document.getElementById("root")
