@@ -20,6 +20,10 @@ const StepSlot = ({
   <>
     <Grid container spacing={2}>
       <Grid item md={6}>
+        <h5>Ihre Bestellung</h5>
+        <p>{formValues.text}</p>
+      </Grid>
+      <Grid item md={6}>
         <h5>Pickup-Zeit</h5>
         <DayPicker
           slots={unternehmen.available_time_slots}
@@ -40,19 +44,17 @@ const StepSlot = ({
           <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
         )}
       </Grid>
-      <Grid item md={6}>
-        <h5>Ihre Bestellung</h5>
-        <p>{formValues.text}</p>
-      </Grid>
       <Grid item md={12}>
-        <Button onClick={() => prevStep()}>zurück</Button>
-        <Button
-          onClick={() => nextStep()}
-          color="success"
-          disabled={!(formValues.slot >= 0)}
-        >
-          Anfrage senden
-        </Button>
+        <Grid container justify="space-between">
+          <Button onClick={() => prevStep()}>zurück</Button>
+          <Button
+            onClick={() => nextStep()}
+            color="success"
+            disabled={!(formValues.slot >= 0)}
+          >
+            Anfrage senden
+          </Button>
+        </Grid>
       </Grid>
     </Grid>
   </>
