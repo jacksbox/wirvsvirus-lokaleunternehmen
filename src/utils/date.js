@@ -13,6 +13,6 @@ export const getTimeString = isoDate => {
 };
 
 export const formatSlot = slot => {
-  const formattedSlot = `${getTimeString(slot.start)} - ${getTimeString(slot.stop)} Uhr`;
+  const formattedSlot = `${getTimeString(slot.start)} - ${getTimeString(slot.end)} Uhr`;
   return formattedSlot;
 };

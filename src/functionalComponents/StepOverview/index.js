@@ -58,13 +58,9 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
                 <TableRow key={day}>
                   <TableCell className={classes.inlineList}>{day}: </TableCell>
                   <TableCell className={classes.inlineList}>
-                    {getTimeString(
-                      unternehmen.kontaktlose_oeffnungszeiten[i].start
-                    )}{" "}
+                    {unternehmen.kontaktlose_oeffnungszeiten[i].start}{" "}
                     -{" "}
-                    {getTimeString(
-                      unternehmen.kontaktlose_oeffnungszeiten[i].stop
-                    )}{" "}
+                    {unternehmen.kontaktlose_oeffnungszeiten[i].end}{" "}
                     Uhr
                   </TableCell>
                 </TableRow>

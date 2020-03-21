@@ -4,15 +4,7 @@ import RequestView from "functionalComponents/Request/Request.js";
 
 const mock = {
   unternehmen_id: "00001",
-  kontaktlose_oeffnungszeiten: [
-    { start: "2020-03-24T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-25T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-26T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-27T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-28T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-29T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" },
-    { start: "2020-03-30T09:00:00.00Z", stop: "2020-03-24T18:00:00.00Z" }
-  ],
+  kontaktlose_oeffnungszeiten: [{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"0:00","end":"0:00"},{"start":"0:00","end":"0:00"}],
   name: "Der kleine Teeladen",
   beschreibung: "Schwarzer, Weiser, Grüner, Blauer, Roter, Gelber, Grauer, Brauner, Transparenter Tee",
   categories: ["Lebensmittel", "Tee"],
@@ -22,22 +14,7 @@ const mock = {
   email: "tee@example.com",
   telefon: "03023456789",
   max_pro_slot: "3",
-  available_time_slots: [
-    [
-      { id: 0, start: "2020-03-24T09:00:00.00Z", stop: "2020-03-24T09:30:00.00Z" },
-      { id: 1, start: "2020-03-24T11:00:00.00Z", stop: "2020-03-24T11:30:00.00Z" },
-      { id: 2, start: "2020-03-24T16:00:00.00Z", stop: "2020-03-24T16:30:00.00Z" }
-    ],
-    [
-      { id: 3, start: "2020-03-25T09:00:00.00Z", stop: "2020-03-25T09:30:00.00Z" },
-      { id: 4, start: "2020-03-25T17:00:00.00Z", stop: "2020-03-25T17:30:00.00Z" }
-    ],
-    [
-      { id: 5, start: "2020-03-26T09:00:00.00Z", stop: "2020-03-26T09:30:00.00Z" },
-      { id: 6, start: "2020-03-26T11:00:00.00Z", stop: "2020-03-26T11:30:00.00Z" },
-      { id: 7, start: "2020-03-26T16:00:00.00Z", stop: "2020-03-26T16:30:00.00Z" }
-    ]
-  ]
+  available_time_slots: [[{"id":"1","start":"2020-03-25T10:00","end":"2020-03-25T12:00"},{"id":"2","start":"2020-03-25T14:00","end":"2020-03-25T16:00"}],[{"id":"3","start":"2020-03-26T10:00","end":"2020-03-26T12:00"},{"id":"4","start":"2020-03-26T14:00","end":"2020-03-26T186:00"}],[{"id":"5","start":"2020-03-27T10:00","end":"2020-03-27T12:00"},{"id":"6","start":"2020-03-27T14:00","end":"2020-03-27T16:00"}],[{"id":"7","start":"2020-03-28T10:00","end":"2020-03-28T12:00"}],[{"id":"8","start":"2020-03-29T10:00","end":"2020-03-29T11:00"},{"id":"9","start":"2020-03-29T11:00","end":"2020-03-29T12:00"},{"id":"10","start":"2020-03-29T13:00","end":"2020-03-29T14:00"}],[{"id":"11","start":"2020-03-30T10:00","end":"2020-03-30T18:00"}],[{"id":"12","start":"2020-03-31T12:00","end":"2020-03-31T14:00"},{"id":"13","start":"2020-03-31T14:00","end":"2020-03-31T18:00"}]]
 };
 
 const initialFormValues = {
