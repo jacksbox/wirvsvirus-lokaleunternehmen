@@ -15,7 +15,7 @@
  */
 
  .leaflet-container {
-  height: 90vh;
+  height: 85vh;
   width: 100vw-260px;
 }
 
@@ -25,11 +25,16 @@
 
 .search-panel{
   width: 100vw-260px;;
-  height: 10vh;
+  height: 15vh;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+.css-2b097c-container{
+  width: 30vw;
+  z-index: 10000;
 }
 
 .ct-grid {
