@@ -4,7 +4,7 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-import { getTimeString, formatSlot } from "utils/date"
+import { getTimeString, formatSlotTime } from "utils/date"
 
 const SlotPicker = ({ day, slot, slots, handleChange }) => {
   return (
@@ -14,7 +14,7 @@ const SlotPicker = ({ day, slot, slots, handleChange }) => {
             <FormControlLabel
               value={`${slot.id}`}
               control={<Radio />}
-              label={formatSlot(slot)}
+              label={formatSlotTime(slot)}
               key={slot.id}
             />
         ))}

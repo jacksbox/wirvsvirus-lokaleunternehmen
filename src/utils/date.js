@@ -12,7 +12,12 @@ export const getTimeString = isoDate => {
   return `${hours}:${!minutes ? "00" : minutes}`;
 };
 
-export const formatSlot = slot => {
+export const formatSlotTime = slot => {
   const formattedSlot = `${getTimeString(slot.start)} - ${getTimeString(slot.end)} Uhr`;
+  return formattedSlot;
+};
+
+export const formatSlot = slot => {
+  const formattedSlot = `${getShortDate(slot.start)} ${getTimeString(slot.start)} - ${getTimeString(slot.end)} Uhr`;
   return formattedSlot;
 };

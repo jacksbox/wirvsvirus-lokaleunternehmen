@@ -8,6 +8,10 @@ import DayPicker from "functionalComponents/DayPicker";
 
 import Button from "components/CustomButtons/Button.js";
 
+import { formatSlot } from 'utils/date'
+
+const findSlot = (unternehmen, day, slotId) => unternehmen.available_time_slots[day].find(({ id }) => id === `${slotId}`)
+
 const StepSlot = ({
   nextStep,
   prevStep,
@@ -24,7 +28,7 @@ const StepSlot = ({
         <p>{formValues.text}</p>
       </Grid>
       <Grid item md={6}>
-        <h5>Pickup-Zeit</h5>
+        <h5>Pickup-Zeit: {(day >= 0 && formValues.slot >= 0) ? formatSlot(findSlot(unternehmen, day, formValues.slot)) : ''}</h5>
         <DayPicker
           slots={unternehmen.available_time_slots}
           handleDayChange={handleDayChange}
