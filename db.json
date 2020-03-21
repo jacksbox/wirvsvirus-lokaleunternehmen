@@ -1,5 +1,25 @@
 {
-  "users": [
-    { "name": "Foo" }
-  ]
+  "api": {
+    "unternehmen": [
+      {
+        "kontaktlose_oeffnungszeiten": [
+          { "start": "String" , "stop": "String"},
+          { "start": "String" , "stop": "String"},
+          { "start": "String" , "stop": "String"},
+          { "start": "String" , "stop": "String"},
+          { "start": "String" , "stop": "String"},
+          { "start": "String" , "stops": "String"},
+          { "start": "String" , "stop": "String"}
+        ],
+        "name": "String",
+        "adresse": "String",
+        "langitude": "String",
+        "longitude": "String",
+        "email": "String",
+        "telefon": "String",
+        "max_pro_slot": "Integer",
+        "available_time_slots": ""
+      }
+    ]
+  }
 }
