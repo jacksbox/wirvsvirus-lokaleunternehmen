@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import RequestView from "functionalComponents/Request";
+import RequestView from "functionalComponents/Request/Request.js";
 
 const mock = {
   unternehmen_id: "00001",

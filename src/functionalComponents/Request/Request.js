@@ -6,10 +6,10 @@ import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 
-import StepOverview from "functionalComponents/Request/StepOverview";
-import StepOrder from "functionalComponents/Request/StepOrder";
-import StepSlot from "functionalComponents/Request/StepSlot";
-import StepSuccess from "functionalComponents/Request/StepSuccess";
+import StepOverview from "functionalComponents/StepOverview";
+import StepOrder from "functionalComponents/StepOrder";
+import StepSlot from "functionalComponents/StepSlot";
+import StepSuccess from "functionalComponents/StepSuccess";
 
 const styles = theme => ({
   cardTitle: {
