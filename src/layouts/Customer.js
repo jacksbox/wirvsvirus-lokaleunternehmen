@@ -6,10 +6,8 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Navbar from "components/Navbars/Navbar.js";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes.js";
 
@@ -34,7 +32,6 @@ const switchRoutes = (
       }
       return null;
     })}
-    {/* <Redirect from="/customer" to="/customer/dashboard" /> */}
   </Switch>
 );
 
@@ -55,7 +52,7 @@ export default function Customer({ ...rest }) {
     setMobileOpen(!mobileOpen);
   };
   const getRoute = () => {
-    return window.location.pathname !== "/admin/maps";
+    return window.location.pathname !== "/customer/maps";
   };
   const resizeFunction = () => {
     if (window.innerWidth >= 960) {
@@ -93,11 +90,7 @@ export default function Customer({ ...rest }) {
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar
-          routes={routes}
-          handleDrawerToggle={handleDrawerToggle}
-          {...rest}
-        />
+        <div>Suche && Kategorien && Switch Karte/Liste</div>
         {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>

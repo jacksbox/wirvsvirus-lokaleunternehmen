@@ -33,7 +33,6 @@ const switchRoutes = (
       }
       return null;
     })}
-    <Redirect from="/admin" to="/admin/dashboard" />
   </Switch>
 );
 
@@ -49,19 +48,7 @@ export default function Business({ ...rest }) {
   const [color, setColor] = React.useState("blue");
   const [fixedClasses, setFixedClasses] = React.useState("dropdown show");
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const handleImageClick = image => {
-    setImage(image);
-  };
-  const handleColorClick = color => {
-    setColor(color);
-  };
-  const handleFixedClick = () => {
-    if (fixedClasses === "dropdown") {
-      setFixedClasses("dropdown show");
-    } else {
-      setFixedClasses("dropdown");
-    }
-  };
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -104,11 +91,7 @@ export default function Business({ ...rest }) {
         {...rest}
       />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <Navbar
-          routes={routes}
-          handleDrawerToggle={handleDrawerToggle}
-          {...rest}
-        />
+        <div>Irgendwelche Links</div>
         {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
           <div className={classes.content}>

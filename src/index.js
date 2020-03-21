@@ -33,8 +33,6 @@ const hist = createBrowserHistory();
 
 apiClient.init(API_URL)
 
-apiClient.instance.get('/users')
-
 ReactDOM.render(
   <Router history={hist}>
     <Switch>

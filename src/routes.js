@@ -16,7 +16,8 @@
 
 */
 // @material-ui/icons
-import Person from "@material-ui/icons/Person";
+import Search from "@material-ui/icons/Search";
+import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import UserProfile from "views/UserProfile/UserProfile.js";
@@ -25,28 +26,28 @@ import Maps from "views/Maps/Maps.js";
 
 const dashboardRoutes = [
   {
-    path: "/business",
-    name: "Unternehmen Profile",
-    rtlName: "ملف تعريفي للمستخدم",
-    icon: Person,
-    component: UserProfile,
-    layout: "/business"
-  },
-  {
-    path: "/customer",
+    path: "/list",
     name: "Unternehmen (Liste)",
     rtlName: "قائمة الجدول",
-    icon: "content_paste",
+    icon: Search,
     component: TableList,
     layout: "/customer"
   },
   {
-    path: "/customer/maps",
+    path: "/maps",
     name: "Unternehmen (Karte)",
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
     layout: "/customer"
+  },
+  {
+    path: "/business",
+    name: "Unternehmen",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: BusinessCenter,
+    component: UserProfile,
+    layout: "/business"
   },
 ];
 
