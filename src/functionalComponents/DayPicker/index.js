@@ -5,7 +5,7 @@ import Button from "components/CustomButtons/Button.js";
 const getShortDate = isoDate => {
   const date = new Date(isoDate);
   const month = date.toLocaleString('de-DE', { month: 'long' });;
-  const day = date.getDay();
+  const day = date.getDate();
   return `${day}. ${month}`;
 };
 
