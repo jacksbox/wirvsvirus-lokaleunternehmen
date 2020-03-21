@@ -10,7 +10,7 @@ import Chip from "@material-ui/core/Chip";
 
 import Button from "components/CustomButtons/Button.js";
 
-import { getTimeString } from "utils/date"
+import { getTimeString } from "utils/date";
 
 const styles = theme => ({
   categoryList: {
@@ -49,29 +49,33 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
         <Grid item md={7}>
           <h5>Beschreibung</h5>
           <p>{unternehmen.beschreibung}</p>
-          <Button onClick={() => nextStep()} color="info">Bestellung aufgeben</Button>
         </Grid>
         <Grid item md={5}>
           <h5>Öffnungszeiten</h5>
           <Table size="small">
-          <tbody>
-            {days.map((day, i) => (
-              <TableRow key={day}>
-                <TableCell className={classes.inlineList}>{day}: </TableCell>
-                <TableCell className={classes.inlineList}>
-                  {getTimeString(
-                    unternehmen.kontaktlose_oeffnungszeiten[i].start
-                  )}{" "}
-                  -{" "}
-                  {getTimeString(
-                    unternehmen.kontaktlose_oeffnungszeiten[i].stop
-                  )}{" "}
-                  Uhr
-                </TableCell>
-              </TableRow>
-            ))}
+            <tbody>
+              {days.map((day, i) => (
+                <TableRow key={day}>
+                  <TableCell className={classes.inlineList}>{day}: </TableCell>
+                  <TableCell className={classes.inlineList}>
+                    {getTimeString(
+                      unternehmen.kontaktlose_oeffnungszeiten[i].start
+                    )}{" "}
+                    -{" "}
+                    {getTimeString(
+                      unternehmen.kontaktlose_oeffnungszeiten[i].stop
+                    )}{" "}
+                    Uhr
+                  </TableCell>
+                </TableRow>
+              ))}
             </tbody>
           </Table>
+        </Grid>
+        <Grid item md={12}>
+          <Button onClick={() => nextStep()} color="info">
+            Bestellung aufgeben
+          </Button>
         </Grid>
       </Grid>
     </>
