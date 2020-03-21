@@ -11,8 +11,10 @@
     "axios": "^0.19.2",
     "chartist": "0.10.1",
     "classnames": "2.2.6",
+    "here-maps-react": "^1.1.0",
     "history": "4.9.0",
     "json-server": "^0.16.1",
+    "leaflet": "^1.6.0",
     "perfect-scrollbar": "1.4.0",
     "prop-types": "15.7.2",
     "react": "16.9.0",
@@ -20,8 +22,11 @@
     "react-dom": "16.9.0",
     "react-google-maps": "9.4.5",
     "react-here-map": "^3.1.0-0",
+    "react-here-maps": "^0.4.0",
+    "react-leaflet": "^2.6.3",
     "react-router-dom": "5.0.1",
     "react-scripts": "3.1.0",
+    "react-select": "^3.0.8",
     "react-swipeable-views": "0.13.3"
   },
   "scripts": {

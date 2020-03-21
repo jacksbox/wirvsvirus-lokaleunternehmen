@@ -1,27 +1,7 @@
 {
   "api": {
     "unternehmen": [
-      {
-        "unternehmen_id": "String",
-        "kontaktlose_oeffnungszeiten": [
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"},
-          { "start": "String/Date" , "stop": "String/Date"}
-        ],
-        "name": "String",
-        "categories": [ "String" ],
-        "adresse": "String",
-        "latitude": "String/float",
-        "longitude": "String/float",
-        "email": "String",
-        "telefon": "String",
-        "max_pro_slot": "Integer",
-        "available_time_slots": [ {"start": "String/Date", "stop": "String/Date" } ]
-      },
+      
       {
         "unternehmen_id": "00001",
         "kontaktlose_oeffnungszeiten": [
@@ -64,8 +44,35 @@
         "name": "Zweites Unternehmen",
         "categories": [ "Lebensmittel", "Strickwaren" ],
         "adresse": "Sanderstraße 8, 12047 Berlin",
-        "latitude": "52.4926",
+        "latitude": "52.48",
         "longitude": "13.4246693",
+        "email": "example@example.com",
+        "telefon": "03023456789",
+        "max_pro_slot": "3",
+        "available_time_slots": [
+          {"start": "2020-03-24T09:00:00.00Z", "stop": "2020-03-24T09:30:00.00Z" },
+          {"start": "2020-03-24T11:00:00.00Z", "stop": "2020-03-24T11:30:00.00Z" },
+          {"start": "2020-03-24T16:00:00.00Z", "stop": "2020-03-24T16:30:00.00Z" },
+          {"start": "2020-03-25T09:00:00.00Z", "stop": "2020-03-25T09:30:00.00Z" },
+          {"start": "2020-03-25T17:00:00.00Z", "stop": "2020-03-25T17:30:00.00Z" }
+        ]
+      },
+      {
+        "unternehmen_id": "00001",
+        "kontaktlose_oeffnungszeiten": [
+          { "start": "2020-03-24T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-25T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-26T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-27T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-28T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-29T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
+          { "start": "2020-03-30T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"}
+        ],
+        "name": "Drittes Unternehmen",
+        "categories": [ "Lebensmittel", "Strickwaren" ],
+        "adresse": "Sanderstraße 8, 12047 Berlin",
+        "latitude": "52.48",
+        "longitude": "13.41",
         "email": "example@example.com",
         "telefon": "03023456789",
         "max_pro_slot": "3",

@@ -13,6 +13,25 @@
  * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
  */
+
+ .leaflet-container {
+  height: 90vh;
+  width: 100vw-260px;
+}
+
+.makeStyles-map-5 {
+  margin: 0 !important;
+}
+
+.search-panel{
+  width: 100vw-260px;;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .ct-grid {
   stroke: rgba(255, 255, 255, 0.2);
   stroke-width: 1px;
