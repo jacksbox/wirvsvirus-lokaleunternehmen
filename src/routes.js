@@ -24,6 +24,8 @@ import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Maps from "views/Maps/Maps.js";
 
+import Request from "container/Request";
+
 const dashboardRoutes = [
   {
     path: "/list",
@@ -39,6 +41,14 @@ const dashboardRoutes = [
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
+    layout: "/customer"
+  },
+  {
+    path: "/request",
+    name: "Anfrage",
+    rtlName: "خرائط",
+    icon: '',
+    component: Request,
     layout: "/customer"
   },
   {
