@@ -17,7 +17,16 @@ import RTLNavbarLinks from "components/Navbars/RTLNavbarLinks.js";
 
 import styles from "assets/jss/material-dashboard-react/components/sidebarStyle.js";
 
-const useStyles = makeStyles(styles);
+const newStyles = theme => ({
+  ...styles(theme),
+  cLogoImage: {
+    width: '100%',
+    maxHeight: '100%',
+    display: 'inline-block'
+  }
+})
+
+const useStyles = makeStyles(newStyles);
 
 export default function Sidebar(props) {
   const classes = useStyles();
@@ -89,10 +98,20 @@ export default function Sidebar(props) {
         })}
         target="_blank"
       >
-        <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
+      <center>
+        <div className={classes.cLogoImage}>
+          <img src={logo} alt="logo" style={{ width: "33%"}} />
         </div>
-        {logoText}
+        </center>
+      </a>
+      <a
+        href="https://github.com/jacksbox/wirvsvirus-lokaleunternehmen"
+        className={classNames(classes.logoLink, {
+          [classes.logoLinkRTL]: props.rtlActive
+        })}
+        target="_blank"
+      >
+        <center>{logoText}</center>
       </a>
     </div>
   );

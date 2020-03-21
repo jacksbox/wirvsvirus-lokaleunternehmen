@@ -5,15 +5,13 @@ import Grid from "@material-ui/core/Grid";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 
-const StepOverview = ({ nextStep, prevStep, handleChange, formValues }) => {
+const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValues }) => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item md={12}>
+        <Grid item md={6}>
           <h5>Bestellungs-Details</h5>
           <p>Trage hier ein welche Produkte du haben möchtest.</p>
-        </Grid>
-        <Grid item md={6}>
           <CustomInput
             formControlProps={{ fullWidth: true }}
             labelText="eMail Addresse"
@@ -25,9 +23,13 @@ const StepOverview = ({ nextStep, prevStep, handleChange, formValues }) => {
             }}
           />
         </Grid>
+        <Grid item md={6}>
+          <h5>Beschreibung</h5>
+          <p>{unternehmen.beschreibung}</p>
+        </Grid>
         <Grid item md={12}>
           <CustomInput
-            labelText="Bestellung"
+            labelText="Meine Bestellung"
             id="text"
             formControlProps={{ fullWidth: true }}
             inputProps={{

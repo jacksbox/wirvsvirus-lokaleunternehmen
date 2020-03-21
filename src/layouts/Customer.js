@@ -14,7 +14,7 @@ import routes from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
-import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/logo.png";
 
 let ps;
 
@@ -81,7 +81,7 @@ export default function Customer({ ...rest }) {
     <div className={classes.wrapper}>
       <Sidebar
         routes={routes}
-        logoText={"Bleib deinem lokalen Laden treu!"}
+        logoText={"Bleib Lokal!"}
         logo={logo}
         image={image}
         handleDrawerToggle={handleDrawerToggle}
