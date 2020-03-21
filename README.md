@@ -1,1 +1,3 @@
-# Bleib deinem lokalen Laden treu!
+# Bleib Lokal!
+
+#wirvsvirus hackaton project
