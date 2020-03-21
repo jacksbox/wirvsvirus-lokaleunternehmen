@@ -14,7 +14,7 @@ import routes from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
-import logo from "assets/img/logo.png";
+import logo from "assets/img/logo-web.jpg";
 
 let ps;
 

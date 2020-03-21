@@ -90,7 +90,7 @@ export default function Sidebar(props) {
     </List>
   );
   var brand = (
-    <div className={classes.logo}>
+    <div className={classes.logo} style={{ background: "#fff" }}>
       <a
         href="https://github.com/jacksbox/wirvsvirus-lokaleunternehmen"
         className={classNames(classes.logoLink, {
@@ -100,18 +100,9 @@ export default function Sidebar(props) {
       >
       <center>
         <div className={classes.cLogoImage}>
-          <img src={logo} alt="logo" style={{ width: "33%"}} />
+          <img src={logo} alt="logo" style={{ width: "100%"}} />
         </div>
         </center>
-      </a>
-      <a
-        href="https://github.com/jacksbox/wirvsvirus-lokaleunternehmen"
-        className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive
-        })}
-        target="_blank"
-      >
-        <center>{logoText}</center>
       </a>
     </div>
   );
