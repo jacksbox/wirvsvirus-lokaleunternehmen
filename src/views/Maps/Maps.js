@@ -17,8 +17,8 @@ const styles = {
   searchbar: {
     position: "absolute",
     top: 0,
-    left: 0,
-    width: "100%",
+    left: '60px',
+    right: '80px',
     zIndex: 1000,
     "& $label": {
       fontWeight: "bold",
