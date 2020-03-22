@@ -6,7 +6,11 @@ import logo from "assets/img/logo-sticker.png";
 const Home = () => (
   <div>
       <div style={{
+        position: 'absolute',
         maxWidth: '100%',
+        top: '50px',
+        left: '50%',
+        transform: 'translate(-50%, 0)',
         background: '#fff',
         borderRadius: '20px', width: '760px'
       }}>
