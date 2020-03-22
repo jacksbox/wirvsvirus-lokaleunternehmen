@@ -52,7 +52,7 @@
   "bugs": {
     "url": "https://github.com/jacksbox/wirvsvirus-lokaleunternehmen/issues"
   },
-  "homepage": "https://github.com/jacksbox/wirvsvirus-lokaleunternehmen",
+  "homepage": "http://bleiblokal.wirvsvirus.net/",
   "optionalDependencies": {
     "@types/googlemaps": "3.37.3",
     "@types/markerclustererplus": "2.1.33",
