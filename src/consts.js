@@ -1,4 +1,4 @@
-export const API_URL = 'http://localhost:3001'
+export const API_URL = 'https://nameless-retreat-67960.herokuapp.com/'
 
 export const CATEGORIES = [
   { value: "LEB", label: "Lebensmittel" },

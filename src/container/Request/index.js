@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import RequestView from "functionalComponents/Request/Request.js";
 
+import apiClient from 'utils/apiClient'
+
 const mock = {
   id: "00001",
   oeffnungszeiten: [{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"0:00","end":"0:00"},{"start":"0:00","end":"0:00"}],
@@ -49,7 +51,19 @@ const Request = ({ preUnternehmen = mock, handleClose }) => {
 
   const nextStep = () => {
     const newStep = (requestStep + 1) % 4
-    setRequestStep(newStep)
+    // send order
+    if (requestStep === 2) {
+      const { id, kunden_email, text, slot } = formValues
+      const cSlot = unternehmen.available_time_slots[day].find(({ id: sid }) => `${sid}` === `${slot}`)
+      apiClient.instance.post('anfragen', {
+        kunden_email,
+        text,
+        unternehmen_id: id,
+        slot: cSlot
+      }).then(() => setRequestStep(newStep))
+    } else {
+      setRequestStep(newStep)
+    }
   }
 
   const prevStep = () => {

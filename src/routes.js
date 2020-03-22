@@ -25,7 +25,7 @@ import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Maps from "views/Maps/Maps.js";
 import HomeComponent from "functionalComponents/Home";
-import Impressum from "functionalComponents/Impressum";
+import MetaTexte from "functionalComponents/MetaTexte";
 
 import Request from "container/Request";
 
@@ -56,8 +56,22 @@ const dashboardRoutes = [
     path: "/impressum",
     name: "Impressum",
     rtlName: "خرائط",
-    icon: ContactMail,
-    component: Impressum,
+    icon: '',
+    component: MetaTexte,
+    layout: "/customer"
+  },  {
+    path: "/datenschutz",
+    name: "Datenschutz",
+    rtlName: "خرائط",
+    icon: '',
+    component: MetaTexte,
+    layout: "/customer"
+  },  {
+    path: "/agb",
+    name: "AGB",
+    rtlName: "خرائط",
+    icon: '',
+    component: MetaTexte,
     layout: "/customer"
   },
   // {
