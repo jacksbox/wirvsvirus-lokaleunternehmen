@@ -58,6 +58,7 @@ class HereMap extends Component {
     this.setCurrentPosition = this.setCurrentPosition.bind(this);
     this.filterValue = this.filterValue.bind(this);
     this.filterValue = this.filterValue.bind(this);
+    this.searchName = this.searchName.bind(this)
   }
 
   componentWillMount() {
@@ -101,15 +102,28 @@ class HereMap extends Component {
     this.setState({ open: false });
   };
 
+
+  searchName(name){
+    this.setState({searchName: name})
+  }
+
   render() {
     let markers;
 
     if (this.state.data) {
       let data = this.state.data;
       if (this.state.filterValue) {
-        let filteredKats = this.state.filterValue.map(el => el.value);
+        let filteredKats = this.state.filterValue.map((el => el.value));
         data = data.filter(el => filteredKats.includes(el.ober_kategorie));
       }
+
+      if (this.state.searchName){
+
+        data = data? data.filter(el => el.name==this.state.searchName.name) : this.state.data.filter(el => el.name==this.state.searchName.name)
+        console.log("here", this.state.searchName.name, this.state.data.filter(el => el.name=this.state.searchName.name))
+      }
+
+
       markers = data.map(u => {
         let greenIcon = new L.Icon({
           iconUrl: require(`./icons/${u.ober_kategorie}.png`),
@@ -149,7 +163,7 @@ class HereMap extends Component {
     return (
       <div>
         <div className={this.props.classes.searchbar} >
-          <Search filterValue={this.filterValue} />
+          <Search searchName={this.searchName} filterValue={this.filterValue} names={this.state.data? this.state.data.map((el, i)=>{return {"id": i, "name": el.name}}):[]}/>
         </div>
         <Map
           center={[49.794714, 9.932212]}
