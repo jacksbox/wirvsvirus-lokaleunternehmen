@@ -183,11 +183,11 @@ class HereMap extends Component {
           <div
             style={{
               position: 'absolute',
-              maxWidth: "1000px",
-              minWidth: "800px",
-              top: '10%',
+              maxWidth: "100%",
+              width: "800px",
+              top: '50%',
               left: "50%",
-              transform: "translateX(-50%)"
+              transform: "translate(-50%, -50%)"
             }}
           >
             <Request preUnternehmen={unternehmen} handleClose={this.handleCloseModal} />

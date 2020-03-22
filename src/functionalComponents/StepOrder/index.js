@@ -4,12 +4,13 @@ import Grid from "@material-ui/core/Grid";
 
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
+import Hidden from '@material-ui/core/Hidden';
 
 const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValues }) => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item md={6}>
+        <Grid item md={6} xs={12}>
           <h5>Bestellungs-Details</h5>
           <p>Trage hier ein welche Produkte du haben möchtest.</p>
           <CustomInput
@@ -23,11 +24,13 @@ const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValue
             }}
           />
         </Grid>
-        <Grid item md={6}>
-          <h5>Beschreibung</h5>
-          <p>{unternehmen.beschreibung}</p>
-        </Grid>
-        <Grid item md={12}>
+        <Hidden xsDown>
+          <Grid item md={6}>
+            <h5>Beschreibung</h5>
+            <p>{unternehmen.beschreibung}</p>
+          </Grid>
+        </Hidden>
+        <Grid item md={12} xs={12}>
           <CustomInput
             labelText="Meine Bestellung"
             id="text"

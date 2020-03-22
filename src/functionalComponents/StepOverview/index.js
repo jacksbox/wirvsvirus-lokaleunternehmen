@@ -47,7 +47,7 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
         </div>
       )}
       <Grid container spacing={2}>
-        <Grid item md={7}>
+        <Grid item md={7} xs={12}>
           {(unternehmen.adresse || unternehmen.telefon) && (
             <>
               <h5>Adresse</h5>
@@ -64,7 +64,7 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
             </>
           )}
         </Grid>
-        <Grid item md={5}>
+        <Grid item md={5} xs={12}>
           <h5>Öffnungszeiten</h5>
           <Table size="small">
             <tbody>
@@ -81,7 +81,7 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
             </tbody>
           </Table>
         </Grid>
-        <Grid item md={12}>
+        <Grid item md={12} xs={12}>
           <Button onClick={handleClose}>zurück</Button>
           <Button onClick={nextStep} color="info">
             Bestellung aufgeben
