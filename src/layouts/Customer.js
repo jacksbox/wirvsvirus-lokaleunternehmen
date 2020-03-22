@@ -116,6 +116,11 @@ export default function Customer({ ...rest }) {
         )}
         {/* <Footer /> */}
       </div>
+      <div style={{ position: 'absolute', padding: '20px 40px', bottom: '0', left: '0', right: '0', zIndex: 9999, backgroundColor: '#fff' }}>
+        <strong>Achtung: Dies ist bisher leider nur eine Demo-Applikation</strong><br/>
+        Es werden keine Anfragen verschickt oder Unternehmen eingetragen.
+        Damit es weitergeht unterstützt uns mit Likes und Kommentaren: <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be</a>
+      </div>
     </div>
   );
 }
