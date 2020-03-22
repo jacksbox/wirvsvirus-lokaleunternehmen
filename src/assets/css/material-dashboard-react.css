@@ -50,6 +50,10 @@
   min-height: 28pt !important;
 }
 
+.eoAoBx {
+  background-color: white !important;
+}
+
 .ct-grid {
   stroke: rgba(255, 255, 255, 0.2);
   stroke-width: 1px;
