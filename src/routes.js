@@ -16,25 +16,26 @@
 
 */
 // @material-ui/icons
-import Search from "@material-ui/icons/Search";
+import Home from "@material-ui/icons/Home";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Maps from "views/Maps/Maps.js";
+import HomeComponent from "functionalComponents/Home";
 
 import Request from "container/Request";
 
 const dashboardRoutes = [
-  // {
-  //   path: "/list",
-  //   name: "Unternehmen (Liste)",
-  //   rtlName: "قائمة الجدول",
-  //   icon: Search,
-  //   component: TableList,
-  //   layout: "/customer"
-  // },
+  {
+    path: "/home",
+    name: "Home",
+    rtlName: "قائمة الجدول",
+    icon: Home,
+    component: HomeComponent,
+    layout: "/customer"
+  },
   {
     path: "/maps",
     name: "Karte",

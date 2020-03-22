@@ -4,6 +4,8 @@ import { CATEGORIES } from "consts";
 
 import Select from "react-select";
 
+import Input from '@material-ui/core/Input';
+
 class Search extends Component {
   constructor() {
     super();

@@ -162,6 +162,7 @@ class HereMap extends Component {
           dragging={true}
           animate={true}
           easeLinearity={0.35}
+          style={{ height: '92vh'}}
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
