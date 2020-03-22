@@ -17,6 +17,7 @@
 */
 // @material-ui/icons
 import Home from "@material-ui/icons/Home";
+import ContactMail from "@material-ui/icons/ContactMail";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
@@ -24,6 +25,7 @@ import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Maps from "views/Maps/Maps.js";
 import HomeComponent from "functionalComponents/Home";
+import Impressum from "functionalComponents/Impressum";
 
 import Request from "container/Request";
 
@@ -47,8 +49,8 @@ const dashboardRoutes = [
     path: "/impressum",
     name: "Impressum",
     rtlName: "خرائط",
-    icon: LocationOn,
-    component: Home,
+    icon: ContactMail,
+    component: Impressum,
     layout: "/customer"
   },
   // {
