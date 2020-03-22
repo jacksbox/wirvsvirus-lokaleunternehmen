@@ -183,6 +183,7 @@ class HereMap extends Component {
             style={{
               position: 'absolute',
               maxWidth: "1000px",
+              minWidth: "800px",
               top: '10%',
               left: "50%",
               transform: "translateX(-50%)"

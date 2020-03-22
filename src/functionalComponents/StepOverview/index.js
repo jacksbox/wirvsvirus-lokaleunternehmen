@@ -47,10 +47,13 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
       )}
       <Grid container spacing={2}>
         <Grid item md={7}>
-          {unternehmen.adresse && (
+          {(unternehmen.adresse || unternehmen.telefon) && (
             <>
               <h5>Adresse</h5>
-              <p>{unternehmen.adresse}</p>
+              <p>
+                {unternehmen.adresse && <><span>{unternehmen.adresse}</span><br /></>}
+                {unternehmen.telefon && <span>Telefon: {unternehmen.telefon}</span>}
+              </p>
             </>
           )}
           {unternehmen.beschreibung && (
