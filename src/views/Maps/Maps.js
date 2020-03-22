@@ -153,7 +153,7 @@ class HereMap extends Component {
         </div>
         <Map
           center={[49.794714, 9.932212]}
-          zoom={24}
+          zoom={16}
           maxZoom={16}
           attributionControl={true}
           zoomControl={true}
@@ -168,7 +168,7 @@ class HereMap extends Component {
           {markers}
           <Marker
             icon={redIcon}
-            position={[45.11, 78.65]}
+            position={[49.795028, 9.931700]}
             onMouseOver={e => {
               e.target.openPopup();
             }}
