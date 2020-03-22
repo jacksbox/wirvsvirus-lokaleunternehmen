@@ -38,7 +38,7 @@ ReactDOM.render(
     <Switch>
       <Route path="/customer" component={Customer} />
       <Route path="/business" component={Business} />
-      <Redirect from="/" to="/customer" />
+      <Redirect from="/" to="/customer/home" />
     </Switch>
   </Router>,
   document.getElementById("root")
