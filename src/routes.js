@@ -27,38 +27,38 @@ import Maps from "views/Maps/Maps.js";
 import Request from "container/Request";
 
 const dashboardRoutes = [
-  {
-    path: "/list",
-    name: "Unternehmen (Liste)",
-    rtlName: "قائمة الجدول",
-    icon: Search,
-    component: TableList,
-    layout: "/customer"
-  },
+  // {
+  //   path: "/list",
+  //   name: "Unternehmen (Liste)",
+  //   rtlName: "قائمة الجدول",
+  //   icon: Search,
+  //   component: TableList,
+  //   layout: "/customer"
+  // },
   {
     path: "/maps",
-    name: "Unternehmen (Karte)",
+    name: "Karte",
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
     layout: "/customer"
   },
-  {
-    path: "/request",
-    name: "Anfrage",
-    rtlName: "خرائط",
-    icon: '',
-    component: Request,
-    layout: "/customer"
-  },
-  {
-    path: "/business",
-    name: "Unternehmen",
-    rtlName: "ملف تعريفي للمستخدم",
-    icon: BusinessCenter,
-    component: UserProfile,
-    layout: "/business"
-  },
+  // {
+  //   path: "/request",
+  //   name: "Anfrage",
+  //   rtlName: "خرائط",
+  //   icon: '',
+  //   component: Request,
+  //   layout: "/customer"
+  // },
+  // {
+  //   path: "/business",
+  //   name: "Unternehmen",
+  //   rtlName: "ملف تعريفي للمستخدم",
+  //   icon: BusinessCenter,
+  //   component: UserProfile,
+  //   layout: "/business"
+  // },
 ];
 
 export default dashboardRoutes;
