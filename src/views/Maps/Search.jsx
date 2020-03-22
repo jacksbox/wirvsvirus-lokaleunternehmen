@@ -65,6 +65,7 @@ class Search extends Component {
     // onSearch returns the string searched and if
     // the values are cached. If the values are cached
     // "cached" contains the cached values, if not, returns false
+    if (!string)this.props.searchName("alle")
     console.log(string, cached);
   }
 
@@ -93,6 +94,8 @@ class Search extends Component {
       value,
       onChange: this.onChange
     };
+
+    
 
     return (
         <Grid container spacing={6}>
