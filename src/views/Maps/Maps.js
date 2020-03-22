@@ -153,8 +153,8 @@ class HereMap extends Component {
         </div>
         <Map
           center={[49.794714, 9.932212]}
-          zoom={16}
-          maxZoom={16}
+          zoom={17}
+          maxZoom={18}
           attributionControl={true}
           zoomControl={true}
           doubleClickZoom={true}
