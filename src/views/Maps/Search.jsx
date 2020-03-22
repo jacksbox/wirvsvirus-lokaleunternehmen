@@ -32,9 +32,9 @@ class Search extends Component {
             { value: "SCH", label: "Schuhe" }
           ]
         };
-    
+
         this.handleMultiChange = this.handleMultiChange.bind(this);
-        
+
       }
 
       handleMultiChange(option) {
@@ -44,7 +44,7 @@ class Search extends Component {
           };
         }, ()=>this.props.filterValue(this.state.multiValue));
 
-        
+
       }
 
     render() {
@@ -57,7 +57,7 @@ class Search extends Component {
             <div>
             <label>Kategorien</label>
              <Select
-    
+
     isMulti
     name="colors"
     value={this.state.multiValue}
