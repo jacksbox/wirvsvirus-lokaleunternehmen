@@ -152,8 +152,8 @@ class HereMap extends Component {
           <Search filterValue={this.filterValue} />
         </div>
         <Map
-          center={[45.11, 78.65]}
-          zoom={14}
+          center={[49.794714, 9.932212]}
+          zoom={24}
           maxZoom={16}
           attributionControl={true}
           zoomControl={true}
