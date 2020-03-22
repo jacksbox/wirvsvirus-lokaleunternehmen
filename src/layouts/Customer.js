@@ -6,7 +6,7 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Footer from "components/Footer/Footer.js";
+import Hidden from '@material-ui/core/Hidden';
 import Sidebar from "components/Sidebar/Sidebar.js";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -83,6 +83,7 @@ export default function Customer({ ...rest }) {
   }, [mainPanel]);
   return (
     <div className={classes.wrapper}>
+      <Hidden mdUp>
       <div style={{ position: 'absolute', top: '0', right: '0', zIndex: 9999, padding: '3px', background: '#fff' }}>
         <IconButton
           color="inherit"
@@ -92,6 +93,7 @@ export default function Customer({ ...rest }) {
           <Menu />
         </IconButton>
       </div>
+      </Hidden>
       <Sidebar
         routes={routes}
         logoText={"Bleib Lokal!"}
