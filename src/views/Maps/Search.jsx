@@ -31,7 +31,7 @@ class Search extends Component {
       <div className="search-panel">
         <div>
           <label>Suche</label>
-          <input className="select__control css-yk16xz-control"></input>
+          <input className="select__control css-yk16xz-control" style={{ width: '400px', padding: '5px 10px' }}></input>
         </div>
 
         <div>

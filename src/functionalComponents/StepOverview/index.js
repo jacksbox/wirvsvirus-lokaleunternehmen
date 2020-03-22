@@ -72,8 +72,9 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
                 <TableRow key={day}>
                   <TableCell className={classes.inlineList}>{day}: </TableCell>
                   <TableCell className={classes.inlineList}>
-                    {unternehmen.oeffnungszeiten[i].start} -{" "}
-                    {unternehmen.oeffnungszeiten[i].end} Uhr
+                    {unternehmen.oeffnungszeiten[i].closed ? 'geschlossen' : (<>
+                      {unternehmen.oeffnungszeiten[i].start} - {unternehmen.oeffnungszeiten[i].end} Uhr
+                    </>)}
                   </TableCell>
                 </TableRow>
               ))}
