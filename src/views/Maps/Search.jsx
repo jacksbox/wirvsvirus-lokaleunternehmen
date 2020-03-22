@@ -4,7 +4,7 @@ import { CATEGORIES } from "consts";
 
 import Select from "react-select";
 
-import Input from '@material-ui/core/Input';
+import Grid from "@material-ui/core/Grid";
 
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
@@ -46,7 +46,7 @@ class Search extends Component {
     this.handleOnSearch = this.handleOnSearch.bind(this);
     this.handleOnSelect = this.handleOnSelect.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
-    
+
 
   }
 
@@ -68,13 +68,13 @@ class Search extends Component {
     if (!string)this.props.searchName("alle")
     console.log(string, cached);
   }
- 
+
  handleOnSelect = item => {
     // the item selected
     this.props.searchName(item);
     console.log(item);
   }
- 
+
   handleOnFocus = () => {
     console.log("Focused");
   }
@@ -98,33 +98,32 @@ class Search extends Component {
     
 
     return (
-      <div className="search-panel">
-        <div>
-          <label>Suche</label>
-          {/*<input className="select__control css-yk16xz-control" style={{ width: '400px', padding: '5px 10px' }}></input>*/}
-          <div className="searchbar" style={{height: 28}}>
-          <ReactSearchAutocomplete
-            items={this.props.names}
-            onSearch={this.handleOnSearch}
-            onSelect={this.handleOnSelect}
-            onFocus={this.handleOnFocus}
-            autoFocus
-          /></div>
-        </div>
+        <Grid container spacing={6}>
+          <Grid item xs={12} md={6}>
+            <label>Suche</label>
+            <ReactSearchAutocomplete
+              items={this.props.names}
+              onSearch={this.handleOnSearch}
+              onSelect={this.handleOnSelect}
+              onFocus={this.handleOnFocus}
+              autoFocus
+            />
+          </Grid>
 
-        <div>
-          <label>Kategorien</label>
-          <Select
-            isMulti
-            name="colors"
-            value={this.state.multiValue}
-            options={this.state.options}
-            onChange={this.handleMultiChange}
-            className="basic-multi-select"
-            classNamePrefix="select"
-          />
-        </div>
-      </div>
+          <Grid item xs={12} md={6}>
+            <label>Kategorien</label>
+            <Select
+              isMulti
+              name="colors"
+              value={this.state.multiValue}
+              options={this.state.options}
+              onChange={this.handleMultiChange}
+              className="basic-multi-select"
+              classNamePrefix="select"
+              style={{ width: '100%' }}
+            />
+          </Grid>
+        </Grid>
     );
   }
 }

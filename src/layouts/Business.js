@@ -9,6 +9,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import Footer from "components/Footer/Footer.js";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
+import IconButton from "@material-ui/core/IconButton";
+// @material-ui/icons
+import Menu from "@material-ui/icons/Menu";
+
 import routes from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
@@ -79,6 +83,24 @@ export default function Business({ ...rest }) {
   }, [mainPanel]);
   return (
     <div className={classes.wrapper}>
+      <div
+        style={{
+          position: "absolute",
+          top: "0",
+          right: "0",
+          zIndex: 9999,
+          padding: "3px",
+          background: "#fff"
+        }}
+      >
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerToggle}
+        >
+          <Menu />
+        </IconButton>
+      </div>
       <Sidebar
         routes={routes}
         logoText={"Bleib Lokal!"}
@@ -89,9 +111,19 @@ export default function Business({ ...rest }) {
         color={color}
         {...rest}
       />
-      <img src={bgImage} style={{ minHeight: '100vH', minWidth: '100vH', opacity: .25, position: 'absolute', top: 0, left: 0}} />
+      <img
+        src={bgImage}
+        style={{
+          minHeight: "100vH",
+          minWidth: "100vH",
+          opacity: 0.25,
+          position: "absolute",
+          top: 0,
+          left: 0
+        }}
+      />
       <div className={classes.mainPanel} ref={mainPanel}>
-        <div className={classes.content} style={{ minHeight: '100vH'}}>
+        <div className={classes.content} style={{ minHeight: "100vH" }}>
           <div className={classes.container}>{switchRoutes}</div>
         </div>
       </div>
