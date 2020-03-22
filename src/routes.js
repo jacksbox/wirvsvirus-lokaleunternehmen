@@ -45,6 +45,13 @@ const dashboardRoutes = [
     icon: LocationOn,
     component: Maps,
     layout: "/customer"
+  }, {
+    path: "/register",
+    name: "Registrieren",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: BusinessCenter,
+    component: UserProfile,
+    layout: "/business"
   },  {
     path: "/impressum",
     name: "Impressum",
@@ -60,14 +67,6 @@ const dashboardRoutes = [
   //   icon: '',
   //   component: Request,
   //   layout: "/customer"
-  // },
-  // {
-  //   path: "/business",
-  //   name: "Unternehmen",
-  //   rtlName: "ملف تعريفي للمستخدم",
-  //   icon: BusinessCenter,
-  //   component: UserProfile,
-  //   layout: "/business"
   // },
 ];
 

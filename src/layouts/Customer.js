@@ -89,7 +89,7 @@ export default function Customer({ ...rest }) {
         color={color}
         {...rest}
       />
-        <img src={bgImage} style={{ minHeight: '100vH', minWidth: '100vH', opacity: .25, position: 'absolute', top: 0, left: 0}} />
+      <img src={bgImage} style={{ minHeight: '100vH', minWidth: '100vH', opacity: .25, position: 'absolute', top: 0, left: 0}} />
       <div className={classes.mainPanel} ref={mainPanel}>
         {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
         {getRoute() ? (
@@ -97,7 +97,7 @@ export default function Customer({ ...rest }) {
             <div className={classes.container}>{switchRoutes}</div>
           </div>
         ) : (
-          <div className={classes.map}>{switchRoutes}</div>
+          <div className={classes.map} style={{ margin: 0 }}>{switchRoutes}</div>
         )}
         {/* <Footer /> */}
       </div>
