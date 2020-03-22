@@ -136,7 +136,7 @@ class HereMap extends Component {
           >
             <Popup>
               <h3>{u.name}</h3>
-              <button>Bestellen</button>
+              <p></p>
             </Popup>
           </Marker>
         );
@@ -147,7 +147,7 @@ class HereMap extends Component {
 
     return (
       <div>
-        <div className={this.props.classes.searchbar}>
+        <div >
           <Search filterValue={this.filterValue} />
         </div>
         <Map
