@@ -55,12 +55,12 @@ const Request = ({ preUnternehmen = mock, handleClose }) => {
     if (requestStep === 2) {
       const { id, kunden_email, text, slot } = formValues
       const cSlot = unternehmen.available_time_slots[day].find(({ id: sid }) => `${sid}` === `${slot}`)
-      apiClient.instance.post('anfragen', {
-        kunden_email,
-        text,
-        unternehmen_id: id,
-        slot: cSlot
-      }).then(() => setRequestStep(newStep))
+      // apiClient.instance.post('anfragen', {
+      //   kunden_email,
+      //   text,
+      //   unternehmen_id: id,
+      //   slot: cSlot
+      // }).then(() => setRequestStep(newStep))
     } else {
       setRequestStep(newStep)
     }
