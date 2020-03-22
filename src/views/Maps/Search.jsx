@@ -6,15 +6,48 @@ import Select from "react-select";
 
 import Grid from "@material-ui/core/Grid";
 
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
+
+const items = [
+  {
+    id: 0,
+    name: "Cobol",
+  },
+  {
+    id: 1,
+    name: "JavaScript"
+  },
+  {
+    id: 2,
+    name: "Basic"
+  },
+  {
+    id: 3,
+    name: "PHP"
+  },
+  {
+    id: 4,
+    name: "Java"
+  },
+]
+
 class Search extends Component {
   constructor() {
     super();
     this.state = {
+      searchName: "",
       multiValue: [],
-      options: CATEGORIES
+      suggestions: [],
+      options: CATEGORIES,
+      value: ""
     };
 
     this.handleMultiChange = this.handleMultiChange.bind(this);
+    this.handleOnSearch = this.handleOnSearch.bind(this);
+    this.handleOnSelect = this.handleOnSelect.bind(this);
+    this.handleOnFocus = this.handleOnFocus.bind(this);
+
+
   }
 
   handleMultiChange(option) {
@@ -28,14 +61,49 @@ class Search extends Component {
     );
   }
 
+ handleOnSearch = (string, cached) => {
+    // onSearch returns the string searched and if
+    // the values are cached. If the values are cached
+    // "cached" contains the cached values, if not, returns false
+    console.log(string, cached);
+  }
+
+ handleOnSelect = item => {
+    // the item selected
+    this.props.searchName(item);
+    console.log(item);
+  }
+
+  handleOnFocus = () => {
+    console.log("Focused");
+  }
+
+
+  searchName(name){
+    this.setState({searchName: name})
+  }
+
+
+
   render() {
+
+    const { value, suggestions } = this.state;
+    const inputProps = {
+      placeholder: "",
+      value,
+      onChange: this.onChange
+    };
+
     return (
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
             <label>Suche</label>
-            <input
-              className="select__control css-yk16xz-control"
-              style={{ width: '100%', padding: '5px 10px' }}
+            <ReactSearchAutocomplete
+              items={this.props.names}
+              onSearch={this.handleOnSearch}
+              onSelect={this.handleOnSelect}
+              onFocus={this.handleOnFocus}
+              autoFocus
             />
           </Grid>
 
