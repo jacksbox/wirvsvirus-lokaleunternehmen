@@ -37,6 +37,19 @@
   z-index: 10000;
 }
 
+.wrapper {
+  border-radius: 2pt !important;
+  height: 28pt !important;
+}
+
+.sc-htpNat {
+  height: 28pt !important;
+}
+
+.cHDtue {
+  min-height: 28pt !important;
+}
+
 .ct-grid {
   stroke: rgba(255, 255, 255, 0.2);
   stroke-width: 1px;

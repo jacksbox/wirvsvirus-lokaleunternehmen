@@ -35,6 +35,7 @@ class Search extends Component {
   constructor() {
     super();
     this.state = {
+      searchName: "",
       multiValue: [],
       suggestions: [],
       options: CATEGORIES,
@@ -45,7 +46,7 @@ class Search extends Component {
     this.handleOnSearch = this.handleOnSearch.bind(this);
     this.handleOnSelect = this.handleOnSelect.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
-    this.searchName = this.searchName.bind(this)
+    
 
   }
 
@@ -98,7 +99,7 @@ class Search extends Component {
         <div>
           <label>Suche</label>
           {/*<input className="select__control css-yk16xz-control" style={{ width: '400px', padding: '5px 10px' }}></input>*/}
-          <div className="searchbar">
+          <div className="searchbar" style={{height: 28}}>
           <ReactSearchAutocomplete
             items={this.props.names}
             onSearch={this.handleOnSearch}
