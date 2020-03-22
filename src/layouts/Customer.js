@@ -117,9 +117,22 @@ export default function Customer({ ...rest }) {
         {/* <Footer /> */}
       </div>
       <div style={{ position: 'absolute', padding: '20px 40px', bottom: '0', left: '0', right: '0', zIndex: 9999, backgroundColor: '#fff' }}>
-        <strong>Achtung: Dies ist bisher leider nur eine Demo-Applikation</strong><br/>
-        Es werden keine Anfragen verschickt oder Unternehmen eingetragen.
-        Damit es weitergeht, unterstützt uns mit Likes und Kommentaren: <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be</a>
+        <strong>
+          Achtung: Dies ist bisher leider nur eine Demo-Applikation
+        </strong>
+        <br />
+        Es werden noch keine Anfragen verschickt oder Unternehmen eingetragen.
+        Unterstützt uns mit Likes und Kommentaren zu unserem{" "}
+        <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">
+          <strong>Intro Video</strong>
+        </a>
+        <br />
+        Sie möchten mit ihrem Unternehmendabei sein sobald es losgeht? Dann
+        tragen Sie sich{" "}
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
+          <strong>hier</strong>
+        </a>{" "}
+        ein.
       </div>
     </div>
   );

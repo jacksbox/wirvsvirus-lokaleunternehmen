@@ -6,7 +6,7 @@ import "perfect-scrollbar/css/perfect-scrollbar.css";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
-import Hidden from '@material-ui/core/Hidden';
+import Hidden from "@material-ui/core/Hidden";
 import Sidebar from "components/Sidebar/Sidebar.js";
 
 import IconButton from "@material-ui/core/IconButton";
@@ -129,10 +129,33 @@ export default function Business({ ...rest }) {
           <div className={classes.container}>{switchRoutes}</div>
         </div>
       </div>
-      <div style={{ position: 'absolute', padding: '20px 40px', bottom: '0', left: '0', right: '0', zIndex: 9999, backgroundColor: '#fff' }}>
-        <strong>Achtung: Dies ist bisher leider nur eine Demo-Applikation</strong><br/>
+      <div
+        style={{
+          position: "absolute",
+          padding: "20px 40px",
+          bottom: "0",
+          left: "0",
+          right: "0",
+          zIndex: 9999,
+          backgroundColor: "#fff"
+        }}
+      >
+        <strong>
+          Achtung: Dies ist bisher leider nur eine Demo-Applikation
+        </strong>
+        <br />
         Es werden noch keine Anfragen verschickt oder Unternehmen eingetragen.
-        Damit es weitergeht, unterstützt uns mit Likes und Kommentaren: <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be</a>
+        Unterstützt uns mit Likes und Kommentaren zu unserem{" "}
+        <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">
+          <strong>Intro Video</strong>
+        </a>
+        <br />
+        Sie möchten mit ihrem Unternehmendabei sein sobald es losgeht? Dann
+        tragen Sie sich{" "}
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
+          <strong>hier</strong>
+        </a>{" "}
+        ein.
       </div>
     </div>
   );
