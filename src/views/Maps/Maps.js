@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import Modal from "@material-ui/core/Modal";
+import Request from "container/Request";
+
 import axios from "axios";
 
 import { Map, TileLayer, Marker, Popup, CircleMarker } from "react-leaflet";
@@ -12,17 +15,17 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   searchbar: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
-    width: '100%',
+    width: "100%",
     zIndex: 1000,
-    '& $label': {
-      fontWeight: 'bold',
-      color: '#000'
+    "& $label": {
+      fontWeight: "bold",
+      color: "#000"
     }
   }
-}
+};
 
 const L = require("leaflet");
 
@@ -47,10 +50,12 @@ class HereMap extends Component {
       points: false,
       currentLat: 50,
       currentLong: 10,
-      radius: 2
+      radius: 2,
+      open: false
     };
 
     this.setCurrentPosition = this.setCurrentPosition.bind(this);
+    this.filterValue = this.filterValue.bind(this);
     this.filterValue = this.filterValue.bind(this);
   }
 
@@ -87,6 +92,14 @@ class HereMap extends Component {
       .catch(err => console.log(err));
   }
 
+  handleOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   render() {
     let markers;
 
@@ -117,6 +130,9 @@ class HereMap extends Component {
             onMouseOut={e => {
               e.target.closePopup();
             }}
+            onClick={() => {
+              this.handleOpenModal();
+            }}
           >
             <Popup>
               <h3>{u.name}</h3>
@@ -126,6 +142,8 @@ class HereMap extends Component {
         );
       });
     }
+
+    const { open } = this.state;
 
     return (
       <div>
@@ -159,6 +177,19 @@ class HereMap extends Component {
             <Popup>Your location</Popup>
           </Marker>
         </Map>
+        <Modal open={open} onClose={this.handleCloseModal}>
+          <div
+            style={{
+              position: 'absolute',
+              maxWidth: "1000px",
+              top: '10%',
+              left: "50%",
+              transform: "translateX(-50%)"
+            }}
+          >
+            <Request handleClose={this.handleCloseModal} />
+          </div>
+        </Modal>
       </div>
     );
   }

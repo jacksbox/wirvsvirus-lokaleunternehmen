@@ -25,7 +25,7 @@ const steps = {
   3: StepSuccess
 }
 
-const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, formValues, day, handleDayChange }) => {
+const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, formValues, day, handleDayChange, handleClose }) => {
   const classes = useStyles();
   const StepComponent = steps[requestStep]
   return (
@@ -39,6 +39,7 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
         <StepComponent
           nextStep={nextStep}
           prevStep={prevStep}
+          handleClose={handleClose}
           handleChange={handleChange}
           unternehmen={unternehmen}
           formValues={formValues}

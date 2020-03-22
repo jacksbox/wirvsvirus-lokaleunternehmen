@@ -24,7 +24,7 @@ const initialFormValues = {
   slot: null
 };
 
-const Request = ({ unternehmen = mock }) => {
+const Request = ({ unternehmen = mock, handleClose }) => {
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
     unternehmen_id: unternehmen.unternehmen_id,
@@ -66,6 +66,7 @@ const Request = ({ unternehmen = mock }) => {
       formValues={formValues}
       day={day}
       handleDayChange={handleDayChange}
+      handleClose={handleClose}
     />
   )
 };

@@ -34,7 +34,7 @@ const days = [
 
 const useStyles = makeStyles(styles);
 
-const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
+const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
   const classes = useStyles();
   return (
     <>
@@ -69,7 +69,9 @@ const StepOverview = ({ displayThankYou, nextStep, unternehmen }) => {
           </Table>
         </Grid>
         <Grid item md={12}>
-          <Button onClick={() => nextStep()} color="info">
+          <Button onClick={handleClose}>
+            zurück
+          </Button><Button onClick={nextStep} color="info">
             Bestellung aufgeben
           </Button>
         </Grid>
