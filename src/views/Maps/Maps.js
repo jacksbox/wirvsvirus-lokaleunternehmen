@@ -115,8 +115,8 @@ class HereMap extends Component {
           iconUrl: require(`./icons/${u.ober_kategorie}.png`),
           shadowUrl:
             "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-          iconSize: [25, 41],
-          iconAnchor: [12, 41],
+          iconSize: [66 * 0.75, 94 * 0.75],
+          iconAnchor: [24, 41],
           popupAnchor: [1, -34],
           shadowSize: [41, 41]
         });
@@ -162,7 +162,7 @@ class HereMap extends Component {
           dragging={true}
           animate={true}
           easeLinearity={0.35}
-          style={{ height: '92vh'}}
+          style={{ height: '100vH' }}
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}

@@ -43,6 +43,13 @@ const dashboardRoutes = [
     icon: LocationOn,
     component: Maps,
     layout: "/customer"
+  },  {
+    path: "/impressum",
+    name: "Impressum",
+    rtlName: "خرائط",
+    icon: LocationOn,
+    component: Home,
+    layout: "/customer"
   },
   // {
   //   path: "/request",
