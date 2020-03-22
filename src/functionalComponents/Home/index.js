@@ -15,7 +15,7 @@ const Home = () => (
         borderRadius: '20px', width: '760px'
       }}>
       <div style={{ padding: '40px', textAlign: 'center' }}>
-        <img src={logo} alt="logo" style={{ width: '200px', maxWidth: "80%"}} />
+        {/* <img src={logo} alt="logo" style={{ width: '200px', maxWidth: "80%"}} /> */}
         <iframe width="560" height="315" src="https://www.youtube.com/embed/EW529J86Mpk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <h4>
           Mit <strong>Bleib Lokal!</strong> entwickeln wir eine Lösung,<br />
