@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import RequestView from "functionalComponents/Request/Request.js";
 
 const mock = {
-  unternehmen_id: "00001",
-  kontaktlose_oeffnungszeiten: [{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"0:00","end":"0:00"},{"start":"0:00","end":"0:00"}],
+  id: "00001",
+  oeffnungszeiten: [{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"10:00","end":"18:00"},{"start":"0:00","end":"0:00"},{"start":"0:00","end":"0:00"}],
   name: "Der kleine Teeladen",
   beschreibung: "Schwarzer, Weiser, Grüner, Blauer, Roter, Gelber, Grauer, Brauner, Transparenter Tee",
   categories: ["Lebensmittel", "Tee"],
@@ -18,16 +18,25 @@ const mock = {
 };
 
 const initialFormValues = {
-  unternehmen_id: "0001",
+  id: "0001",
   kunden_email: "",
   text: "",
   slot: null
 };
 
-const Request = ({ unternehmen = mock, handleClose }) => {
+// parse json fields
+const prepareUnternehmen = ({oeffnungszeiten, available_time_slots, ...unternehmen}) => ({
+  ...unternehmen,
+  oeffnungszeiten: typeof oeffnungszeiten === 'string' ? JSON.parse(oeffnungszeiten) : oeffnungszeiten,
+  available_time_slots: typeof available_time_slots === 'string' ? JSON.parse(available_time_slots) : available_time_slots
+})
+
+const Request = ({ preUnternehmen = mock, handleClose }) => {
+  const unternehmen = prepareUnternehmen(preUnternehmen)
+
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
-    unternehmen_id: unternehmen.unternehmen_id,
+    id: unternehmen.id,
     slot: unternehmen.available_time_slots[0].id
   });
 

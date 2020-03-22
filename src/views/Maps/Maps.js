@@ -51,7 +51,8 @@ class HereMap extends Component {
       currentLat: 50,
       currentLong: 10,
       radius: 2,
-      open: false
+      open: false,
+      unternehmen: null
     };
 
     this.setCurrentPosition = this.setCurrentPosition.bind(this);
@@ -131,7 +132,7 @@ class HereMap extends Component {
               e.target.closePopup();
             }}
             onClick={() => {
-              this.handleOpenModal();
+              this.setState({ unternehmen: u }, this.handleOpenModal);
             }}
           >
             <Popup>
@@ -143,7 +144,7 @@ class HereMap extends Component {
       });
     }
 
-    const { open } = this.state;
+    const { open, unternehmen } = this.state;
 
     return (
       <div>
@@ -187,7 +188,7 @@ class HereMap extends Component {
               transform: "translateX(-50%)"
             }}
           >
-            <Request handleClose={this.handleCloseModal} />
+            <Request preUnternehmen={unternehmen} handleClose={this.handleCloseModal} />
           </div>
         </Modal>
       </div>

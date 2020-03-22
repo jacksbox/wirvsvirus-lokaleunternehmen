@@ -47,8 +47,18 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
       )}
       <Grid container spacing={2}>
         <Grid item md={7}>
-          <h5>Beschreibung</h5>
-          <p>{unternehmen.beschreibung}</p>
+          {unternehmen.adresse && (
+            <>
+              <h5>Adresse</h5>
+              <p>{unternehmen.adresse}</p>
+            </>
+          )}
+          {unternehmen.beschreibung && (
+            <>
+              <h5>Beschreibung</h5>
+              <p>{unternehmen.beschreibung}</p>
+            </>
+          )}
         </Grid>
         <Grid item md={5}>
           <h5>Öffnungszeiten</h5>
@@ -58,10 +68,8 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
                 <TableRow key={day}>
                   <TableCell className={classes.inlineList}>{day}: </TableCell>
                   <TableCell className={classes.inlineList}>
-                    {unternehmen.kontaktlose_oeffnungszeiten[i].start}{" "}
-                    -{" "}
-                    {unternehmen.kontaktlose_oeffnungszeiten[i].end}{" "}
-                    Uhr
+                    {unternehmen.oeffnungszeiten[i].start} -{" "}
+                    {unternehmen.oeffnungszeiten[i].end} Uhr
                   </TableCell>
                 </TableRow>
               ))}
@@ -69,9 +77,8 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
           </Table>
         </Grid>
         <Grid item md={12}>
-          <Button onClick={handleClose}>
-            zurück
-          </Button><Button onClick={nextStep} color="info">
+          <Button onClick={handleClose}>zurück</Button>
+          <Button onClick={nextStep} color="info">
             Bestellung aufgeben
           </Button>
         </Grid>
