@@ -1,10 +1,10 @@
 {
   "api": {
     "unternehmen": [
-      
+
       {
         "unternehmen_id": "00001",
-        "kontaktlose_oeffnungszeiten": [
+        "oeffnungszeiten": [
           { "start": "2020-03-24T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-25T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-26T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
@@ -32,7 +32,7 @@
       ,
       {
         "unternehmen_id": "00001",
-        "kontaktlose_oeffnungszeiten": [
+        "oeffnungszeiten": [
           { "start": "2020-03-24T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-25T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-26T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
@@ -59,7 +59,7 @@
       },
       {
         "unternehmen_id": "00001",
-        "kontaktlose_oeffnungszeiten": [
+        "oeffnungszeiten": [
           { "start": "2020-03-24T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-25T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
           { "start": "2020-03-26T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},

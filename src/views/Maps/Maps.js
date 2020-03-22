@@ -51,7 +51,8 @@ class HereMap extends Component {
       currentLat: 50,
       currentLong: 10,
       radius: 2,
-      open: false
+      open: false,
+      unternehmen: null
     };
 
     this.setCurrentPosition = this.setCurrentPosition.bind(this);
@@ -131,28 +132,28 @@ class HereMap extends Component {
               e.target.closePopup();
             }}
             onClick={() => {
-              this.handleOpenModal();
+              this.setState({ unternehmen: u }, this.handleOpenModal);
             }}
           >
             <Popup>
               <h3>{u.name}</h3>
-              <p></p>
+              {u.beschreibung && <p>{u.beschreibung.substr(0,50)}...</p>}
             </Popup>
           </Marker>
         );
       });
     }
 
-    const { open } = this.state;
+    const { open, unternehmen } = this.state;
 
     return (
       <div>
-        <div >
+        <div className={this.props.classes.searchbar} >
           <Search filterValue={this.filterValue} />
         </div>
         <Map
-          center={[45.11, 78.65]}
-          zoom={14}
+          center={[49.794714, 9.932212]}
+          zoom={24}
           maxZoom={16}
           attributionControl={true}
           zoomControl={true}
@@ -161,6 +162,7 @@ class HereMap extends Component {
           dragging={true}
           animate={true}
           easeLinearity={0.35}
+          style={{ height: '92vh'}}
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
@@ -182,12 +184,13 @@ class HereMap extends Component {
             style={{
               position: 'absolute',
               maxWidth: "1000px",
+              minWidth: "800px",
               top: '10%',
               left: "50%",
               transform: "translateX(-50%)"
             }}
           >
-            <Request handleClose={this.handleCloseModal} />
+            <Request preUnternehmen={unternehmen} handleClose={this.handleCloseModal} />
           </div>
         </Modal>
       </div>

@@ -16,49 +16,50 @@
 
 */
 // @material-ui/icons
-import Search from "@material-ui/icons/Search";
+import Home from "@material-ui/icons/Home";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import UserProfile from "views/UserProfile/UserProfile.js";
 import TableList from "views/TableList/TableList.js";
 import Maps from "views/Maps/Maps.js";
+import HomeComponent from "functionalComponents/Home";
 
 import Request from "container/Request";
 
 const dashboardRoutes = [
   {
-    path: "/list",
-    name: "Unternehmen (Liste)",
+    path: "/home",
+    name: "Home",
     rtlName: "قائمة الجدول",
-    icon: Search,
-    component: TableList,
+    icon: Home,
+    component: HomeComponent,
     layout: "/customer"
   },
   {
     path: "/maps",
-    name: "Unternehmen (Karte)",
+    name: "Karte",
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
     layout: "/customer"
   },
-  {
-    path: "/request",
-    name: "Anfrage",
-    rtlName: "خرائط",
-    icon: '',
-    component: Request,
-    layout: "/customer"
-  },
-  {
-    path: "/business",
-    name: "Unternehmen",
-    rtlName: "ملف تعريفي للمستخدم",
-    icon: BusinessCenter,
-    component: UserProfile,
-    layout: "/business"
-  },
+  // {
+  //   path: "/request",
+  //   name: "Anfrage",
+  //   rtlName: "خرائط",
+  //   icon: '',
+  //   component: Request,
+  //   layout: "/customer"
+  // },
+  // {
+  //   path: "/business",
+  //   name: "Unternehmen",
+  //   rtlName: "ملف تعريفي للمستخدم",
+  //   icon: BusinessCenter,
+  //   component: UserProfile,
+  //   layout: "/business"
+  // },
 ];
 
 export default dashboardRoutes;

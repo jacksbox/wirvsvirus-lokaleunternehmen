@@ -10,7 +10,7 @@ import Chip from "@material-ui/core/Chip";
 
 import Button from "components/CustomButtons/Button.js";
 
-import { getTimeString } from "utils/date";
+import { CATEGORIES } from "consts";
 
 const styles = theme => ({
   categoryList: {
@@ -38,17 +38,31 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
   const classes = useStyles();
   return (
     <>
-      {unternehmen.categories && (
+      {(unternehmen.ober_kategorie ||  unternehmen.unter_kategorien)&& (
         <div className={classes.categoryList}>
-          {unternehmen.categories.map(category => (
+          {unternehmen.ober_kategorie && <Chip label={CATEGORIES.find(({ value }) => value === unternehmen.ober_kategorie).label} />}
+          {unternehmen.unter_kategorien && unternehmen.unter_kategorien.split(',').map(category => (
             <Chip label={category} key={category} />
           ))}
         </div>
       )}
       <Grid container spacing={2}>
         <Grid item md={7}>
-          <h5>Beschreibung</h5>
-          <p>{unternehmen.beschreibung}</p>
+          {(unternehmen.adresse || unternehmen.telefon) && (
+            <>
+              <h5>Adresse</h5>
+              <p>
+                {unternehmen.adresse && <><span>{unternehmen.adresse}</span><br /></>}
+                {unternehmen.telefon && <span>Telefon: {unternehmen.telefon}</span>}
+              </p>
+            </>
+          )}
+          {unternehmen.beschreibung && (
+            <>
+              <h5>Beschreibung</h5>
+              <p>{unternehmen.beschreibung}</p>
+            </>
+          )}
         </Grid>
         <Grid item md={5}>
           <h5>Öffnungszeiten</h5>
@@ -58,10 +72,9 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
                 <TableRow key={day}>
                   <TableCell className={classes.inlineList}>{day}: </TableCell>
                   <TableCell className={classes.inlineList}>
-                    {unternehmen.kontaktlose_oeffnungszeiten[i].start}{" "}
-                    -{" "}
-                    {unternehmen.kontaktlose_oeffnungszeiten[i].end}{" "}
-                    Uhr
+                    {unternehmen.oeffnungszeiten[i].closed ? 'geschlossen' : (<>
+                      {unternehmen.oeffnungszeiten[i].start} - {unternehmen.oeffnungszeiten[i].end} Uhr
+                    </>)}
                   </TableCell>
                 </TableRow>
               ))}
@@ -69,9 +82,8 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
           </Table>
         </Grid>
         <Grid item md={12}>
-          <Button onClick={handleClose}>
-            zurück
-          </Button><Button onClick={nextStep} color="info">
+          <Button onClick={handleClose}>zurück</Button>
+          <Button onClick={nextStep} color="info">
             Bestellung aufgeben
           </Button>
         </Grid>

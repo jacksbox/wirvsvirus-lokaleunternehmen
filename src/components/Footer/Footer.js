@@ -17,9 +17,15 @@ export default function Footer(props) {
       <div className={classes.container}>
         <div className={classes.left}>
           <List className={classes.list}>
-            <ListItem className={classes.inlineBlock}>
+            <ListItem className={classes.inlineBlock} style={{ background: '#fff' }}>
               <a href="customer" className={classes.block}>
                 Home
+              </a>
+            </ListItem>
+            &nbsp;
+            <ListItem className={classes.inlineBlock} style={{ background: '#fff' }}>
+              <a href="impressum" className={classes.block}>
+                Impressum
               </a>
             </ListItem>
           </List>
