@@ -10,7 +10,7 @@ import Chip from "@material-ui/core/Chip";
 
 import Button from "components/CustomButtons/Button.js";
 
-import { getTimeString } from "utils/date";
+import { CATEGORIES } from "consts";
 
 const styles = theme => ({
   categoryList: {
@@ -38,9 +38,10 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
   const classes = useStyles();
   return (
     <>
-      {unternehmen.categories && (
+      {(unternehmen.ober_kategorie ||  unternehmen.unter_kategorien)&& (
         <div className={classes.categoryList}>
-          {unternehmen.categories.map(category => (
+          {unternehmen.ober_kategorie && <Chip label={CATEGORIES.find(({ value }) => value === unternehmen.ober_kategorie).label} />}
+          {unternehmen.unter_kategorien && unternehmen.unter_kategorien.split(',').map(category => (
             <Chip label={category} key={category} />
           ))}
         </div>
