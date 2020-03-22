@@ -137,7 +137,7 @@ class HereMap extends Component {
           >
             <Popup>
               <h3>{u.name}</h3>
-              <button>Bestellen</button>
+              {u.beschreibung && <p>{u.beschreibung.substr(0,50)}...</p>}
             </Popup>
           </Marker>
         );
