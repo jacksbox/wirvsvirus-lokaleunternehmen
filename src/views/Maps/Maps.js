@@ -112,17 +112,21 @@ class HereMap extends Component {
 
     if (this.state.data) {
       let data = this.state.data;
-      if (this.state.filterValue) {
+   
+
+      if (this.state.searchName && this.state.searchName!="alle"){
+
+        data = data? data.filter(el => el.name==this.state.searchName.name) : this.state.data.filter(el => el.name==this.state.searchName.name)
+
+      } else if (this.state.searchName==="alle"){
+          data= this.state.data
+      }
+
+      
+   if (this.state.filterValue) {
         let filteredKats = this.state.filterValue.map((el => el.value));
         data = data.filter(el => filteredKats.includes(el.ober_kategorie));
       }
-
-      if (this.state.searchName){
-
-        data = data? data.filter(el => el.name==this.state.searchName.name) : this.state.data.filter(el => el.name==this.state.searchName.name)
-        console.log("here", this.state.searchName.name, this.state.data.filter(el => el.name=this.state.searchName.name))
-      }
-
 
       markers = data.map(u => {
         let greenIcon = new L.Icon({
@@ -160,6 +164,8 @@ class HereMap extends Component {
 
     const { open, unternehmen } = this.state;
 
+    
+
     return (
       <div>
         <div className={this.props.classes.searchbar} >
@@ -167,8 +173,8 @@ class HereMap extends Component {
         </div>
         <Map
           center={[49.794714, 9.932212]}
-          zoom={17}
-          maxZoom={18}
+          zoom={16}
+          maxZoom={16}
           attributionControl={true}
           zoomControl={true}
           doubleClickZoom={true}
