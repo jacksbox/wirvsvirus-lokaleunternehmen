@@ -32,7 +32,7 @@
   align-items: center;
 }
 
-.css-2b097c-container{
+.searchbar, .css-2b097c-container{
   width: 30vw;
   z-index: 10000;
 }
