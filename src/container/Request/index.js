@@ -61,6 +61,7 @@ const Request = ({ preUnternehmen = mock, handleClose }) => {
       //   unternehmen_id: id,
       //   slot: cSlot
       // }).then(() => setRequestStep(newStep))
+      setRequestStep(newStep)
     } else {
       setRequestStep(newStep)
     }

@@ -1,8 +1,9 @@
 import React from "react";
 
 import Success from "components/Typography/Success.js";
+import Banner from "functionalComponents/Banner.js";
 
-import { getShortDate, formatSlot } from "utils/date"
+import { formatSlot } from "utils/date"
 
 const findSlot = (unternehmen, day, slotId) => unternehmen.available_time_slots[day].find(({ id }) => id === `${slotId}`)
 
@@ -13,6 +14,7 @@ const StepSuccess = ({ formValues, unternehmen, day }) => {
     <h3>Danke, die Bestellung wurde übermittelt!</h3>
     <h5>Ihr Lokales Unternehmen freut sich auf Sie!</h5>
     <p>Ihr reservierter Slot: <strong>{formatSlot(slot)}</strong></p>
+    <Banner />
   </Success>
 )}
 

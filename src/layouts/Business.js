@@ -12,7 +12,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
-import Banner from "./Banner.js";
+import Banner from "functionalComponents/Banner.js";
 
 import routes from "routes.js";
 
