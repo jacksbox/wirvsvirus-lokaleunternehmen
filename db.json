@@ -2,127 +2,55 @@
   "api": {
     "unternehmen": [
       {
-        "unternehmen_id": "String",
-        "oeffnungszeiten": [
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" },
-          { "start": "String/Date", "stop": "String/Date" }
-        ],
-        "name": "String",
-        "beschreibung": "Some Text",
-        "categories": ["String"],
-        "adresse": "String",
-        "latitude": "String/float",
-        "longitude": "String/float",
-        "email": "String",
-        "telefon": "String",
-        "max_pro_slot": "Integer",
-        "available_time_slots": [
-          { "id": 0, "start": "String/Date", "stop": "String/Date" }
-        ]
+        "id": 1,
+        "user": {
+          "email": ""
+        },
+        "name": "Apotheke",
+        "adresse": "Kärrnergasse 4,\r\n97070 Würzburg",
+        "langitude": "49.793985",
+        "longitude": "9.927154",
+        "telefon": "+4912345698",
+        "max_pro_slot": 3,
+        "oeffnungszeiten": "[\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  }\r\n]",
+        "available_time_slots": "[\r\n  [\r\n    {\r\n      \"id\": \"1\",\r\n      \"start\": \"2020-03-25T10:00\",\r\n      \"end\": \"2020-03-25T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"2\",\r\n      \"start\": \"2020-03-25T14:00\",\r\n      \"end\": \"2020-03-25T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"3\",\r\n      \"start\": \"2020-03-26T10:00\",\r\n      \"end\": \"2020-03-26T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"4\",\r\n      \"start\": \"2020-03-26T14:00\",\r\n      \"end\": \"2020-03-26T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"5\",\r\n      \"start\": \"2020-03-27T10:00\",\r\n      \"end\": \"2020-03-27T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"6\",\r\n      \"start\": \"2020-03-27T14:00\",\r\n      \"end\": \"2020-03-27T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"7\",\r\n      \"start\": \"2020-03-28T10:00\",\r\n      \"end\": \"2020-03-28T12:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"8\",\r\n      \"start\": \"2020-03-29T10:00\",\r\n      \"end\": \"2020-03-29T11:00\"\r\n    },\r\n    {\r\n      \"id\": \"9\",\r\n      \"start\": \"2020-03-29T11:00\",\r\n      \"end\": \"2020-03-29T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"10\",\r\n      \"start\": \"2020-03-29T13:00\",\r\n      \"end\": \"2020-03-29T14:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"11\",\r\n      \"start\": \"2020-03-30T10:00\",\r\n      \"end\": \"2020-03-30T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"12\",\r\n      \"start\": \"2020-03-31T12:00\",\r\n      \"end\": \"2020-03-31T14:00\"\r\n    },\r\n    {\r\n      \"id\": \"13\",\r\n      \"start\": \"2020-03-31T14:00\",\r\n      \"end\": \"2020-03-31T18:00\"\r\n    }\r\n  ]\r\n]",
+        "beschreibung": "Ein großartiges Beispiel für eine Apotheke",
+        "ober_kategorie": "APO",
+        "unter_kategorien": "Medizin"
       },
       {
-        "unternehmen_id": "00001",
-        "oeffnungszeiten": [
-          {
-            "start": "2020-03-24T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-25T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-26T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-27T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-25T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-29T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          },
-          {
-            "start": "2020-03-30T09:00:00.00Z",
-            "stop": "2020-03-24T18:00:00.00Z"
-          }
-        ],
-        "name": "Dummy Unternehmen",
-        "beschreibung": "Some Text",
-        "categories": ["Lebensmittel", "Strickwaren"],
-        "adresse": "Sanderstraße 8, 12047 Berlin",
-        "latitude": "52.492723",
-        "longitude": "13.4246693",
-        "email": "example@example.com",
-        "telefon": "03023456789",
-        "max_pro_slot": "3",
-        "available_time_slots": [
-          [
-            { "id": "1", "start": "2020-03-25T10:00", "end": "2020-03-25T12:00" },
-            { "id": "2", "start": "2020-03-25T14:00", "end": "2020-03-25T16:00" }
-          ],
-          [
-            { "id": "3", "start": "2020-03-26T10:00", "end": "2020-03-26T12:00" },
-            { "id": "4", "start": "2020-03-26T14:00", "end": "2020-03-26T186:00" }
-          ],
-          [
-            { "id": "5", "start": "2020-03-27T10:00", "end": "2020-03-27T12:00" },
-            { "id": "6", "start": "2020-03-27T14:00", "end": "2020-03-27T16:00" }
-          ],
-          [
-            { "id": "7", "start": "2020-03-28T10:00", "end": "2020-03-28T12:00" },
-          ],
-          [
-            { "id": "8", "start": "2020-03-29T10:00", "end": "2020-03-29T11:00" },
-            { "id": "9", "start": "2020-03-29T11:00", "end": "2020-03-29T12:00" },
-            { "id": "10", "start": "2020-03-29T13:00", "end": "2020-03-29T14:00" },
-          ],
-          [
-            { "id": "11", "start": "2020-03-30T10:00", "end": "2020-03-30T18:00" }
-          ],
-          [
-            { "id": "12", "start": "2020-03-31T12:00", "end": "2020-03-31T14:00" },
-            { "id": "13", "start": "2020-03-31T14:00", "end": "2020-03-31T18:00" }
-          ]
-        ]
-      }
-      ,
+        "id": 2,
+        "user": {
+          "email": ""
+        },
+        "name": "Emmas Teeladen",
+        "adresse": "Bronnbachergasse 19A, 97070 Würzburg",
+        "langitude": "49.796082",
+        "longitude": "9.928591",
+        "telefon": "+4912345678",
+        "max_pro_slot": 2,
+        "oeffnungszeiten": "[\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  }\r\n]",
+        "available_time_slots": "[\r\n  [\r\n    {\r\n      \"id\": \"1\",\r\n      \"start\": \"2020-03-25T10:00\",\r\n      \"end\": \"2020-03-25T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"2\",\r\n      \"start\": \"2020-03-25T14:00\",\r\n      \"end\": \"2020-03-25T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"3\",\r\n      \"start\": \"2020-03-26T10:00\",\r\n      \"end\": \"2020-03-26T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"4\",\r\n      \"start\": \"2020-03-26T14:00\",\r\n      \"end\": \"2020-03-26T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"5\",\r\n      \"start\": \"2020-03-27T10:00\",\r\n      \"end\": \"2020-03-27T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"6\",\r\n      \"start\": \"2020-03-27T14:00\",\r\n      \"end\": \"2020-03-27T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"7\",\r\n      \"start\": \"2020-03-28T10:00\",\r\n      \"end\": \"2020-03-28T12:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"8\",\r\n      \"start\": \"2020-03-29T10:00\",\r\n      \"end\": \"2020-03-29T11:00\"\r\n    },\r\n    {\r\n      \"id\": \"9\",\r\n      \"start\": \"2020-03-29T11:00\",\r\n      \"end\": \"2020-03-29T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"10\",\r\n      \"start\": \"2020-03-29T13:00\",\r\n      \"end\": \"2020-03-29T14:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"11\",\r\n      \"start\": \"2020-03-30T10:00\",\r\n      \"end\": \"2020-03-30T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"12\",\r\n      \"start\": \"2020-03-31T12:00\",\r\n      \"end\": \"2020-03-31T14:00\"\r\n    },\r\n    {\r\n      \"id\": \"13\",\r\n      \"start\": \"2020-03-31T14:00\",\r\n      \"end\": \"2020-03-31T18:00\"\r\n    }\r\n  ]\r\n]",
+        "beschreibung": "Ein großartiger Teeladen mit Teesorten aus aller Welt. Wir bieten unseren Kunden ein umfangreiches Teesortiment und individuelle Beratung.",
+        "ober_kategorie": "LEB",
+        "unter_kategorien": "Tee, Grüner Tee, Schwarzer Tee, Spezialitäten, Unverpackt"
+      },
       {
-        "unternehmen_id": "00001",
-        "oeffnungszeiten": [
-          { "start": "2020-03-24T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-25T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-26T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-27T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-28T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-29T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"},
-          { "start": "2020-03-30T09:00:00.00Z" , "stop": "2020-03-24T18:00:00.00Z"}
-        ],
-        "name": "Zweites Unternehmen",
-        "categories": [ "Lebensmittel", "Strickwaren" ],
-        "adresse": "Sanderstraße 8, 12047 Berlin",
-        "latitude": "52.4926",
-        "longitude": "13.4246693",
-        "email": "example@example.com",
-        "telefon": "03023456789",
-        "max_pro_slot": "3",
-        "available_time_slots": [
-          {"start": "2020-03-24T09:00:00.00Z", "stop": "2020-03-24T09:30:00.00Z" },
-          {"start": "2020-03-24T11:00:00.00Z", "stop": "2020-03-24T11:30:00.00Z" },
-          {"start": "2020-03-24T16:00:00.00Z", "stop": "2020-03-24T16:30:00.00Z" },
-          {"start": "2020-03-25T09:00:00.00Z", "stop": "2020-03-25T09:30:00.00Z" },
-          {"start": "2020-03-25T17:00:00.00Z", "stop": "2020-03-25T17:30:00.00Z" }
-        ]
+        "id": 4,
+        "user": {
+          "email": ""
+        },
+        "name": "Fleischerei",
+        "adresse": "Semmelstraße 15, 97070 Würzburg",
+        "langitude": "49.796785",
+        "longitude": "9.935697",
+        "telefon": "+49123456789",
+        "max_pro_slot": 1,
+        "oeffnungszeiten": "[\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n    \"start\": \"10:00\",\r\n    \"end\": \"18:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  },\r\n  {\r\n   \"closed\": \"true\",\r\n    \"start\": \"0:00\",\r\n    \"end\": \"0:00\"\r\n  }\r\n]",
+        "available_time_slots": "[\r\n  [\r\n    {\r\n      \"id\": \"1\",\r\n      \"start\": \"2020-03-25T10:00\",\r\n      \"end\": \"2020-03-25T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"2\",\r\n      \"start\": \"2020-03-25T14:00\",\r\n      \"end\": \"2020-03-25T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"3\",\r\n      \"start\": \"2020-03-26T10:00\",\r\n      \"end\": \"2020-03-26T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"4\",\r\n      \"start\": \"2020-03-26T14:00\",\r\n      \"end\": \"2020-03-26T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"5\",\r\n      \"start\": \"2020-03-27T10:00\",\r\n      \"end\": \"2020-03-27T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"6\",\r\n      \"start\": \"2020-03-27T14:00\",\r\n      \"end\": \"2020-03-27T16:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"7\",\r\n      \"start\": \"2020-03-28T10:00\",\r\n      \"end\": \"2020-03-28T12:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"8\",\r\n      \"start\": \"2020-03-29T10:00\",\r\n      \"end\": \"2020-03-29T11:00\"\r\n    },\r\n    {\r\n      \"id\": \"9\",\r\n      \"start\": \"2020-03-29T11:00\",\r\n      \"end\": \"2020-03-29T12:00\"\r\n    },\r\n    {\r\n      \"id\": \"10\",\r\n      \"start\": \"2020-03-29T13:00\",\r\n      \"end\": \"2020-03-29T14:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"11\",\r\n      \"start\": \"2020-03-30T10:00\",\r\n      \"end\": \"2020-03-30T18:00\"\r\n    }\r\n  ],\r\n  [\r\n    {\r\n      \"id\": \"12\",\r\n      \"start\": \"2020-03-31T12:00\",\r\n      \"end\": \"2020-03-31T14:00\"\r\n    },\r\n    {\r\n      \"id\": \"13\",\r\n      \"start\": \"2020-03-31T14:00\",\r\n      \"end\": \"2020-03-31T18:00\"\r\n    }\r\n  ]\r\n]",
+        "beschreibung": "Eine großartige Metzgerei",
+        "ober_kategorie": "FLE",
+        "unter_kategorien": "Fleischerei"
       }
     ]
   },

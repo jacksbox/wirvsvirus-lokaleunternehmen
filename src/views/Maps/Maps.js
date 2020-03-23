@@ -5,11 +5,8 @@ import Request from "container/Request";
 
 import axios from "axios";
 
-import { Map, TileLayer, Marker, Popup, CircleMarker } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, } from "react-leaflet";
 import Search from "./Search";
-
-import db from "./db.json";
-import { LeafletConsumer } from "react-leaflet";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -112,7 +109,7 @@ class HereMap extends Component {
 
     if (this.state.data) {
       let data = this.state.data;
-   
+
 
       if (this.state.searchName && this.state.searchName!="alle"){
 
@@ -122,7 +119,7 @@ class HereMap extends Component {
           data= this.state.data
       }
 
-      
+
    if (this.state.filterValue) {
         let filteredKats = this.state.filterValue.map((el => el.value));
         data = data.filter(el => filteredKats.includes(el.ober_kategorie));
@@ -164,7 +161,7 @@ class HereMap extends Component {
 
     const { open, unternehmen } = this.state;
 
-    
+
 
     return (
       <div>
