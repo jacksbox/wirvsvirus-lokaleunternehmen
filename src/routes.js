@@ -17,13 +17,11 @@
 */
 // @material-ui/icons
 import Home from "@material-ui/icons/Home";
-import ContactMail from "@material-ui/icons/ContactMail";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
-import UserProfile from "views/UserProfile/UserProfile.js";
-import TableList from "views/TableList/TableList.js";
-import Maps from "views/Maps/Maps.js";
+import Register from "container/Register";
+import Maps from "container/Maps";
 import HomeComponent from "functionalComponents/Home";
 import MetaTexte from "functionalComponents/MetaTexte";
 
@@ -50,7 +48,7 @@ const dashboardRoutes = [
     name: "Registrieren",
     rtlName: "ملف تعريفي للمستخدم",
     icon: BusinessCenter,
-    component: UserProfile,
+    component: Register,
     layout: "/business"
   },  {
     path: "/impressum",

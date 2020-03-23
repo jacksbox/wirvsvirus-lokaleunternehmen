@@ -3,12 +3,12 @@ import React, { Component } from "react";
 import Modal from "@material-ui/core/Modal";
 import Request from "container/Request";
 
-import axios from "axios";
-
 import { Map, TileLayer, Marker, Popup, } from "react-leaflet";
 import Search from "./Search";
 
 import { withStyles } from "@material-ui/core/styles";
+
+import apiClient from 'utils/apiClient'
 
 const styles = {
   searchbar: {
@@ -68,7 +68,6 @@ class HereMap extends Component {
   }
 
   filterValue(value) {
-    console.log("filter value", value);
     this.setState({ filterValue: value });
   }
 
@@ -82,10 +81,9 @@ class HereMap extends Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://nameless-retreat-67960.herokuapp.com/unternehmen")
+    apiClient.instance
+      .get("/unternehmen")
       .then(res => {
-        console.log("Got data", res);
         this.setState({ data: res.data });
       })
       .catch(err => console.log(err));
@@ -125,7 +123,7 @@ class HereMap extends Component {
         data = data.filter(el => filteredKats.includes(el.ober_kategorie));
       }
 
-      markers = data.map(u => {
+      markers = data.map((u, i) => {
         let greenIcon = new L.Icon({
           iconUrl: require(`./icons/${u.ober_kategorie}.png`),
           shadowUrl:
@@ -138,6 +136,7 @@ class HereMap extends Component {
 
         return (
           <Marker
+            key={`${i}:${u.langitude},${u.longitude}`}
             position={[parseFloat(u.langitude), parseFloat(u.longitude)]}
             icon={greenIcon}
             onMouseOver={e => {
