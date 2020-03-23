@@ -12,6 +12,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
+import Banner from "./Banner.js";
 
 import routes from "routes.js";
 
@@ -82,81 +83,56 @@ export default function Business({ ...rest }) {
     };
   }, [mainPanel]);
   return (
-    <div className={classes.wrapper}>
-      <Hidden mdUp>
-        <div
-          style={{
-            position: "absolute",
-            top: "0",
-            right: "0",
-            zIndex: 9999,
-            padding: "3px",
-            background: "#fff"
-          }}
-        >
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerToggle}
+    <>
+      <div className={classes.wrapper}>
+        <Hidden mdUp>
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              right: "0",
+              zIndex: 9999,
+              padding: "3px",
+              background: "#fff"
+            }}
           >
-            <Menu />
-          </IconButton>
-        </div>
-      </Hidden>
-      <Sidebar
-        routes={routes}
-        logoText={"Bleib Lokal!"}
-        logo={logo}
-        image={image}
-        handleDrawerToggle={handleDrawerToggle}
-        open={mobileOpen}
-        color={color}
-        {...rest}
-      />
-      <img
-        src={bgImage}
-        style={{
-          minHeight: "100vH",
-          minWidth: "100vH",
-          opacity: 0.25,
-          position: "absolute",
-          top: 0,
-          left: 0
-        }}
-      />
-      <div className={classes.mainPanel} ref={mainPanel}>
-        <div className={classes.content} style={{ minHeight: "100vH" }}>
-          <div className={classes.container}>{switchRoutes}</div>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerToggle}
+            >
+              <Menu />
+            </IconButton>
+          </div>
+        </Hidden>
+        <Sidebar
+          routes={routes}
+          logoText={"Bleib Lokal!"}
+          logo={logo}
+          image={image}
+          handleDrawerToggle={handleDrawerToggle}
+          open={mobileOpen}
+          color={color}
+          {...rest}
+        />
+        <img
+          src={bgImage}
+          style={{
+            minHeight: "100vH",
+            minWidth: "100vH",
+            opacity: 0.25,
+            position: "absolute",
+            top: 0,
+            left: 0
+          }}
+        />
+        <div className={classes.mainPanel} ref={mainPanel}>
+          <Banner />
+          <div className={classes.content} style={{ minHeight: "100vH" }}>
+            <div className={classes.container}>{switchRoutes}</div>
+          </div>
         </div>
       </div>
-      <div
-        style={{
-          position: "absolute",
-          padding: "20px 40px",
-          bottom: "0",
-          left: "0",
-          right: "0",
-          zIndex: 9999,
-          backgroundColor: "#fff"
-        }}
-      >
-        <strong>
-          Achtung: Dies ist bisher leider nur eine Demo-Applikation
-        </strong>
-        <br />
-        Es werden noch keine Anfragen verschickt oder Unternehmen eingetragen.
-        Unterstützt uns mit Likes und Kommentaren zu unserem{" "}
-        <a href="https://www.youtube.com/watch?v=EW529J86Mpk&feature=youtu.be">
-          <strong>Intro Video</strong>
-        </a>
-        <br />
-        Sie möchten mit ihrem Unternehmendabei sein sobald es losgeht? Dann
-        tragen Sie sich{" "}
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
-          <strong>hier</strong>
-        </a>{" "}
-        ein.
-      </div>
-    </div>
+    </>
   );
 }
