@@ -24,6 +24,8 @@ const StepSlot = ({
   <>
     <Grid container spacing={2}>
       <Grid item md={6}>
+        <h5>Ihre eMail Adresse</h5>
+        <p>{formValues.kunden_email}</p>
         <h5>Ihre Bestellung</h5>
         <p>{formValues.text}</p>
       </Grid>
