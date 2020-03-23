@@ -162,7 +162,105 @@ const Datenschutz = () => (
     </p>
     <p>&nbsp;</p>
     <p>
-      <strong>5.&nbsp;Social Media</strong>
+      <strong>
+        5. Einsatz von Google (Universal) Analytics zur Webanalyse
+      </strong>
+      <br /> Zur Webseitenanalyse setzt diese Website Google (Universal)
+      Analytics ein. Der Webanalysedienst ist ein Angebot der Google Ireland
+      Limited, einer nach irischem Recht eingetragenen und betriebenen
+      Gesellschaft mit Sitz in Gordon House, Barrow Street, Dublin 4, Irland (
+      <a href="http://www.google.de" target="_blank" rel="noopener">
+        www.google.de
+      </a>
+      ). Dies dient der Wahrung unserer im Rahmen einer Interessensabw&auml;gung
+      &uuml;berwiegenden berechtigten Interessen an einer optimierten
+      Darstellung unseres Angebots gem&auml;&szlig; Art. 6 Abs. 1 S. 1 lit. f
+      DSGVO. Google (Universal) Analytics verwendet Methoden, die eine Analyse
+      der Benutzung der Website durch Sie erm&ouml;glichen, wie zum Beispiel
+      Cookies. Die automatisch erhobenen Informationen &uuml;ber Ihre Benutzung
+      dieser Website werden in der Regel an einen Server von Google in den USA
+      &uuml;bertragen und dort gespeichert. Durch die Aktivierung der
+      IP-Anonymisierung auf dieser Webseite wird dabei die IP-Adresse vor der
+      &Uuml;bermittlung innerhalb der Mitgliedstaaten der Europ&auml;ischen
+      Union oder in anderen Vertragsstaaten des Abkommens &uuml;ber den
+      Europ&auml;ischen Wirtschaftsraum gek&uuml;rzt. Nur in Ausnahmef&auml;llen
+      wird die volle IP-Adresse an einen Server von Google in den USA
+      &uuml;bertragen und dort gek&uuml;rzt. Die im Rahmen von Google Analytics
+      von Ihrem Browser &uuml;bermittelte anonymisierte IP-Adresse wird
+      grunds&auml;tzlich nicht mit anderen Daten von Google
+      zusammengef&uuml;hrt. Nach Zweckfortfall und Ende des Einsatzes von Google
+      Analytics durch uns werden die in diesem Zusammenhang erhobenen Daten
+      gel&ouml;scht.
+    </p>
+    <p>
+      <br /> Soweit Informationen auf Server von Google in den USA
+      &uuml;bertragen und dort gespeichert werden, ist die amerikanische
+      Gesellschaft Google LLC unter dem EU-US-Privacy Shield zertifiziert. Ein
+      aktuelles Zertifikat kann{" "}
+      <a
+        href="https://www.privacyshield.gov/list"
+        target="_blank"
+        rel="noopener"
+      >
+        hier
+      </a>{" "}
+      eingesehen werden. Aufgrund dieses Abkommens zwischen den USA und der
+      Europ&auml;ischen Kommission hat letztere f&uuml;r unter dem Privacy
+      Shield zertifizierte Unternehmen ein angemessenes Datenschutzniveau
+      festgestellt.
+    </p>
+    <p>
+      Sie k&ouml;nnen die Erfassung der durch das Cookie erzeugten und auf Ihre
+      Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google
+      sowie die Verarbeitung dieser Daten durch Google verhindern, indem sie das
+      unter dem folgenden Link verf&uuml;gbare Browser-Plugin herunterladen und
+      installieren:{" "}
+      <a
+        href="https://tools.google.com/dlpage/gaoptout?hl=de"
+        target="_blank"
+        rel="noopener"
+      >
+        https://tools.google.com/dlpage/gaoptout?hl=de{" "}
+      </a>
+    </p>
+    <p>
+      Alternativ zum Browser-Plugin k&ouml;nnen Sie <a>diesen Link</a> klicken,
+      um die Erfassung durch Google Analytics auf dieser Website zuk&uuml;nftig
+      zu verhindern. Dabei wird ein Opt-Out-Cookie auf Ihrem Endger&auml;t
+      abgelegt. L&ouml;schen Sie Ihre Cookies, m&uuml;ssen Sie den Link erneut
+      klicken.
+    </p>
+    <p>
+      Zudem setzt diese Website Google Signals ein. Hierbei handelt es sich um
+      eine Erweiterungsfunktion von Google Analytics, die ein sog.
+      &bdquo;Cross-Device Tracking&ldquo; erm&ouml;glicht. Das bedeutet, dass
+      soweit Ihre internetf&auml;higen Ger&auml;te mit Ihrem Google-Konto
+      verkn&uuml;pft sind, Google Berichte &uuml;ber das Nutzungsverhalten
+      (insb. die ger&auml;te&uuml;bergreifenden Nutzerzahlen) erstellen kann,
+      auch wenn Sie Ihr Endger&auml;t wechseln. Hierzu werden von Google Daten
+      verwendet, soweit Sie die Einstellung &bdquo;personalisierte
+      Werbung&ldquo; in Ihrem Google Konto aktiviert haben.
+      <br /> Dies dient der Wahrung unserer im Rahmen einer
+      Interessensabw&auml;gung &uuml;berwiegenden berechtigten Interessen an
+      einer optimierten Darstellung unseres Angebots gem&auml;&szlig; Art. 6
+      Abs. 1 S. 1 lit. f DSGVO.
+      <br /> Eine Verarbeitung von personenbezogenen Daten findet durch uns
+      insoweit nicht statt, wir erhalten lediglich auf Basis von Google Signals
+      erstellte Statistiken.
+      <br /> Sie k&ouml;nnen jederzeit die Einstellung &bdquo;personalisierte
+      Werbung&ldquo; in Ihrem Google Konto{" "}
+      <a
+        href="https://support.google.com/ads/answer/2662922?hl=de"
+        target="_blank"
+        rel="noopener"
+      >
+        deaktivieren
+      </a>
+      , und damit einer Erfassung durch Google Signals widersprechen.
+    </p>
+    <p>&nbsp;</p>
+    <p>
+      <strong>6.&nbsp;Social Media</strong>
     </p>
     <p>
       <strong>
@@ -332,7 +430,7 @@ const Datenschutz = () => (
       </a>
     </p>
     <p>
-      <strong>6.&nbsp;Kontaktm&ouml;glichkeiten und Ihre Rechte</strong>
+      <strong>7.&nbsp;Kontaktm&ouml;glichkeiten und Ihre Rechte</strong>
     </p>
     <p>&nbsp;</p>
     <p>Als Betroffener haben Sie folgende Rechte:</p>
@@ -441,6 +539,12 @@ const Datenschutz = () => (
         </tr>
       </tbody>
     </table>
+    <script
+      id="CookieDeclaration"
+      src="https://consent.cookiebot.com/9c89554a-d41d-4a9b-ac12-e107a356b018/cd.js"
+      type="text/javascript"
+      async
+    ></script>
   </>
 );
 
