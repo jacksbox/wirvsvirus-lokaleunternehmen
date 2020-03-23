@@ -39,7 +39,7 @@ const useStyles = makeStyles(styles);
 
 export default function UserProfile() {
   const classes = useStyles();
-  const [ saved, setSaved ] = useState(false)
+  const [saved, setSaved] = useState(false);
   return (
     <div>
       <GridContainer>
@@ -49,63 +49,76 @@ export default function UserProfile() {
               <h4 className={classes.cardTitleWhite}>Ihr Unternehmen</h4>
             </CardHeader>
             <CardBody>
-              {saved
-              ?
+              {saved ? (
                 <Success>
                   <h3>Ihr Unternehmen wurde registriert!</h3>
-                  <h5>Ab jetzt können Ihre Kunden Sie auf unserer Karte finde</h5>
+                  <h5>
+                    Ab jetzt können Ihre Kunden Sie auf unserer Karte finde
+                  </h5>
                 </Success>
-              :
-              (
+              ) : (
                 <GridContainer>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Unternehmen's Name"
-                    id="company-disabled"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{}}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={6}>
-                  <CustomInput
-                    labelText="Email address"
-                    id="email-address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={12}>
-                  <CustomInput
-                    labelText="Addresse"
-                    id="address"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                  />
-                </GridItem>
-                <GridItem xs={12} sm={12} md={12}>
-                  <CustomInput
-                    labelText="Beschreibung"
-                    id="company-disabled"
-                    formControlProps={{
-                      fullWidth: true
-                    }}
-                    inputProps={{
-                      multiline: true,
-                      rows: 5
+                  <GridItem style={{ fontSize: '18px' }}>
+                    Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
+                    Registrierung dieses{" "}
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
+                      <strong>Formular</strong>
+                    </a>
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Unternehmen's Name"
+                      id="company-disabled"
+                      formControlProps={{
+                        fullWidth: true
                       }}
-                  />
-                </GridItem>
-              </GridContainer>
-              )
-              }
+                      inputProps={{ disabled: true }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={6}>
+                    <CustomInput
+                      labelText="Email address"
+                      id="email-address"
+                      formControlProps={{
+                        disabled: true,
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Addresse"
+                      id="address"
+                      formControlProps={{
+                        disabled: true,
+                        fullWidth: true
+                      }}
+                    />
+                  </GridItem>
+                  <GridItem xs={12} sm={12} md={12}>
+                    <CustomInput
+                      labelText="Beschreibung"
+                      id="company-disabled"
+                      formControlProps={{
+                        fullWidth: true
+                      }}
+                      inputProps={{
+                        disabled: true,
+                        multiline: true,
+                        rows: 5
+                      }}
+                    />
+                  </GridItem>
+                </GridContainer>
+              )}
             </CardBody>
-            {!saved && <CardFooter>
-              <Button onClick={() => setSaved(true)} color="success">Speichern</Button>
-            </CardFooter>}
+            {!saved && (
+              <CardFooter>
+                <Button onClick={() => setSaved(true)} color="success" disabled>
+                  Speichern
+                </Button>
+              </CardFooter>
+            )}
           </Card>
         </GridItem>
       </GridContainer>
