@@ -187,7 +187,9 @@ const RegisterForm = ({ saved, handleChange, handleSubmit, errors }) => {
             onChange: handleChange
           }}
         />
+        <i>min. 6 Zeichen</i><br />
         {errors.includes('password') && <Danger>Passwort wird benötigt.</Danger>}
+        {errors.includes('passwordToShort') && <Danger>Passwort ist zu kurz.</Danger>}
       </GridItem>
       <GridItem xs={6} sm={6} md={6}>
         <CustomInput
