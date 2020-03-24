@@ -71,7 +71,7 @@ const RegisterForm = ({ setSaved }) => {
       </GridItem>
       <GridItem xs={12} sm={12} md={6}>
         <CustomInput
-          labelText="Email address"
+          labelText="Email"
           id="email"
           formControlProps={{
             fullWidth: true
