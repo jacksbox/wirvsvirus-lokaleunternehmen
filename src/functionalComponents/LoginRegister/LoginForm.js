@@ -7,11 +7,12 @@ import GridContainer from "components/Grid/GridContainer.js";
 
 const LoginForm = () => {
   return (
+    <form method="POST" action="http://example.org">
     <GridContainer>
       <GridItem xs={12} md={6}>
         <CustomInput
           labelText="Email"
-          id="email"
+          id="email-login"
           formControlProps={{
             fullWidth: true
           }}
@@ -23,7 +24,7 @@ const LoginForm = () => {
       <GridItem xs={12} md={6}>
         <CustomInput
           labelText="Passwort"
-          id="password"
+          id="password-login"
           formControlProps={{
             fullWidth: true
           }}
@@ -34,11 +35,12 @@ const LoginForm = () => {
         />
       </GridItem>
       <GridItem xs={12}>
-        <Button color="success">
+        <Button type="submit" color="success">
           Login
         </Button>
       </GridItem>
     </GridContainer>
+  </form>
   );
 };
 

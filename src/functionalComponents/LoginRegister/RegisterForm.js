@@ -71,7 +71,6 @@ const RegisterForm = ({ saved, handleChange, handleSubmit, errors }) => {
           <Select
             id="ober_kategorie"
             name="ober_kategorie"
-            labelId="ober_kategorie"
             value={category}
             onChange={handleCategoryChange}
           >
