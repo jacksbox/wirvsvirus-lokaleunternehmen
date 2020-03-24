@@ -20,12 +20,10 @@ import Home from "@material-ui/icons/Home";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
-import Register from "container/Register";
+import LoginRegister from "container/LoginRegister";
 import Maps from "container/Maps";
 import HomeComponent from "functionalComponents/Home";
 import MetaTexte from "functionalComponents/MetaTexte";
-
-import Request from "container/Request";
 
 const dashboardRoutes = [
   {
@@ -45,10 +43,10 @@ const dashboardRoutes = [
     layout: "/customer"
   }, {
     path: "/register",
-    name: "Registrieren",
+    name: "Login/Registrieren",
     rtlName: "ملف تعريفي للمستخدم",
     icon: BusinessCenter,
-    component: Register,
+    component: LoginRegister,
     layout: "/business"
   },  {
     path: "/impressum",
@@ -72,14 +70,6 @@ const dashboardRoutes = [
     component: MetaTexte,
     layout: "/customer"
   },
-  // {
-  //   path: "/request",
-  //   name: "Anfrage",
-  //   rtlName: "خرائط",
-  //   icon: '',
-  //   component: Request,
-  //   layout: "/customer"
-  // },
 ];
 
 export default dashboardRoutes;

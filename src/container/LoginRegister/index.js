@@ -35,7 +35,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-export default function Register() {
+const LoginRegister = () => {
   const classes = useStyles();
   const [saved, setSaved] = useState(false);
   return (
@@ -71,3 +71,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default LoginRegister
