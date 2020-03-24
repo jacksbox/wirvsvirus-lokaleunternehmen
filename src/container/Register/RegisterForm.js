@@ -100,7 +100,7 @@ const RegisterForm = ({ setSaved }) => {
           formControlProps={{
             fullWidth: true
           }}
-          inputPorps={{
+          inputProps={{
             name: "zip"
           }}
         />
@@ -112,7 +112,7 @@ const RegisterForm = ({ setSaved }) => {
           formControlProps={{
             fullWidth: true
           }}
-          inputPorps={{
+          inputProps={{
             name: "city"
           }}
         />
@@ -124,7 +124,7 @@ const RegisterForm = ({ setSaved }) => {
           formControlProps={{
             fullWidth: true
           }}
-          inputPorps={{
+          inputProps={{
             name: "address"
           }}
         />
@@ -150,7 +150,7 @@ const RegisterForm = ({ setSaved }) => {
           formControlProps={{
             fullWidth: true
           }}
-          inputPorps={{
+          inputProps={{
             name: "password",
             type: "password"
           }}
@@ -163,14 +163,14 @@ const RegisterForm = ({ setSaved }) => {
           formControlProps={{
             fullWidth: true
           }}
-          inputPorps={{
+          inputProps={{
             type: "password",
             name: "password_confirm"
           }}
         />
       </GridItem>
       <GridItem xs={12}>
-        <Button onClick={() => setSaved(true)} color="success" disabled>
+        <Button onClick={() => setSaved(true)} color="success">
           Jetzt registrieren
         </Button>
       </GridItem>

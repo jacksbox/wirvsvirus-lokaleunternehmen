@@ -1,5 +1,8 @@
 import React from "react";
 
-const LoginForm = () => {}
+const LoginForm = () => {
+
+  return <></>
+}
 
 export default LoginForm

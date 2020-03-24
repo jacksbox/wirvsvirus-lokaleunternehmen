@@ -11,9 +11,8 @@ import CardFooter from "components/Card/CardFooter.js";
 
 import SuccessMessage from "./SuccessMessage";
 
-import CardContent from "@material-ui/core/CardContent";
-
 import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 
 const styles = {
   cardCategoryWhite: {
@@ -45,23 +44,19 @@ export default function Register() {
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="info">
-              <h4 className={classes.cardTitleWhite}>
-                Unternehmen Registrieren
-              </h4>
+              <h4 className={classes.cardTitleWhite}>Login</h4>
             </CardHeader>
             <CardBody>
-              {saved ? (
-                <SuccessMessage />
-              ) : (
-                <RegisterForm setSaved={setSaved} />
-              )}
+              <LoginForm />
             </CardBody>
           </Card>
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="info">
-              <h4 className={classes.cardTitleWhite}>Login</h4>
+              <h4 className={classes.cardTitleWhite}>
+                Unternehmen Registrieren
+              </h4>
             </CardHeader>
             <CardBody>
               {saved ? (
