@@ -66,6 +66,7 @@ const LoginRegister = () => {
   const handleRegisterFormChange = event => {
     const { name, value } = event.target;
     registerFormValues[name] = value;
+    setRegisterFormValues(registerFormValues)
   };
 
   const handleRegister = () => {
