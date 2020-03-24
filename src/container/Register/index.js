@@ -4,14 +4,16 @@ import { makeStyles } from "@material-ui/core/styles";
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
 import SuccessMessage from "./SuccessMessage";
+
+import CardContent from "@material-ui/core/CardContent";
+
+import RegisterForm from "./RegisterForm";
 
 const styles = {
   cardCategoryWhite: {
@@ -40,77 +42,34 @@ export default function Register() {
   return (
     <div>
       <GridContainer>
-        <GridItem xs={12} sm={12} md={8}>
+        <GridItem xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="info">
-              <h4 className={classes.cardTitleWhite}>Ihr Unternehmen</h4>
+              <h4 className={classes.cardTitleWhite}>
+                Unternehmen Registrieren
+              </h4>
             </CardHeader>
             <CardBody>
-              {saved
-                ? <SuccessMessage />
-                : (
-                <GridContainer>
-                  <GridItem style={{ fontSize: '18px' }}>
-                    Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
-                    Registrierung dieses{" "}
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
-                      <strong>Formular</strong>
-                    </a>
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={6}>
-                    <CustomInput
-                      labelText="Unternehmen's Name"
-                      id="company-disabled"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{ disabled: true }}
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={6}>
-                    <CustomInput
-                      labelText="Email address"
-                      id="email-address"
-                      formControlProps={{
-                        disabled: true,
-                        fullWidth: true
-                      }}
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={12}>
-                    <CustomInput
-                      labelText="Addresse"
-                      id="address"
-                      formControlProps={{
-                        disabled: true,
-                        fullWidth: true
-                      }}
-                    />
-                  </GridItem>
-                  <GridItem xs={12} sm={12} md={12}>
-                    <CustomInput
-                      labelText="Beschreibung"
-                      id="company-disabled"
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      inputProps={{
-                        disabled: true,
-                        multiline: true,
-                        rows: 5
-                      }}
-                    />
-                  </GridItem>
-                </GridContainer>
+              {saved ? (
+                <SuccessMessage />
+              ) : (
+                <RegisterForm setSaved={setSaved} />
               )}
             </CardBody>
-            {!saved && (
-              <CardFooter>
-                <Button onClick={() => setSaved(true)} color="success" disabled>
-                  Speichern
-                </Button>
-              </CardFooter>
-            )}
+          </Card>
+        </GridItem>
+        <GridItem xs={12} sm={12} md={6}>
+          <Card>
+            <CardHeader color="info">
+              <h4 className={classes.cardTitleWhite}>Login</h4>
+            </CardHeader>
+            <CardBody>
+              {saved ? (
+                <SuccessMessage />
+              ) : (
+                <RegisterForm setSaved={setSaved} />
+              )}
+            </CardBody>
           </Card>
         </GridItem>
       </GridContainer>
