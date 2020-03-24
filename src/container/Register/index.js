@@ -8,12 +8,10 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CardAvatar from "components/Card/CardAvatar.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
 
-import Success from "components/Typography/Success.js";
-import avatar from "assets/img/faces/marc.jpg";
+import SuccessMessage from "./SuccessMessage";
 
 const styles = {
   cardCategoryWhite: {
@@ -48,14 +46,9 @@ export default function Register() {
               <h4 className={classes.cardTitleWhite}>Ihr Unternehmen</h4>
             </CardHeader>
             <CardBody>
-              {saved ? (
-                <Success>
-                  <h3>Ihr Unternehmen wurde registriert!</h3>
-                  <h5>
-                    Ab jetzt können Ihre Kunden Sie auf unserer Karte finde
-                  </h5>
-                </Success>
-              ) : (
+              {saved
+                ? <SuccessMessage />
+                : (
                 <GridContainer>
                   <GridItem style={{ fontSize: '18px' }}>
                     Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
