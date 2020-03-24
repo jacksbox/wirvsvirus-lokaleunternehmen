@@ -30,8 +30,8 @@ const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValue
 
   const next = () => {
     const errors = validate(formValues)
-    setErrors(errors)
     if (errors.length > 0) {
+      setErrors(errors)
       return false
     }
     nextStep()
