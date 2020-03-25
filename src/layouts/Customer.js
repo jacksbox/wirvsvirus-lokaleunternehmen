@@ -14,16 +14,18 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/icons/Menu";
 import Banner from "functionalComponents/Banner.js";
 
-import routes from "routes.js";
+import { getRoutes } from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 import logo from "assets/img/logo-web.jpg";
 
+import { isLoggedIn } from 'utils/auth'
+
 let ps;
 
-const switchRoutes = (
+const SwitchRoutes = ({ routes }) => (
   <Switch>
     {routes.map((prop, key) => {
       if (prop.layout === "/customer") {
@@ -82,6 +84,9 @@ export default function Customer({ ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
+
+  const routes = getRoutes({ loggedIn: isLoggedIn })
+
   return (
     <>
       <div className={classes.wrapper}>
@@ -131,11 +136,11 @@ export default function Customer({ ...rest }) {
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           {getRoute() ? (
             <div className={classes.content} style={{ position: 'relative', minHeight: "100vH" }}>
-              <div className={classes.container}>{switchRoutes}</div>
+              <div className={classes.container}><SwitchRoutes routes={routes}/></div>
             </div>
           ) : (
             <div className={classes.map} style={{ position: 'relative', margin: 0 }}>
-              {switchRoutes}
+              <SwitchRoutes routes={routes}/>
             </div>
           )}
           {/* <Footer /> */}

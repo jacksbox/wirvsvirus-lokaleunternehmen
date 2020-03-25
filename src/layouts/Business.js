@@ -14,16 +14,18 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/icons/Menu";
 import Banner from "functionalComponents/Banner.js";
 
-import routes from "routes.js";
+import { getRoutes } from "routes.js";
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 import logo from "assets/img/logo-web.jpg";
 
+import { isLoggedIn } from 'utils/auth'
+
 let ps;
 
-const switchRoutes = (
+const SwitchRoutes = ({ routes }) => (
   <Switch>
     {routes.map((prop, key) => {
       if (prop.layout === "/business") {
@@ -82,6 +84,9 @@ export default function Business({ ...rest }) {
       window.removeEventListener("resize", resizeFunction);
     };
   }, [mainPanel]);
+
+  const routes = getRoutes({ loggedIn: isLoggedIn() })
+
   return (
     <>
       <div className={classes.wrapper}>
@@ -129,7 +134,7 @@ export default function Business({ ...rest }) {
         <div className={classes.mainPanel} ref={mainPanel}>
           <Banner />
           <div className={classes.content} style={{ minHeight: "100vH" }}>
-            <div className={classes.container}>{switchRoutes}</div>
+            <div className={classes.container}><SwitchRoutes routes={routes}/></div>
           </div>
         </div>
       </div>

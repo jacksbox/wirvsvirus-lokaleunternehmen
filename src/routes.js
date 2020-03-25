@@ -48,6 +48,13 @@ const dashboardRoutes = [
     icon: BusinessCenter,
     component: LoginRegister,
     layout: "/business"
+  }, {
+    path: "/profil",
+    name: "Mein Unternehmen",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: BusinessCenter,
+    component: LoginRegister,
+    layout: "/business"
   },  {
     path: "/impressum",
     name: "Impressum",
@@ -71,5 +78,12 @@ const dashboardRoutes = [
     layout: "/customer"
   },
 ];
+
+export const getRoutes = ({ loggedIn = false } = { loggedIn: false }) => {
+  if (loggedIn) {
+    return dashboardRoutes.filter(({ path }) => path !== '/register')
+  }
+  return dashboardRoutes.filter(({ path }) => path !== '/profil')
+}
 
 export default dashboardRoutes;
