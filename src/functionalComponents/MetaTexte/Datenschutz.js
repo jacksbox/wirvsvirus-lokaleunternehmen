@@ -1,5 +1,7 @@
 import React from "react";
 
+const cookieDeclarationScript = '<script id="CookieDeclaration" src="https://consent.cookiebot.com/9c89554a-d41d-4a9b-ac12-e107a356b018/cd.js" type="text/javascript"></script>'
+
 const Datenschutz = () => (
   <>
     <p>
@@ -539,13 +541,7 @@ const Datenschutz = () => (
         </tr>
       </tbody>
     </table>
-    <div>
-    <script
-      id="CookieDeclaration"
-      src="https://consent.cookiebot.com/9c89554a-d41d-4a9b-ac12-e107a356b018/cd.js"
-      type="text/javascript"
-    ></script>
-    </div>
+    <div dangerouslySetInnerHTML={cookieDeclarationScript} />
   </>
 );
 
