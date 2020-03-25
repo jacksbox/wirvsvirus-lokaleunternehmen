@@ -42,6 +42,7 @@ const dashboardRoutes = [
     component: Maps,
     layout: "/customer"
   }, {
+    loginState: 'notLoggedIn',
     path: "/register",
     name: "Login/Registrieren",
     rtlName: "ملف تعريفي للمستخدم",
@@ -49,10 +50,19 @@ const dashboardRoutes = [
     component: LoginRegister,
     layout: "/business"
   }, {
+    loginState: 'loggedIn',
     path: "/profil",
     name: "Mein Unternehmen",
     rtlName: "ملف تعريفي للمستخدم",
     icon: BusinessCenter,
+    component: LoginRegister,
+    layout: "/business"
+  }, , {
+    loginState: 'loggedIn',
+    path: "/logout",
+    name: "Logout",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: '',
     component: LoginRegister,
     layout: "/business"
   },  {
@@ -81,9 +91,9 @@ const dashboardRoutes = [
 
 export const getRoutes = ({ loggedIn = false } = { loggedIn: false }) => {
   if (loggedIn) {
-    return dashboardRoutes.filter(({ path }) => path !== '/register')
+    return dashboardRoutes.filter(({ loginState }) => loginState !== 'notloggedIn')
   }
-  return dashboardRoutes.filter(({ path }) => path !== '/profil')
+  return dashboardRoutes.filter(({ loginState }) => loginState !== 'loggedIn')
 }
 
 export default dashboardRoutes;
