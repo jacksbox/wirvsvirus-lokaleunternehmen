@@ -5,7 +5,7 @@ import Button from "components/CustomButtons/Button.js";
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 
-const LoginForm = () => {
+const LoginForm = ({ handleSubmit }) => {
   return (
     <form method="POST" action="http://example.org">
     <GridContainer>
@@ -35,7 +35,7 @@ const LoginForm = () => {
         />
       </GridItem>
       <GridItem xs={12}>
-        <Button type="submit" color="success">
+        <Button onClick={handleSubmit} type="submit" color="success">
           Login
         </Button>
       </GridItem>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import LoginRegisterComponent from "functionalComponents/LoginRegister";
 
+import { setLoggedIn } from 'utils/auth'
+
 const initialRegisterFormValues = {
   name: null,
   email: null,
@@ -79,12 +81,19 @@ const LoginRegister = () => {
     setSaved(true);
   };
 
+  const handleLogin = event => {
+    event.preventDefault()
+    setLoggedIn(true)
+    return false
+  }
+
   return (
     <LoginRegisterComponent
       registerFormValues={registerFormValues}
       handleRegisterFormChange={handleRegisterFormChange}
       handleRegister={handleRegister}
       registerErrors={registerErrors}
+      handleLogin={handleLogin}
       saved={saved}
     />
   );

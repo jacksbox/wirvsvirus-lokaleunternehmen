@@ -32,7 +32,7 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerErrors, saved }) => {
+const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerErrors, handleLogin, saved }) => {
   const classes = useStyles();
 
   return (
@@ -44,7 +44,7 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
               <h4 className={classes.cardTitleWhite}>Login</h4>
             </CardHeader>
             <CardBody>
-              <LoginForm />
+              <LoginForm handleSubmit={handleLogin} />
             </CardBody>
           </Card>
         </GridItem>
