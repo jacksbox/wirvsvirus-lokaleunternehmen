@@ -22,6 +22,8 @@ import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import LoginRegister from "container/LoginRegister";
 import Maps from "container/Maps";
+import Profil from "container/Profil";
+import Logout from "container/Logout";
 import HomeComponent from "functionalComponents/Home";
 import MetaTexte from "functionalComponents/MetaTexte";
 
@@ -55,7 +57,7 @@ const dashboardRoutes = [
     name: "Mein Unternehmen",
     rtlName: "ملف تعريفي للمستخدم",
     icon: BusinessCenter,
-    component: LoginRegister,
+    component: Profil,
     layout: "/business"
   }, , {
     loginState: 'loggedIn',
@@ -63,7 +65,7 @@ const dashboardRoutes = [
     name: "Logout",
     rtlName: "ملف تعريفي للمستخدم",
     icon: '',
-    component: LoginRegister,
+    component: Logout,
     layout: "/business"
   },  {
     path: "/impressum",
@@ -91,7 +93,7 @@ const dashboardRoutes = [
 
 export const getRoutes = ({ loggedIn = false } = { loggedIn: false }) => {
   if (loggedIn) {
-    return dashboardRoutes.filter(({ loginState }) => loginState !== 'notloggedIn')
+    return dashboardRoutes.filter(({ loginState }) => loginState !== 'notLoggedIn')
   }
   return dashboardRoutes.filter(({ loginState }) => loginState !== 'loggedIn')
 }
