@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Profil = () => <></>
+// import Register from "functionalComponents/LoginRegister/RegisterForm.js";
+
+const Profil = () => <h2>Profil</h2>
 
 export default Profil

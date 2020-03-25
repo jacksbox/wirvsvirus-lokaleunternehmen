@@ -21,8 +21,6 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 import logo from "assets/img/logo-web.jpg";
 
-import { isLoggedIn } from 'utils/auth'
-
 let ps;
 
 const SwitchRoutes = ({ routes }) => (
@@ -44,7 +42,7 @@ const SwitchRoutes = ({ routes }) => (
 
 const useStyles = makeStyles(styles);
 
-export default function Customer({ ...rest }) {
+export default function Customer({ loggedIn, ...rest }) {
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -85,7 +83,7 @@ export default function Customer({ ...rest }) {
     };
   }, [mainPanel]);
 
-  const routes = getRoutes({ loggedIn: isLoggedIn })
+  const routes = getRoutes({ loggedIn })
 
   return (
     <>

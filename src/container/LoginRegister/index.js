@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import LoginRegisterComponent from "functionalComponents/LoginRegister";
 
-import { setLoggedIn } from 'utils/auth'
-
 const initialRegisterFormValues = {
   name: null,
   email: null,
@@ -58,7 +56,7 @@ const validateRegisterForm = formValues => {
   return Array.from(errors);
 };
 
-const LoginRegister = () => {
+const LoginRegister = ({ setLoggedIn }) => {
   const [saved, setSaved] = useState(false);
   const [registerFormValues, setRegisterFormValues] = useState(
     initialRegisterFormValues

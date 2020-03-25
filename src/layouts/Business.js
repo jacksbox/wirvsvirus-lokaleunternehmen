@@ -21,18 +21,16 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 import logo from "assets/img/logo-web.jpg";
 
-import { isLoggedIn } from 'utils/auth'
-
 let ps;
 
-const SwitchRoutes = ({ routes }) => (
+const SwitchRoutes = ({ routes, setLoggedIn }) => (
   <Switch>
     {routes.map((prop, key) => {
       if (prop.layout === "/business") {
         return (
           <Route
             path={prop.layout + prop.path}
-            component={prop.component}
+            render={() => <prop.component setLoggedIn={setLoggedIn} />}
             key={key}
           />
         );
@@ -44,7 +42,7 @@ const SwitchRoutes = ({ routes }) => (
 
 const useStyles = makeStyles(styles);
 
-export default function Business({ ...rest }) {
+export default function Business({ loggedIn, setLoggedIn, ...rest }) {
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -85,7 +83,7 @@ export default function Business({ ...rest }) {
     };
   }, [mainPanel]);
 
-  const routes = getRoutes({ loggedIn: isLoggedIn() })
+  const routes = getRoutes({ loggedIn })
 
   return (
     <>
@@ -134,7 +132,7 @@ export default function Business({ ...rest }) {
         <div className={classes.mainPanel} ref={mainPanel}>
           <Banner />
           <div className={classes.content} style={{ minHeight: "100vH" }}>
-            <div className={classes.container}><SwitchRoutes routes={routes}/></div>
+            <div className={classes.container}><SwitchRoutes routes={routes} setLoggedIn={setLoggedIn}/></div>
           </div>
         </div>
       </div>
