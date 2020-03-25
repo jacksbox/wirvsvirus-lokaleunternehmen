@@ -541,7 +541,7 @@ const Datenschutz = () => (
         </tr>
       </tbody>
     </table>
-    <div dangerouslySetInnerHTML={cookieDeclarationScript} />
+    <div dangerouslySetInnerHTML={{ __html: cookieDeclarationScript }} />
   </>
 );
 
