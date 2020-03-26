@@ -4,6 +4,12 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
 import logo from "assets/img/logo-web.jpg";
+import step1 from "assets/img/1.png";
+import step2 from "assets/img/2.png";
+import step3 from "assets/img/3.png";
+import step4 from "assets/img/4.png";
+import step5 from "assets/img/5.png";
+import step6 from "assets/img/6.png";
 
 const About = () => (
   <Paper style={{ maxWidth: "900px", padding: "2em", margin: "0 auto" }}>
@@ -45,48 +51,56 @@ const About = () => (
           <h2>So funktioniert es:</h2>
         </center>
       </Grid>
+    </Grid>
+    <Grid container spacing={4}>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>1.</strong>
-          <p>
+          <div><strong>1.</strong></div>
+          <img width="60%" src={step1} alt="Bleib Lokal! Schritt 1." />
+          <div>
             HÄNDLER MELDET SICH MIT WENIGEN KLICKS BEI <strong>BLEIB LOKAL!</strong> AN
-          </p>
+          </div>
         </center>
       </Grid>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>2.</strong>
-          <p>KUNDE FINDET SEINEN L IEBL INGSLADEN AUF DER KARTE</p>
+          <div><strong>2.</strong></div>
+          <img width="60%" src={step2} alt="Bleib Lokal! Schritt 2." />
+          <div>KUNDE FINDET SEINEN LIEBLINGSLADEN AUF DER KARTE</div>
         </center>
       </Grid>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>3.</strong>
-          <p>KUNDE SCHICKT DIE BESTEL LUNG ÜBER DAS PORTAL AN DEN HÄNDLER</p>
+          <div><strong>3.</strong></div>
+          <img width="60%" src={step3} alt="Bleib Lokal! Schritt 3." />
+          <div>KUNDE SCHICKT DIE BESTELLUNG ÜBER DAS PORTAL AN DEN HÄNDLER</div>
         </center>
       </Grid>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>4.</strong>
-          <p>KUNDE WÄHLT EIN ZEITFENSTER ZUR ABHOLUNG AUS</p>
+          <div><strong>4.</strong></div>
+          <img width="60%" src={step4} alt="Bleib Lokal! Schritt 4." />
+          <div>KUNDE WÄHLT EIN ZEITFENSTER ZUR ABHOLUNG AUS</div>
         </center>
       </Grid>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>5.</strong>
-          <p>
-            HÄNDLER BEKOMMT DIE BESTEL LUNG PER MAI L UND VERSCHICKT EINE
+          <div><strong>5.</strong></div>
+          <img width="60%" src={step5} alt="Bleib Lokal! Schritt 5." />
+          <div>
+            HÄNDLER BEKOMMT DIE BESTELLUNG PER MAIL UND VERSCHICKT EINE
             RECHNUNG.
-          </p>
+          </div>
         </center>
       </Grid>
       <Grid item xs={6} md={4}>
         <center>
-          <strong>6.</strong>
-          <p>
+          <div><strong>6.</strong></div>
+          <img width="60%" src={step6} alt="Bleib Lokal! Schritt 6." />
+          <div>
             KUNDE BEZAHLT UND HOLT SEINE BESTEL LUNG KONTAKTLOS AN DER LADENTÜR
             AB
-          </p>
+          </div>
         </center>
       </Grid>
     </Grid>
