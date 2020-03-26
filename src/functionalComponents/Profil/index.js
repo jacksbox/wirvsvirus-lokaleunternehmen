@@ -8,7 +8,7 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
 import BusinessForm from 'container/BusinessForm'
-import AccountForm from 'container/Account'
+import AccountForm from 'container/AccountForm'
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props;
