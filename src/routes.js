@@ -16,6 +16,7 @@
 
 */
 // @material-ui/icons
+import Info from "@material-ui/icons/Info";
 import Home from "@material-ui/icons/Home";
 import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -26,6 +27,7 @@ import Profil from "container/Profil";
 import Logout from "container/Logout";
 import HomeComponent from "functionalComponents/Home";
 import MetaTexte from "functionalComponents/MetaTexte";
+import About from "functionalComponents/About";
 
 const dashboardRoutes = [
   {
@@ -42,6 +44,13 @@ const dashboardRoutes = [
     rtlName: "خرائط",
     icon: LocationOn,
     component: Maps,
+    layout: "/customer"
+  },  {
+    path: "/about",
+    name: "Über Bleib Lokal!",
+    rtlName: "قائمة الجدول",
+    icon: Info,
+    component: About,
     layout: "/customer"
   }, {
     loginState: 'notLoggedIn',
