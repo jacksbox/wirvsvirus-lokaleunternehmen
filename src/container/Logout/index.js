@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+
+import { AuthContext } from 'App.js'
 import { Redirect } from "react-router-dom";
 
-const Logout = ({ setLoggedIn }) => {
+const Logout = () => {
+  const { setLoggedIn } = useContext(AuthContext)
   useEffect(() => {
     setLoggedIn(false)
-    window.location = '/'
   })
 
-  return <div><h4>Sie werden ausgelogged</h4></div>
+  return <Redirect to="/customer/home" />
 }
 
 export default Logout

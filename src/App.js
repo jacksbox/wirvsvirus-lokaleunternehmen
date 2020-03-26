@@ -16,6 +16,9 @@ apiClient.init(API_URL);
 
 const hist = createBrowserHistory();
 
+
+export const AuthContext = React.createContext({ loggedIn: false });
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -37,13 +40,15 @@ class App extends Component {
     const { loggedIn } = this.state
 
     return (
+      <AuthContext.Provider value={{ loggedIn, setLoggedIn: this.setLoggedIn }}>
       <Router history={hist}>
         <Switch>
           <Route path="/customer" component={() => <Customer loggedIn={loggedIn} />} />
-          <Route path="/business" render={() => <Business loggedIn={loggedIn} setLoggedIn={this.setLoggedIn} />} />
+          <Route path="/business" render={() => <Business />} />
           <Redirect from="/" to="/customer/home" />
         </Switch>
       </Router>
+    </AuthContext.Provider>
     )
   }
 }

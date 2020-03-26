@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import LoginRegisterComponent from "functionalComponents/LoginRegister";
+
+import { Redirect } from "react-router-dom";
+import { AuthContext } from 'App.js'
 
 const initialRegisterFormValues = {
   name: null,
@@ -56,12 +59,18 @@ const validateRegisterForm = formValues => {
   return Array.from(errors);
 };
 
-const LoginRegister = ({ setLoggedIn }) => {
+const LoginRegister = () => {
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+
   const [saved, setSaved] = useState(false);
   const [registerFormValues, setRegisterFormValues] = useState(
     initialRegisterFormValues
   );
   const [registerErrors, setRegisterErrors] = useState([]);
+
+  if (loggedIn) {
+    return <Redirect to="/business/profil" />
+  }
 
   const handleRegisterFormChange = event => {
     const { name, value } = event.target;

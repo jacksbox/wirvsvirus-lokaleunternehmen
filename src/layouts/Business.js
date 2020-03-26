@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
@@ -14,7 +14,9 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/icons/Menu";
 import Banner from "functionalComponents/Banner.js";
 
-import { getRoutes } from "routes.js";
+import routes, { getRoutes } from "routes.js";
+
+import { AuthContext } from 'App.js'
 
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
@@ -30,7 +32,7 @@ const SwitchRoutes = ({ routes, setLoggedIn }) => (
         return (
           <Route
             path={prop.layout + prop.path}
-            render={() => <prop.component setLoggedIn={setLoggedIn} />}
+            render={() => <prop.component />}
             key={key}
           />
         );
@@ -42,7 +44,8 @@ const SwitchRoutes = ({ routes, setLoggedIn }) => (
 
 const useStyles = makeStyles(styles);
 
-export default function Business({ loggedIn, setLoggedIn, ...rest }) {
+export default function Business({ ...rest }) {
+  const { loggedIn, setLoggedIn } = useContext(AuthContext);
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -83,7 +86,7 @@ export default function Business({ loggedIn, setLoggedIn, ...rest }) {
     };
   }, [mainPanel]);
 
-  const routes = getRoutes({ loggedIn })
+  const sidebarRoutes = getRoutes({ loggedIn })
 
   return (
     <>
@@ -109,7 +112,7 @@ export default function Business({ loggedIn, setLoggedIn, ...rest }) {
           </div>
         </Hidden>
         <Sidebar
-          routes={routes}
+          routes={sidebarRoutes}
           logoText={"Bleib Lokal!"}
           logo={logo}
           image={image}
