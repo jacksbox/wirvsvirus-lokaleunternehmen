@@ -17,13 +17,13 @@ apiClient.init(API_URL);
 const hist = createBrowserHistory();
 
 
-export const AuthContext = React.createContext({ loggedIn: false });
+export const AuthContext = React.createContext({});
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      loggedIn: false
+      loggedIn: true
     }
   }
 
