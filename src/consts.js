@@ -13,7 +13,7 @@ export const CATEGORIES = [
   { value: "UNT", label: "Unterhaltung" },
   { value: "MOD", label: "Mode" },
   { value: "APO", label: "Apotheke" },
-  { value: "ZEI", label: "Zeitungen & Kioskn" },
+  { value: "KIO", label: "Zeitungen & Kioskn" },
   { value: "BUE", label: "Bücher" },
   { value: "TIE", label: "Tierbedarf" },
   { value: "BLU", label: "Blumenladen" },
