@@ -6,25 +6,29 @@ import GridContainer from "components/Grid/GridContainer.js";
 import Danger from "components/Typography/Danger.js";
 
 const PasswordForm = ({ handleChange, errors, newPassword }) => {
+  const labelPwd = newPassword ? 'Neues Passwort' : 'Passwort'
+  const namePwd = newPassword ? 'newPassword' : 'password'
+  const labelPwdConfirm = newPassword ? 'Neues Passwort bestätigen' : 'Passwort bestätigen'
+  const namePwdConfirm = newPassword ? 'newPasswordConfirm' : 'passwordConfirm'
   return (
     <GridContainer>
       <GridItem xs={6} sm={6} md={6}>
         <CustomInput
-          labelText={newPassword ? 'Neues Passwort' : 'Passwort'}
-          id="password"
+          labelText={labelPwd}
+          id={namePwd}
           formControlProps={{
             fullWidth: true,
             required: true
           }}
           inputProps={{
-            name: "password",
             type: "password",
+            name: namePwd,
             onChange: handleChange
           }}
         />
         <i>min. 6 Zeichen</i>
         <br />
-        {errors.includes("password") && (
+        {errors.includes(namePwd) && (
           <Danger>Passwort wird benötigt.</Danger>
         )}
         {errors.includes("passwordToShort") && (
@@ -33,19 +37,19 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
       </GridItem>
       <GridItem xs={6} sm={6} md={6}>
         <CustomInput
-          labelText={newPassword ? 'Neues Passwort bestätigen' : 'Passwort bestätigen'}
-          id="passwordConfirm"
+          labelText={labelPwdConfirm}
+          id={namePwdConfirm}
           formControlProps={{
             fullWidth: true,
             required: true
           }}
           inputProps={{
             type: "password",
-            name: "passwordConfirm",
+            name: namePwdConfirm,
             onChange: handleChange
           }}
         />
-        {errors.includes("password") && (
+        {errors.includes(namePwdConfirm) && (
           <Danger>Bitte bestätigen Sie ihr gewähltes Passwort.</Danger>
         )}
       </GridItem>

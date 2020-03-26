@@ -7,8 +7,8 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
-import BusinessForm from 'functionalComponents/BusinessForm'
-import PasswordForm from 'functionalComponents/PasswordForm'
+import BusinessForm from 'container/BusinessForm'
+import AccountForm from 'container/Account'
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props;
@@ -34,7 +34,7 @@ const Profil = ({ handleChange, errors }) => {
           indicatorColor="primary"
         >
           <Tab label="Unternehmens-Profil" />
-          <Tab label="Slot Verwaltung" />
+          <Tab label="Pickup-Slots Verwaltung" />
           <Tab label="Account Verwaltung" />
         </Tabs>
       </CardHeader>
@@ -43,10 +43,10 @@ const Profil = ({ handleChange, errors }) => {
           <BusinessForm handleChange={handleChange} errors={errors} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+        Pickup-Slots Verwaltung
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <PasswordForm handleChange={handleChange} errors={errors} newPassword/>
+          <AccountForm />
         </TabPanel>
       </CardBody>
     </Card>
