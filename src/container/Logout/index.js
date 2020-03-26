@@ -4,9 +4,10 @@ import { Redirect } from "react-router-dom";
 const Logout = ({ setLoggedIn }) => {
   useEffect(() => {
     setLoggedIn(false)
+    window.location = '/'
   })
 
-  return <Redirect to='/home' />
+  return <div><h4>Sie werden ausgelogged</h4></div>
 }
 
 export default Logout
