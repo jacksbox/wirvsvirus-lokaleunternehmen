@@ -178,4 +178,5 @@ const BusinessForm = ({ handleChange, errors }) => {
     </GridContainer>
   );
 };
+
 export default BusinessForm;

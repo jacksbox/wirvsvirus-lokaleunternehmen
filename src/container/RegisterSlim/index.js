@@ -4,7 +4,16 @@ import RegisterSlimComponent from "functionalComponents/RegisterSlim";
 
 const RegisterSlim = () => {
   const [step, setStep] = useState(0);
-  const [formValues, setFormValues] = useState({});
+  const [formValues, setFormValues] = useState({
+    name: null,
+    ober_kategorie: null,
+    email: null,
+    telefon: null,
+    zip: null,
+    city: null,
+    address: null,
+    beschreibung: null
+  });
 
   const nextStep = () => {
     const newStep = step + 1;
@@ -20,7 +29,7 @@ const RegisterSlim = () => {
     const key = event.target.name;
     const value = event.target.value;
     const newFormValues = { ...formValues };
-    setFormValues[key] = key === "slot" ? parseInt(value) : value;
+    newFormValues[key] = value;
     setFormValues(newFormValues);
   };
 

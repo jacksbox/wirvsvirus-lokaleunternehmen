@@ -1,7 +1,6 @@
 import React from "react";
 
 import BusinessForm from "functionalComponents/BusinessForm";
-import GeneralForm from "./GeneralForm";
 import TimeSlotForm from "./TimeSlotForm";
 import SuccessMessage from "./SuccessMessage";
 
@@ -19,7 +18,7 @@ const stepComponents = [
     title: "Unternehmensdaten",
     nextButtonLabel: "weiter"
   },
-  { Component: BusinessForm, title: "TimeSlots", nextButtonLabel: "speichern" },
+  { Component: TimeSlotForm, title: "TimeSlots", nextButtonLabel: "speichern" },
   { Component: SuccessMessage, title: "Ihre Daten wurden gespeichert." }
 ];
 
