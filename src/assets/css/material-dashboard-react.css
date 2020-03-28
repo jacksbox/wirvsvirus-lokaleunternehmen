@@ -24,7 +24,7 @@
 }
 
 .search-panel{
-  width: 100vw-260px;;
+  
   height: 15vh;
   display: flex;
   flex-direction: row;
@@ -33,7 +33,7 @@
 }
 
 .searchbar, .css-2b097c-container{
-  width: 30vw;
+  
   z-index: 10000;
 }
 

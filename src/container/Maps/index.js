@@ -10,6 +10,10 @@ import { withStyles } from "@material-ui/core/styles";
 
 import apiClient from 'utils/apiClient'
 
+import MSearch from "react-leaflet-search";
+
+
+
 const styles = {
   searchbar: {
     position: "absolute",
@@ -37,6 +41,7 @@ let redIcon = new L.Icon({
   shadowSize: [41, 41]
 });
 
+
 class HereMap extends Component {
   constructor(props) {
     super(props);
@@ -45,17 +50,20 @@ class HereMap extends Component {
       circles: [],
       circlesArray: [],
       points: false,
-      currentLat: 50,
-      currentLong: 10,
+      currentLat: "",
+      currentLong: "",
       radius: 2,
       open: false,
-      unternehmen: null
+      unternehmen: null,
+      zoom: 16,
+      locationSearchUsed: false
     };
 
     this.setCurrentPosition = this.setCurrentPosition.bind(this);
     this.filterValue = this.filterValue.bind(this);
     this.filterValue = this.filterValue.bind(this);
     this.searchName = this.searchName.bind(this)
+    this.onSelect = this.onSelect.bind(this)
   }
 
   componentWillMount() {
@@ -63,12 +71,20 @@ class HereMap extends Component {
     if (this.props.data && this.props.data[0]) arr.push(this.props.data[0]);
     this.setState({ circlesArray: arr });
     console.log("circle array", this.state.circlesArray);*/
-    /*if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setCurrentPosition)}*/
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.setCurrentPosition)}
   }
 
   filterValue(value) {
     this.setState({ filterValue: value });
+  }
+
+  onSelect(e){
+    if (e&&e.target&&e.target.getCenter())console.log("onmove", e.target.getCenter().lat, e.target.getCenter().lng)
+
+    //use API here to find local shops nearby: 
+  
+
   }
 
   setCurrentPosition(position) {
@@ -161,6 +177,23 @@ class HereMap extends Component {
     const { open, unternehmen } = this.state;
 
 
+    let curMarker ; 
+
+    console.log(this.state.currentLat, this.state.currentLong)
+
+    
+    if (!this.state.locationSearchUsed) curMarker= <Marker
+      icon={redIcon}
+      position={[this.state.currentLat, this.state.currentLong]}
+      onMouseOver={e => {
+        e.target.openPopup();
+      }}
+      onMouseOut={e => {
+        e.target.closePopup();
+      }}
+    >
+      <Popup>Your location</Popup>
+    </Marker>
 
     return (
       <div>
@@ -168,32 +201,27 @@ class HereMap extends Component {
           <Search searchName={this.searchName} filterValue={this.filterValue} names={this.state.data? this.state.data.map((el, i)=>{return {"id": i, "name": el.name}}):[]}/>
         </div>
         <Map
-          center={[49.794714, 9.932212]}
-          zoom={16}
-          maxZoom={16}
+          center={[this.state.currentLat, this.state.currentLong]}
+          zoom={this.state.zoom}
+          maxZoom={this.state.zoom+2}
+          minZoom={this.state.zoom-2}
           attributionControl={true}
           zoomControl={true}
           doubleClickZoom={true}
           scrollWheelZoom={true}
-          dragging={true}
+          
           animate={true}
           easeLinearity={0.35}
           style={{ height: '100vH' }}
+          onMoveEnd={this.onSelect}
+          dragging={true}
+          
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
-          <Marker
-            icon={redIcon}
-            position={[49.795028, 9.931700]}
-            onMouseOver={e => {
-              e.target.openPopup();
-            }}
-            onMouseOut={e => {
-              e.target.closePopup();
-            }}
-          >
-            <Popup>Your location</Popup>
-          </Marker>
+          {curMarker}
+          <MSearch position="topleft"  markerIcon={redIcon} closeResultsOnClick={true} inputPlaceholder="Suche nach einem Ort"/>;
+          
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
           <div
