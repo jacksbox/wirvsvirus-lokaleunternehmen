@@ -80,9 +80,9 @@ class HereMap extends Component {
   }
 
   onSelect(e){
-    if (e&&e.target&&e.target.getCenter())console.log("onmove", e.target.getCenter().lat, e.target.getCenter().lng)
+    //if (e&&e.target&&e.target.getCenter())console.log("onmove", e.target.getCenter().lat, e.target.getCenter().lng)
 
-    //use API here to find local shops nearby: 
+    //use API here to find local shops nearb
   
 
   }
@@ -179,12 +179,11 @@ class HereMap extends Component {
 
     let curMarker ; 
 
-    console.log(this.state.currentLat, this.state.currentLong)
 
     
     if (!this.state.locationSearchUsed) curMarker= <Marker
       icon={redIcon}
-      position={[this.state.currentLat, this.state.currentLong]}
+      position={[49.794714, 9.932212]}
       onMouseOver={e => {
         e.target.openPopup();
       }}
@@ -201,7 +200,7 @@ class HereMap extends Component {
           <Search searchName={this.searchName} filterValue={this.filterValue} names={this.state.data? this.state.data.map((el, i)=>{return {"id": i, "name": el.name}}):[]}/>
         </div>
         <Map
-          center={[this.state.currentLat, this.state.currentLong]}
+          center={[49.794714, 9.932212]}
           zoom={this.state.zoom}
           maxZoom={this.state.zoom+2}
           minZoom={this.state.zoom-2}
