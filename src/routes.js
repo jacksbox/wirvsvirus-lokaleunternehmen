@@ -22,6 +22,7 @@ import BusinessCenter from "@material-ui/icons/BusinessCenter";
 import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import LoginRegister from "container/LoginRegister";
+import RegisterSlim from "container/RegisterSlim";
 import Maps from "container/Maps";
 import Profil from "container/Profil";
 import Logout from "container/Logout";
@@ -59,6 +60,14 @@ const dashboardRoutes = [
     rtlName: "ملف تعريفي للمستخدم",
     icon: BusinessCenter,
     component: LoginRegister,
+    layout: "/business"
+  }, {
+    loginState: 'notLoggedIn',
+    path: "/signup",
+    name: "Registrieren",
+    rtlName: "ملف تعريفي للمستخدم",
+    icon: BusinessCenter,
+    component: RegisterSlim,
     layout: "/business"
   }, {
     loginState: 'loggedIn',
