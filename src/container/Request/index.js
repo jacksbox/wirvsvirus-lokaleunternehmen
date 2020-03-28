@@ -36,7 +36,7 @@ const prepareUnternehmen = ({oeffnungszeiten, available_time_slots, ...unternehm
 const Request = ({ preUnternehmen = mock, handleClose }) => {
   const unternehmen = prepareUnternehmen(preUnternehmen)
 
-  const [formValues, setFormValue] = useState({
+  const [formValues, setFormValues] = useState({
     ...initialFormValues,
     id: unternehmen.id,
     slot: unternehmen.available_time_slots[0].id
@@ -77,7 +77,7 @@ const Request = ({ preUnternehmen = mock, handleClose }) => {
     const value = event.target.value
     const newFormValues = { ...formValues }
     newFormValues[key] = key === 'slot' ? parseInt(value) : value
-    setFormValue(newFormValues)
+    setFormValues(newFormValues)
   }
 
   return (

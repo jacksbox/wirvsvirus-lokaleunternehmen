@@ -34,7 +34,7 @@ const BusinessForm = ({ handleChange, errors }) => {
 
   return (
     <GridContainer>
-      <GridItem>
+      <GridItem xs={12}>
         <p style={{ fontSize: "18px" }}>
           Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
           Registrierung dieses{" "}
