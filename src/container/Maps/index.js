@@ -81,7 +81,6 @@ class HereMap extends Component {
 
   onSelect(e){
     //if (e&&e.target&&e.target.getCenter())console.log("onmove", e.target.getCenter().lat, e.target.getCenter().lng)
-
     //use API here to find local shops nearb
   
 
