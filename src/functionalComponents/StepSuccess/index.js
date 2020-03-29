@@ -1,6 +1,6 @@
 import React from "react";
 
-import Banner from "functionalComponents/Banner.js";
+import DemoBanner from "functionalComponents/DemoBanner";
 
 import { formatSlot } from "utils/date"
 
@@ -13,7 +13,7 @@ const StepSuccess = ({ formValues, unternehmen, day }) => {
     <h3>Danke, die Bestellung wurde übermittelt!</h3>
     <h5>Ihr Lokales Unternehmen freut sich auf Sie!</h5>
     <p>Ihr reservierter Slot: <strong>{formatSlot(slot)}</strong></p>
-    <Banner />
+    <DemoBanner />
   </div>
 )}
 
