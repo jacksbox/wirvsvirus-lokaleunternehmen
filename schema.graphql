@@ -1,0 +1,97 @@
+# source: https://bleiblokal-dev.herokuapp.com/graphql/
+# timestamp: Sun Mar 29 2020 13:56:44 GMT+0200 (Central European Summer Time)
+
+type AnfrageType {
+  id: ID!
+  unternehmen: UnternehmenType
+  kundenEmail: String!
+  text: String!
+  approved: Boolean!
+  slot: TimeSlotType!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+"""
+
+`GeometryObjectType` represents a pair of values:
+- Geometry `type`
+- Geometry `coordinates`
+
+"""
+type GeometryObjectType {
+  type: String
+  coordinates: GenericScalar
+}
+
+"""
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+type OberKategorieType {
+  id: ID!
+  slug: String!
+  name: String!
+  unternehmenSet: [UnternehmenType!]!
+}
+
+type Query {
+  alleOberkategorien: [OberKategorieType]
+  alleUnterkategorien: [UnterKategorieType]
+  alleUnternehmen: [UnternehmenType]
+  alleAnfragen: [AnfrageType]
+}
+
+type TimeSlotType {
+  id: ID!
+  start: DateTime!
+  end: DateTime!
+  unternehmen: UnternehmenType
+  anfrageSet: [AnfrageType!]!
+}
+
+type UnterKategorieType {
+  id: ID!
+  slug: String!
+  name: String!
+  unternehmenSet: [UnternehmenType!]!
+}
+
+type UnternehmenProperties {
+  email: String!
+  name: String!
+  adresse: String!
+  telefon: String!
+  maxProSlot: Int!
+  oeffnungszeiten: JSONString!
+  beschreibung: String!
+  active: Boolean!
+  oberKategorien: [OberKategorieType!]!
+  unterKategorien: [UnterKategorieType!]!
+  timeslotSet: [TimeSlotType!]!
+  anfrageSet: [AnfrageType!]!
+}
+
+type UnternehmenType {
+  type: String
+  id: ID!
+  geometry: GeometryObjectType
+  bbox: GenericScalar
+  properties: UnternehmenProperties
+}
