@@ -1,8 +1,8 @@
 import React from "react";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
 
+import Grid from "@material-ui/core/Grid";
+
+import CustomInput from "components/CustomInput/CustomInput.js";
 import Danger from "components/Typography/Danger.js";
 
 const PasswordForm = ({ handleChange, errors, newPassword }) => {
@@ -11,8 +11,8 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
   const labelPwdConfirm = newPassword ? 'Neues Passwort bestätigen' : 'Passwort bestätigen'
   const namePwdConfirm = newPassword ? 'newPasswordConfirm' : 'passwordConfirm'
   return (
-    <GridContainer>
-      <GridItem xs={6} sm={6} md={6}>
+    <Grid container>
+      <Grid item xs={6} sm={6} md={6}>
         <CustomInput
           labelText={labelPwd}
           id={namePwd}
@@ -34,8 +34,8 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
         {errors.includes("passwordToShort") && (
           <Danger>Passwort ist zu kurz.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={6} sm={6} md={6}>
+      </Grid>
+      <Grid item xs={6} sm={6} md={6}>
         <CustomInput
           labelText={labelPwdConfirm}
           id={namePwdConfirm}
@@ -52,13 +52,13 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
         {errors.includes(namePwdConfirm) && (
           <Danger>Bitte bestätigen Sie ihr gewähltes Passwort.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={12}>
+      </Grid>
+      <Grid item xs={12}>
         {errors.includes("noMatch") && (
           <Danger>Passwörter stimmen nicht überein.</Danger>
         )}
-      </GridItem>
-    </GridContainer>
+      </Grid>
+    </Grid>
   );
 };
 

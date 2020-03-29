@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
 
+import Grid from "@material-ui/core/Grid";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 
+import CustomInput from "components/CustomInput/CustomInput.js";
 import Danger from "components/Typography/Danger.js";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,8 +32,8 @@ const BusinessForm = ({ handleChange, errors }) => {
   };
 
   return (
-    <GridContainer>
-      <GridItem>
+    <Grid container spacing={2}>
+      <Grid item>
         <p style={{ fontSize: "18px" }}>
           Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
           Registrierung dieses{" "}
@@ -42,8 +41,8 @@ const BusinessForm = ({ handleChange, errors }) => {
             <strong>Formular</strong>
           </a>
         </p>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
         <CustomInput
           labelText="Unternehmen (Name)"
           id="name"
@@ -59,8 +58,8 @@ const BusinessForm = ({ handleChange, errors }) => {
         {errors.includes("name") && (
           <Danger>Unternehmen (Name) wird benötigt.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
         <FormControl className={classes.formControl} required>
           <InputLabel id="ober_kategorie">Kategorie</InputLabel>
           <Select
@@ -77,8 +76,8 @@ const BusinessForm = ({ handleChange, errors }) => {
         {errors.includes("ober_kategorie") && (
           <Danger>Kategorie bitte auswählen.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
         <CustomInput
           labelText="Email"
           id="email"
@@ -94,8 +93,8 @@ const BusinessForm = ({ handleChange, errors }) => {
         {errors.includes("email") && (
           <Danger>Bitte überpüfen Sie die eMail Adresse.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
         <CustomInput
           labelText="Telefon"
           id="telefon"
@@ -110,8 +109,8 @@ const BusinessForm = ({ handleChange, errors }) => {
         {errors.includes("telefon") && (
           <Danger>Bitte überpüfen Sie die Telefonummer.</Danger>
         )}
-      </GridItem>
-      <GridItem xs={6} sm={6} md={6}>
+      </Grid>
+      <Grid item xs={6} sm={6} md={6}>
         <CustomInput
           labelText="PLZ"
           id="zip"
@@ -125,8 +124,8 @@ const BusinessForm = ({ handleChange, errors }) => {
           }}
         />
         {errors.includes("zip") && <Danger>PLZ wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={6} sm={6} md={6}>
+      </Grid>
+      <Grid item xs={6} sm={6} md={6}>
         <CustomInput
           labelText="Stadt"
           id="city"
@@ -140,8 +139,8 @@ const BusinessForm = ({ handleChange, errors }) => {
           }}
         />
         {errors.includes("city") && <Danger>Stadt wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12}>
         <CustomInput
           labelText="Straße und Hausnummer"
           id="address"
@@ -155,8 +154,8 @@ const BusinessForm = ({ handleChange, errors }) => {
           }}
         />
         {errors.includes("address") && <Danger>Adresse wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
+      </Grid>
+      <Grid item xs={12} sm={12} md={12}>
         <CustomInput
           labelText="Beschreibung"
           id="beschreibung"
@@ -174,8 +173,8 @@ const BusinessForm = ({ handleChange, errors }) => {
         {errors.includes("beschreibung") && (
           <Danger>Beschreibung wird benötigt.</Danger>
         )}
-      </GridItem>
-    </GridContainer>
+      </Grid>
+    </Grid>
   );
 };
 export default BusinessForm;

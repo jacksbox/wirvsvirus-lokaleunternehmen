@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
+import Hidden from '@material-ui/core/Hidden';
 
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-import Hidden from '@material-ui/core/Hidden';
-
 import Danger from "components/Typography/Danger.js";
+
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 

@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 
+import Button from "components/CustomButtons/Button.js";
+
 import SlotPicker from "functionalComponents/SlotPicker";
 import DayPicker from "functionalComponents/DayPicker";
-
-import Button from "components/CustomButtons/Button.js";
 
 import { formatSlot } from 'utils/date'
 

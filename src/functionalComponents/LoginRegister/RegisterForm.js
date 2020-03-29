@@ -1,7 +1,8 @@
 import React from "react";
+
+import Grid from "@material-ui/core/Grid";
+
 import Button from "components/CustomButtons/Button.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
 
 import BusinessForm from 'functionalComponents/BusinessForm'
 import PasswordForm from 'functionalComponents/PasswordForm'
@@ -18,13 +19,13 @@ const RegisterForm = ({ saved, handleChange, handleSubmit, errors }) => {
     <>
       <BusinessForm handleChange={handleChange} errors={errors} />
       <PasswordForm handleChange={handleChange} errors={errors} />
-      <GridContainer>
-        <GridItem xs={12}>
+      <Grid container>
+        <Grid item xs={12}>
           <Button onClick={handleSubmit} color="success">
             Jetzt registrieren
           </Button>
-        </GridItem>
-      </GridContainer>
+        </Grid>
+      </Grid>
     </>
   );
 };

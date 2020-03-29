@@ -1,7 +1,6 @@
 import React from "react";
-import Button from "components/CustomButtons/Button.js";
 
-import logo from "assets/img/logo-sticker.png";
+import Button from "components/CustomButtons/Button.js";
 
 const Home = () => (
   <div>

@@ -1,15 +1,15 @@
 import React from "react";
 
+import Grid from "@material-ui/core/Grid";
+
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Button from "components/CustomButtons/Button.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
 
 const LoginForm = ({ handleSubmit }) => {
   return (
     <form method="POST" action="http://example.org">
-    <GridContainer>
-      <GridItem xs={12} md={6}>
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={6}>
         <CustomInput
           labelText="Email"
           id="email-login"
@@ -20,8 +20,8 @@ const LoginForm = ({ handleSubmit }) => {
             name: "email"
           }}
         />
-      </GridItem>
-      <GridItem xs={12} md={6}>
+      </Grid>
+      <Grid item xs={12} md={6}>
         <CustomInput
           labelText="Passwort"
           id="password-login"
@@ -33,13 +33,13 @@ const LoginForm = ({ handleSubmit }) => {
             name: "password"
           }}
         />
-      </GridItem>
-      <GridItem xs={12}>
+      </Grid>
+      <Grid item xs={12}>
         <Button onClick={handleSubmit} type="submit" color="success">
           Login
         </Button>
-      </GridItem>
-    </GridContainer>
+      </Grid>
+    </Grid>
   </form>
   );
 };

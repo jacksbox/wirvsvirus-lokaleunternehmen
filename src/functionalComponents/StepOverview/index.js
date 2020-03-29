@@ -1,7 +1,5 @@
 import React from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
-
 import Grid from "@material-ui/core/Grid";
 import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,6 +7,8 @@ import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
 
 import Button from "components/CustomButtons/Button.js";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 import { CATEGORIES } from "consts";
 
