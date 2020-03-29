@@ -1,7 +1,7 @@
 import React from "react";
 
 import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
 
 const Home = () => (
   <Paper
@@ -26,9 +26,9 @@ const Home = () => (
       <br />
       um die Läden um die Ecke in dieser schwierigen Zeit zu unterstützen.
     </h4>
-    <Button variant="contained" href="/customer/maps" color="primary">
+    <Fab variant="contained" onClick={() => window.location = "/customer/maps"} color="primary">
       Jetzt lokale Unternehmen finden
-    </Button>
+    </Fab>
   </Paper>
 );
 
