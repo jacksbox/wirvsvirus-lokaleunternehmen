@@ -3,7 +3,7 @@ import React from 'react';
 import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 
-const environment = 'graphql/environment.js'
+import environment from 'graphql/environment.js'
 
 export default class App extends React.Component {
   render() {
@@ -12,8 +12,13 @@ export default class App extends React.Component {
         environment={environment}
         query={graphql`
           query AppQuery {
-            alleOberkategorien {
-              id
+            allCategories {
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
             }
           }
         `}
@@ -26,7 +31,8 @@ export default class App extends React.Component {
           if (!props) {
             return <div>Loading...</div>;
           }
-          return <div>User ID: {props.viewer.id}</div>;
+          console.log(props)
+          return props.allCategories.edges.map(({ node: { slug, name } }) => <div>{slug}: {name}</div>)
         }}
       />
     );

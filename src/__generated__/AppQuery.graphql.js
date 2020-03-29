@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 12c8bb31e84bdc61ccf09b0c5c68db42
+ * @relayHash e412916c92cc3f020194c8372fc9b8fc
  */
 
 /* eslint-disable */
@@ -11,9 +11,14 @@
 import type { ConcreteRequest } from 'relay-runtime';
 export type AppQueryVariables = {||};
 export type AppQueryResponse = {|
-  +alleOberkategorien: ?$ReadOnlyArray<?{|
-    +id: string
-  |}>
+  +allCategories: ?{|
+    +edges: $ReadOnlyArray<?{|
+      +node: ?{|
+        +slug: string,
+        +name: string,
+      |}
+    |}>
+  |}
 |};
 export type AppQuery = {|
   variables: AppQueryVariables,
@@ -24,33 +29,33 @@ export type AppQuery = {|
 
 /*
 query AppQuery {
-  alleOberkategorien {
-    id
+  allCategories {
+    edges {
+      node {
+        slug
+        name
+        id
+      }
+    }
   }
 }
 */
 
 const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "alleOberkategorien",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "OberKategorieType",
-    "plural": true,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "id",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  }
-];
+var v0 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "slug",
+  "args": null,
+  "storageKey": null
+},
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -59,24 +64,103 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allCategories",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "CategoryNodeConnection",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "edges",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CategoryNodeEdge",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CategoryNode",
+                "plural": false,
+                "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/)
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "operation": {
     "kind": "Operation",
     "name": "AppQuery",
     "argumentDefinitions": [],
-    "selections": (v0/*: any*/)
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "allCategories",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "CategoryNodeConnection",
+        "plural": false,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "edges",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CategoryNodeEdge",
+            "plural": true,
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "node",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CategoryNode",
+                "plural": false,
+                "selections": [
+                  (v0/*: any*/),
+                  (v1/*: any*/),
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "params": {
     "operationKind": "query",
     "name": "AppQuery",
     "id": null,
-    "text": "query AppQuery {\n  alleOberkategorien {\n    id\n  }\n}\n",
+    "text": "query AppQuery {\n  allCategories {\n    edges {\n      node {\n        slug\n        name\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'af308e87e9d6c9941c3efd56f56f6f47';
+(node/*: any*/).hash = '07cb15343182a52d2226d8a616f86cdb';
 
 module.exports = node;
