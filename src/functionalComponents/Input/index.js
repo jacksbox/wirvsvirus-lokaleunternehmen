@@ -7,6 +7,7 @@ const Input = ({
   id,
   defaultValue = null,
   value,
+  type,
   select,
   options,
   required = false,
@@ -20,8 +21,14 @@ const Input = ({
   rows = null
 }) => {
   let error = false;
-  if (errors.includes(id)) {
+  if (errors && errors.length && errors.includes(id)) {
     error = true;
+  }
+  let inputType = 'text'
+  if (select) {
+    inputType = null
+  } else if (type) {
+    inputType = type
   }
 
   let valueOrDefault = {};
@@ -46,7 +53,8 @@ const Input = ({
       multiline={multiline}
       rows={rows}
       inputProps={{
-        name: id
+        name: id,
+        type: inputType
       }}
     >
       {select && options && options.length
