@@ -26,7 +26,7 @@ const Input = ({
   }
   let inputType = 'text'
   if (select) {
-    inputType = null
+    inputType = 'hidden'
   } else if (type) {
     inputType = type
   }
