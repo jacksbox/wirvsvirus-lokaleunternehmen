@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
 
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
+import CardHeader from "functionalComponents/CardHeader";
+import CardBody from "functionalComponents/CardBody";
 
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
@@ -32,7 +32,13 @@ const styles = {
 
 const useStyles = makeStyles(styles);
 
-const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerErrors, handleLogin, saved }) => {
+const LoginRegister = ({
+  handleRegisterFormChange,
+  handleRegister,
+  registerErrors,
+  handleLogin,
+  saved
+}) => {
   const classes = useStyles();
 
   return (
@@ -40,7 +46,7 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>Login</h4>
             </CardHeader>
             <CardBody>
@@ -50,7 +56,7 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="info">
+            <CardHeader color="primary">
               <h4 className={classes.cardTitleWhite}>
                 Unternehmen Registrieren
               </h4>

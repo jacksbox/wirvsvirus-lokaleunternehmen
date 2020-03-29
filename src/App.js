@@ -24,6 +24,9 @@ const hist = createBrowserHistory();
 export const AuthContext = React.createContext({});
 
 const theme = createMuiTheme({
+  shape: {
+    borderRadius: 6
+  },
   palette: {
     primary: {
       main: '#7DABA2',
@@ -40,7 +43,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true
+      loggedIn: false
     };
   }
 
