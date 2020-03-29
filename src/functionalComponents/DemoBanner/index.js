@@ -1,6 +1,6 @@
 import React from "react";
 
-const Banner = () => (
+const DemoBanner = () => (
   <>
     <div
       style={{
@@ -19,4 +19,4 @@ const Banner = () => (
   </>
 );
 
-export default Banner;
+export default DemoBanner;

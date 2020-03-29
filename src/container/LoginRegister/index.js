@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 
 import LoginRegisterComponent from "functionalComponents/LoginRegister";
 
-import { Redirect } from "react-router-dom";
 import { AuthContext } from 'App.js'
 
 const initialRegisterFormValues = {

@@ -12,7 +12,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
-import Banner from "functionalComponents/Banner.js";
+import DemoBanner from "functionalComponents/DemoBanner";
 
 import routes, { getRoutes } from "routes.js";
 
@@ -133,7 +133,7 @@ export default function Business({ ...rest }) {
           }}
         />
         <div className={classes.mainPanel} ref={mainPanel}>
-          <Banner />
+          <DemoBanner />
           <div className={classes.content} style={{ minHeight: "100vH" }}>
             <div className={classes.container}><SwitchRoutes routes={routes} setLoggedIn={setLoggedIn}/></div>
           </div>

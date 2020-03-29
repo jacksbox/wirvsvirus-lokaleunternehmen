@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-// @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
-// core components
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
+
+import Grid from "@material-ui/core/Grid";
+
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
+
+import { makeStyles } from "@material-ui/core/styles";
 
 const styles = {
   cardCategoryWhite: {
@@ -37,8 +37,8 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
 
   return (
     <div>
-      <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
+      <Grid container spacing={1}>
+        <Grid item xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="info">
               <h4 className={classes.cardTitleWhite}>Login</h4>
@@ -47,8 +47,8 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
               <LoginForm handleSubmit={handleLogin} />
             </CardBody>
           </Card>
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
+        </Grid>
+        <Grid item xs={12} sm={12} md={6}>
           <Card>
             <CardHeader color="info">
               <h4 className={classes.cardTitleWhite}>
@@ -64,8 +64,8 @@ const LoginRegister = ({ handleRegisterFormChange, handleRegister, registerError
               />
             </CardBody>
           </Card>
-        </GridItem>
-      </GridContainer>
+        </Grid>
+      </Grid>
     </div>
   );
 };

@@ -12,7 +12,7 @@ import Sidebar from "components/Sidebar/Sidebar.js";
 import IconButton from "@material-ui/core/IconButton";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
-import Banner from "functionalComponents/Banner.js";
+import DemoBanner from "functionalComponents/DemoBanner";
 
 import routes, { getRoutes } from "routes.js";
 
@@ -133,7 +133,7 @@ export default function Customer({ ...rest }) {
           }}
         />
         <div className={classes.mainPanel} ref={mainPanel}>
-          <Banner />
+          <DemoBanner />
           {/* On the /maps route we want the map to be on full screen - this is not possible if the content and conatiner classes are present because they have some paddings which would make the map smaller */}
           {getRoute() ? (
             <div className={classes.content} style={{ position: 'relative', minHeight: "100vH" }}>

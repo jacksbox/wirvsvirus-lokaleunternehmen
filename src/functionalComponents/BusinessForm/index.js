@@ -1,14 +1,8 @@
 import React, { useState } from "react";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
 
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
+import Grid from "@material-ui/core/Grid";
 
-import Danger from "components/Typography/Danger.js";
+import Input from "functionalComponents/Input";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -33,8 +27,8 @@ const BusinessForm = ({ handleChange, errors }) => {
   };
 
   return (
-    <GridContainer>
-      <GridItem xs={12}>
+    <Grid container spacing={2}>
+      <Grid item xs={12}>
         <p style={{ fontSize: "18px" }}>
           Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
           Registrierung dieses{" "}
@@ -42,140 +36,102 @@ const BusinessForm = ({ handleChange, errors }) => {
             <strong>Formular</strong>
           </a>
         </p>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
-        <CustomInput
-          labelText="Unternehmen (Name)"
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
+        <Input
           id="name"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "name",
-            onChange: handleChange
-          }}
+          required
+          labelText="Unternehmen (Name)"
+          helperText="Unternehmen (Name) wird benötigt."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("name") && (
-          <Danger>Unternehmen (Name) wird benötigt.</Danger>
-        )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
-        <FormControl className={classes.formControl} required>
-          <InputLabel id="ober_kategorie">Kategorie</InputLabel>
-          <Select
-            id="ober_kategorie"
-            name="ober_kategorie"
-            value={category}
-            onChange={handleCategoryChange}
-          >
-            {CATEGORIES.map(({ value, label }) => (
-              <MenuItem value={value}>{label}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-        {errors.includes("ober_kategorie") && (
-          <Danger>Kategorie bitte auswählen.</Danger>
-        )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
-        <CustomInput
-          labelText="Email"
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
+
+      <Input
+          id="ober_kategorie"
+          select
+          value={category || CATEGORIES[0].value}
+          options={CATEGORIES}
+          required
+          labelText="Kategorie"
+          helperText="Kategorie bitte auswählen."
+          handleChange={handleCategoryChange}
+          errors={errors}
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
+        <Input
           id="email"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "email",
-            onChange: handleChange
-          }}
+          required
+          labelText="Email"
+          helperText="Bitte überpüfen Sie die eMail Adresse."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("email") && (
-          <Danger>Bitte überpüfen Sie die eMail Adresse.</Danger>
-        )}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={6}>
-        <CustomInput
-          labelText="Telefon"
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
+        <Input
           id="telefon"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            name: "telefon",
-            onChange: handleChange
-          }}
+          required
+          labelText="Telefon"
+          helperText="Bitte überpüfen Sie die Telefonummer."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("telefon") && (
-          <Danger>Bitte überpüfen Sie die Telefonummer.</Danger>
-        )}
-      </GridItem>
-      <GridItem xs={6} sm={6} md={6}>
-        <CustomInput
-          labelText="PLZ"
+      </Grid>
+      <Grid item xs={6} sm={6} md={6}>
+        <Input
           id="zip"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "zip",
-            onChange: handleChange
-          }}
+          required
+          labelText="PLZ"
+          helperText="PLZ wird benötigt."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("zip") && <Danger>PLZ wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={6} sm={6} md={6}>
-        <CustomInput
-          labelText="Stadt"
+      </Grid>
+      <Grid item xs={6} sm={6} md={6}>
+        <Input
           id="city"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "city",
-            onChange: handleChange
-          }}
+          required
+          labelText="Stadt"
+          helperText="Stadt wird benötigt."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("city") && <Danger>Stadt wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
-        <CustomInput
-          labelText="Straße und Hausnummer"
+      </Grid>
+      <Grid item xs={12} sm={12} md={12}>
+        <Input
           id="address"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "address",
-            onChange: handleChange
-          }}
+          required
+          labelText="Straße und Hausnummer"
+          helperText="Adresse wird benötigt."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes("address") && <Danger>Adresse wird benötigt.</Danger>}
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
-        <CustomInput
-          labelText="Beschreibung"
+      </Grid>
+      <Grid item xs={12} sm={12} md={12}>
+        <Input
           id="beschreibung"
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            name: "beschreibung",
-            multiline: true,
-            rows: 5,
-            onChange: handleChange
-          }}
+          required
+          labelText="Beschreibung"
+          helperText="Beschreibung wird benötigt."
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
+          multiline
+          rows={5}
         />
-        {errors.includes("beschreibung") && (
-          <Danger>Beschreibung wird benötigt.</Danger>
-        )}
-      </GridItem>
-    </GridContainer>
+      </Grid>
+    </Grid>
   );
 };
 
