@@ -1,5 +1,5 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Sun Mar 29 2020 16:44:26 GMT+0200 (Central European Summer Time)
+# timestamp: Sun Mar 29 2020 23:40:19 GMT+0200 (Central European Summer Time)
 
 type CategoryNode implements Node {
   """The ID of the object."""
