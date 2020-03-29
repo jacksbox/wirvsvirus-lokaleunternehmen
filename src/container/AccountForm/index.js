@@ -1,9 +1,9 @@
 import React from "react";
-import CustomInput from "components/CustomInput/CustomInput.js";
-import GridItem from "components/Grid/GridItem.js";
-import GridContainer from "components/Grid/GridContainer.js";
-import Button from "components/CustomButtons/Button.js";
 
+import Grid from "@material-ui/core/Grid";
+
+import CustomInput from "components/CustomInput/CustomInput.js";
+import Button from "components/CustomButtons/Button.js";
 import Danger from "components/Typography/Danger.js";
 
 import PasswordForm from "functionalComponents/PasswordForm";
@@ -15,11 +15,11 @@ const AccountForm = () => {
 
   return (
     <>
-      <GridContainer>
-        <GridItem xs={12}>
+      <Grid container>
+        <Grid item xs={12}>
           <h3>Passwort ändern</h3>
-        </GridItem>
-        <GridItem xs={6}>
+        </Grid>
+        <Grid item xs={6}>
           <CustomInput
             labelText="Passwort"
             id="password"
@@ -38,16 +38,16 @@ const AccountForm = () => {
           {errors.includes("password") && (
             <Danger>Passwort wird benötigt.</Danger>
           )}
-        </GridItem>
-      </GridContainer>
+        </Grid>
+      </Grid>
       <PasswordForm handleChange={handleChange} errors={errors} newPassword />
-      <GridContainer>
-        <GridItem xs={12}>
+      <Grid container>
+        <Grid item xs={12}>
           <Button onClick={handleSubmit} color="success">
             Neues Passwort speichern
           </Button>
-        </GridItem>
-      </GridContainer>
+        </Grid>
+      </Grid>
     </>
   );
 };
