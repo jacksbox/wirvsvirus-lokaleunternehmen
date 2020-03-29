@@ -13161,7 +13161,7 @@ relay-config@^9.0.0:
   dependencies:
     cosmiconfig "^5.0.5"
 
-relay-runtime@9.0.0:
+relay-runtime@9.0.0, relay-runtime@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-9.0.0.tgz#03633be24dc3c8b56e472062de6f103954e3d296"
   integrity sha512-bBNeNmwMOnqtCvuPnWdgflFSVwuUbGV7m7os8qHCUCSJ52DT5B/m6K4wisVh3eZ0QWYr7hheRDfmR/3UEdUe5A==
