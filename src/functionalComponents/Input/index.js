@@ -11,7 +11,9 @@ const Input = ({
   handleChange,
   errors,
   size = 'small',
-  fullWidth = false
+  fullWidth = false,
+  multiline = false,
+  rows = null
 }) => {
 
   let error = false;
@@ -30,6 +32,8 @@ const Input = ({
       error={error}
       fullWidth={fullWidth}
       size={size}
+      multiline={multiline}
+      rows={rows}
       inputProps={{
         name: id
       }}
