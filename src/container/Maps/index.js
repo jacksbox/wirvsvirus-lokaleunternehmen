@@ -82,6 +82,8 @@ class HereMap extends Component {
   onSelect(e){
     //if (e&&e.target&&e.target.getCenter())console.log("onmove", e.target.getCenter().lat, e.target.getCenter().lng)
     //use API here to find local shops nearb
+    console.log(e.target.getCenter().lat, e.target.getCenter().lng)
+    console.log(this.refs.map.leafletElement.getBounds())
   
 
   }
@@ -213,7 +215,7 @@ class HereMap extends Component {
           style={{ height: '100vH' }}
           onMoveEnd={this.onSelect}
           dragging={true}
-          
+          ref='map'
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
