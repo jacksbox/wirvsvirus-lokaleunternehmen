@@ -6,7 +6,7 @@ import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
 
-import Button from "components/CustomButtons/Button.js";
+import Button from "@material-ui/core/Button";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -81,9 +81,9 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
             </tbody>
           </Table>
         </Grid>
-        <Grid item md={12} xs={12}>
+        <Grid item xs={12} container justify="space-between">
           <Button onClick={handleClose}>zurück</Button>
-          <Button onClick={nextStep} color="info">
+          <Button onClick={nextStep} variant="contained" color="primary">
             Bestellung aufgeben
           </Button>
         </Grid>

@@ -82,13 +82,16 @@ const StepOverview = ({
           />
         </Grid>
 
-        <Grid item md={12}>
-          <Grid container justify="space-between">
-            <Button onClick={() => prevStep()}>zurück</Button>
-            <Button variant="contained" onClick={() => next()} color="primary" disabled={!formFilled}>
-              Pickup-Zeit wählen
-            </Button>
-          </Grid>
+        <Grid item md={12} container justify="space-between">
+          <Button onClick={() => prevStep()}>zurück</Button>
+          <Button
+            variant="contained"
+            onClick={() => next()}
+            color="primary"
+            disabled={!formFilled}
+          >
+            Pickup-Zeit wählen
+          </Button>
         </Grid>
       </Grid>
     </>
