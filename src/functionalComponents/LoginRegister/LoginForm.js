@@ -1,41 +1,31 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
+import Input from "functionalComponents/Input";
 
 const LoginForm = ({ handleSubmit }) => {
   return (
     <form method="POST" action="http://example.org">
     <Grid container spacing={2}>
       <Grid item xs={12} md={6}>
-        <CustomInput
+        <Input
+          id="email"
           labelText="Email"
-          id="email-login"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            name: "email"
-          }}
+          fullWidth
         />
       </Grid>
       <Grid item xs={12} md={6}>
-        <CustomInput
+        <Input
+          id="password"
           labelText="Passwort"
-          id="password-login"
-          formControlProps={{
-            fullWidth: true
-          }}
-          inputProps={{
-            type: 'password',
-            name: "password"
-          }}
+          type="password"
+          fullWidth
         />
       </Grid>
       <Grid item xs={12}>
-        <Button onClick={handleSubmit} type="submit" color="success">
+        <Button variant="contained" onClick={handleSubmit} color="secondary">
           Login
         </Button>
       </Grid>
