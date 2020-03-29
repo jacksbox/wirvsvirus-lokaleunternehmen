@@ -2,15 +2,15 @@ import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
-
-import Button from "components/CustomButtons/Button.js";
+import Button from "@material-ui/core/Button";
 
 import SlotPicker from "functionalComponents/SlotPicker";
 import DayPicker from "functionalComponents/DayPicker";
 
-import { formatSlot } from 'utils/date'
+import { formatSlot } from "utils/date";
 
-const findSlot = (unternehmen, day, slotId) => unternehmen.available_time_slots[day].find(({ id }) => id === `${slotId}`)
+const findSlot = (unternehmen, day, slotId) =>
+  unternehmen.available_time_slots[day].find(({ id }) => id === `${slotId}`);
 
 const StepSlot = ({
   nextStep,
@@ -30,7 +30,12 @@ const StepSlot = ({
         <p>{formValues.text}</p>
       </Grid>
       <Grid item md={6}>
-        <h5>Pickup-Zeit: {(day >= 0 && formValues.slot >= 0) ? formatSlot(findSlot(unternehmen, day, formValues.slot)) : ''}</h5>
+        <h5>
+          Pickup-Zeit:{" "}
+          {day >= 0 && formValues.slot >= 0
+            ? formatSlot(findSlot(unternehmen, day, formValues.slot))
+            : ""}
+        </h5>
         <DayPicker
           slots={unternehmen.available_time_slots}
           handleDayChange={handleDayChange}
@@ -50,17 +55,16 @@ const StepSlot = ({
           <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
         )}
       </Grid>
-      <Grid item md={12}>
-        <Grid container justify="space-between">
-          <Button onClick={() => prevStep()}>zurück</Button>
-          <Button
-            onClick={() => nextStep()}
-            color="success"
-            disabled={!(formValues.slot >= 0)}
-          >
-            Anfrage senden
-          </Button>
-        </Grid>
+      <Grid item md={12} container justify="space-between">
+        <Button onClick={() => prevStep()}>zurück</Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => nextStep()}
+          disabled={!(formValues.slot >= 0)}
+        >
+          Anfrage senden
+        </Button>
       </Grid>
     </Grid>
   </>
