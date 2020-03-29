@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "components/CustomButtons/Button.js";
+import Button from "@material-ui/core/Button";
 
 const Home = () => (
   <div>
@@ -20,7 +20,7 @@ const Home = () => (
           Mit <strong>Bleib Lokal!</strong> entwickeln wir eine Lösung,<br />
           um die Läden um die Ecke in dieser schwierigen Zeit zu unterstützen.
         </h4>
-        <Button href="/customer/maps" color="info">
+        <Button variant="contained" href="/customer/maps" color="primary">
           Jetzt lokale Unternehmen finden
         </Button>
       </div>
