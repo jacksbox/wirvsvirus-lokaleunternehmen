@@ -164,10 +164,7 @@ class Maps extends Component {
       // TODO: just display an error notification on top the map
       return <div>Error!</div>;
     }
-    if (!props) {
-      return this.renderMap();
-    }
-    return this.renderMap(props);
+    return props ? this.renderMap(props) : this.renderMap();
   };
 
   render() {
@@ -176,6 +173,7 @@ class Maps extends Component {
     return (
       <QueryRenderer
         environment={environment}
+        fetchPolicy="store-and-network"
         query={gqlQuery}
         variables={{ bounds: JSON.stringify(bounds) }}
         render={resp => this.renderQueryResult(resp)}
