@@ -3,10 +3,9 @@ import React, { Component, createRef } from "react";
 import { QueryRenderer } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet"
 
 import environment from "graphql/environment.js";
-
-const L = require("leaflet");
 
 let redIcon = new L.Icon({
   iconUrl: require(`assets/img/icons/POSITION.png`),
