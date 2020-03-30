@@ -1,12 +1,12 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Sun Mar 29 2020 23:40:19 GMT+0200 (Central European Summer Time)
+# timestamp: Mon Mar 30 2020 15:11:10 GMT+0200 (Central European Summer Time)
 
 type CategoryNode implements Node {
   """The ID of the object."""
   id: ID!
   slug: String!
   name: String!
-  companySet(before: String, after: String, first: Int, last: Int, name: String): CompanyNodeConnection!
+  companySet(before: String, after: String, first: Int, last: Int): CompanyNodeConnection!
 }
 
 type CategoryNodeConnection {
@@ -90,6 +90,16 @@ scalar GenericScalar
 
 """
 
+`Geometry` scalar may be represented in a few ways:
+- Well-known text (WKT)
+- Hexadecimal (HEX)
+- GeoJSON
+
+"""
+scalar Geometry
+
+"""
+
 `GeometryObjectType` represents a pair of values:
 - Geometry `type`
 - Geometry `coordinates`
@@ -134,7 +144,10 @@ type PageInfo {
 type Query {
   allCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): CategoryNodeConnection
   allSubCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection
-  allCompanies(before: String, after: String, first: Int, last: Int, name: String): CompanyNodeConnection
+  allCompanies(before: String, after: String, first: Int, last: Int, name: String, location: Geometry, location_Intersects: Geometry, active: Boolean): CompanyNodeConnection
+
+  """The ID of the object"""
+  company(id: ID!): CompanyNode
 }
 
 type RequestNode implements Node {
@@ -169,7 +182,7 @@ type SubCategoryNode implements Node {
   id: ID!
   slug: String!
   name: String!
-  companySet(before: String, after: String, first: Int, last: Int, name: String): CompanyNodeConnection!
+  companySet(before: String, after: String, first: Int, last: Int): CompanyNodeConnection!
 }
 
 type SubCategoryNodeConnection {
