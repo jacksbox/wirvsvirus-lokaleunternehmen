@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f4ee5cf79c2a059e758462bc3d633fc3
+ * @relayHash 5deddac95fd9c5c73020fdbea9b92d3f
  */
 
 /* eslint-disable */
@@ -21,6 +21,7 @@ export type MapsQueryResponse = {|
         |},
         +properties: ?{|
           +name: string,
+          +description: string,
           +category: {|
             +slug: string
           |},
@@ -48,6 +49,7 @@ query MapsQuery(
         }
         properties {
           name
+          description
           category {
             slug
             id
@@ -104,11 +106,18 @@ v3 = {
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "slug",
+  "name": "description",
   "args": null,
   "storageKey": null
 },
 v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "slug",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
@@ -162,6 +171,7 @@ return {
                     "plural": false,
                     "selections": [
                       (v3/*: any*/),
+                      (v4/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -171,7 +181,7 @@ return {
                         "concreteType": "CategoryNode",
                         "plural": false,
                         "selections": [
-                          (v4/*: any*/)
+                          (v5/*: any*/)
                         ]
                       }
                     ]
@@ -227,6 +237,7 @@ return {
                     "plural": false,
                     "selections": [
                       (v3/*: any*/),
+                      (v4/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -236,13 +247,13 @@ return {
                         "concreteType": "CategoryNode",
                         "plural": false,
                         "selections": [
-                          (v4/*: any*/),
-                          (v5/*: any*/)
+                          (v5/*: any*/),
+                          (v6/*: any*/)
                         ]
                       }
                     ]
                   },
-                  (v5/*: any*/)
+                  (v6/*: any*/)
                 ]
               }
             ]
@@ -255,12 +266,12 @@ return {
     "operationKind": "query",
     "name": "MapsQuery",
     "id": null,
-    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          category {\n            slug\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          description\n          category {\n            slug\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '9e68102ba4f90696cb71de04d5848999';
+(node/*: any*/).hash = '9b921203506d2fe90df259954ef568ff';
 
 module.exports = node;

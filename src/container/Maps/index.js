@@ -36,6 +36,7 @@ const gqlQuery = graphql`
           }
           properties {
             name,
+            description,
             category {
               slug
             }
@@ -87,7 +88,7 @@ class Maps extends Component {
           geometry: {
             coordinates: [lng, lat]
           },
-          properties: { name, category: { slug } }
+          properties: { name, description, category: { slug } }
         }
       }) => {
         let icon = new L.Icon({
@@ -104,7 +105,21 @@ class Maps extends Component {
             key={`${name}:${lat},${lng}`}
             position={[lat, lng]}
             icon={icon}
-          />
+            onMouseOver={e => {
+              e.target.openPopup();
+            }}
+            onMouseOut={e => {
+              e.target.closePopup();
+            }}
+            onClick={() => {
+              // this.setState({ unternehmen: u }, this.handleOpenModal);
+            }}
+          >
+            <Popup>
+              <h3>{name}</h3>
+              {description && <p>{description.substr(0,50)}...</p>}
+            </Popup>
+          </Marker>
         );
       }
     );
