@@ -23,7 +23,6 @@ import LocationOn from "@material-ui/icons/LocationOn";
 // core components/views for Admin layout
 import LoginRegister from "container/LoginRegister";
 import Maps from "container/Maps";
-import Map from "container/Map";
 import Profil from "container/Profil";
 import Logout from "container/Logout";
 import HomeComponent from "functionalComponents/Home";
@@ -44,7 +43,7 @@ const dashboardRoutes = [
     name: "Karte",
     rtlName: "خرائط",
     icon: LocationOn,
-    component: Map,
+    component: Maps,
     layout: "/customer"
   },  {
     path: "/about",
