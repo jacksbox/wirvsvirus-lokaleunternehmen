@@ -9,10 +9,8 @@ import environment from "graphql/environment.js";
 const L = require("leaflet");
 
 let redIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconUrl: require(`assets/img/icons/POSITION.png`),
+  shadowUrl: require(`assets/img/icons/SHADOW.png`),
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -20,6 +18,7 @@ let redIcon = new L.Icon({
 });
 
 const initialState = {
+  position: [52.498588, 13.442352],
   bounds: {
     type: "Polygon",
     coordinates: [[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]]
@@ -59,6 +58,11 @@ class Maps extends Component {
   }
 
   componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
+        this.setState({ position: [ latitude, longitude ] })
+      });
+    }
     this.updateBounds();
   }
 
@@ -127,10 +131,11 @@ class Maps extends Component {
   renderMap = (
     { allCompanies: { edges } } = { allCompanies: { edges: [] } }
   ) => {
+    const { position } = this.state;
     const markers = edges ? this.renderMarkers(edges) : [];
     return (
       <Map
-        center={[52.498588, 13.442352]}
+        center={position}
         zoom={16}
         maxZoom={16}
         attributionControl={true}
@@ -146,6 +151,10 @@ class Maps extends Component {
       >
         <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
         {markers}
+          <Marker
+            icon={redIcon}
+            position={position}
+          />
       </Map>
     );
   };
