@@ -162,6 +162,7 @@ class Maps extends Component {
   renderQueryResult = ({ error, props }) => {
     if (error) {
       console.log(error);
+      // TODO: just display an error notification on top the map
       return <div>Error!</div>;
     }
     if (!props) {
