@@ -4,13 +4,6 @@ import RequestView from "functionalComponents/Request/Request.js";
 
 import apiClient from 'utils/apiClient'
 
-const initialFormValues = {
-  companyId: null,
-  customerEmail: null,
-  text: null,
-  slot: null
-};
-
 export const getShortDate = isoDate => {
   const date = new Date(isoDate);
   const month = date.toLocaleString('de-DE', { month: 'long' });;
@@ -25,18 +18,17 @@ export const getTimeString = isoDate => {
   return `${hours}:${!minutes ? "00" : minutes}`;
 };
 
+const prepareLabel = isoDate => ({
+  shortDate: getShortDate(isoDate),
+  timeString: getTimeString(isoDate)
+})
+
 const prepareSlotLabels = slot => {
-  const datetimeStart = new Date(slot.start)
-  const datetimeEnd = new Date(slot.start)
+  const startDate = new Date(slot.start)
+  const endDate = new Date(slot.start)
   return {
-    startLabel: {
-      shortDate: getShortDate(datetimeStart),
-      timeString: getTimeString(datetimeStart)
-    },
-    endLabel: {
-      shortDate: getShortDate(datetimeEnd),
-      timeString: getTimeString(datetimeEnd)
-    }
+    startLabel: prepareLabel(startDate),
+    endLabel: prepareLabel(endDate),
   }
 }
 
@@ -44,34 +36,39 @@ const prepareSlots = slots => {
   const slotsPerDay = []
   slots.forEach(({ node: slot }) => {
     const slotEnhanced = { ...slot, labels: prepareSlotLabels(slot) }
-    const datetime = new Date(slot.start)
-    const slotDate = datetime.getDate()
-    const dayObject = slotsPerDay.find(({ date }) => date === slotDate)
+    const date = new Date(slot.start)
+    const dateString = date.toLocaleDateString()
+    const dayObject = slotsPerDay.find(({ date }) => date === dateString)
     if (dayObject) {
       dayObject.slots.push(slotEnhanced)
     } else {
-      slotsPerDay.push({ date: slotDate, slots: [slotEnhanced] })
+      slotsPerDay.push({ date: dateString, label: prepareLabel(date), slots: [slotEnhanced] })
     }
   })
   return slotsPerDay
 }
 
+const initialFormValues = {
+  companyId: null,
+  customerEmail: null,
+  text: null,
+  slot: {
+    id: ''
+  }
+};
+
 const Request = ({ company, handleClose }) => {
-  console.log(company)
-  const slots = prepareSlots(company.properties.timeslotSet.edges)
+  const slotsPerDay = prepareSlots(company.properties.timeslotSet.edges)
 
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
-    company: company.id,
-    slot: null
+    companyId: company.id,
+
   });
 
   const [requestStep, setRequestStep] = useState(0);
 
-  const [ day, setDay ] = useState(-1)
-  const handleDayChange = dayIndex => () => {
-    setDay(dayIndex)
-  }
+  const [ selectedDay, setSelectedDay ] = useState(null)
 
   const nextStep = () => {
     const newStep = (requestStep + 1) % 4
@@ -96,11 +93,23 @@ const Request = ({ company, handleClose }) => {
     setRequestStep(newStep)
   }
 
+  const handleDaySelect = date => () => {
+    setSelectedDay(date)
+  }
+
   const handleChange = event => {
     const key = event.target.name
     const value = event.target.value
     const newFormValues = { ...formValues }
     newFormValues[key] = value
+    setFormValue(newFormValues)
+  }
+
+  const handleSlotChange = event => {
+    const key = event.target.name
+    const value = event.target.value
+    const newFormValues = { ...formValues }
+    newFormValues[key] = slotsPerDay.find(({ date }) => date === selectedDay).slots.find(({ id }) => id === value)
     setFormValue(newFormValues)
   }
 
@@ -110,11 +119,12 @@ const Request = ({ company, handleClose }) => {
       nextStep={nextStep}
       prevStep={prevStep}
       handleChange={handleChange}
+      handleSlotChange={handleSlotChange}
       company={company}
-      slots={slots}
+      slotsPerDay={slotsPerDay}
       formValues={formValues}
-      day={day}
-      handleDayChange={handleDayChange}
+      selectedDay={selectedDay}
+      handleDaySelect={handleDaySelect}
       handleClose={handleClose}
     />
   )

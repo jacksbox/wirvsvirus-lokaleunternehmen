@@ -2,17 +2,15 @@ import React from "react";
 
 import Button from "components/CustomButtons/Button.js";
 
-import { getShortDate } from "utils/date"
-
-const DayPicker = ({ handleDayChange, slots, day }) => (
+const DayPicker = ({ handleDaySelect, slotsPerDay, selectedDay }) => (
   <>
-   {slots.map((slotsPerDay, i) => (
+   {slotsPerDay.map(({ date, label }) => (
      <Button
-      onClick={handleDayChange(i)}
-      color={i === day ? 'info' : null}
-      key={`${i}`}
+      onClick={handleDaySelect(date)}
+      color={date === selectedDay ? 'info' : null}
+      key={`${date}`}
     >
-      {getShortDate(slotsPerDay[0].start)}
+      {label.shortDate}
     </Button>)
    )}
   </>

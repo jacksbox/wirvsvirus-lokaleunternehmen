@@ -15,36 +15,38 @@ const findSlot = (unternehmen, day, slotId) => unternehmen.available_time_slots[
 const StepSlot = ({
   nextStep,
   prevStep,
-  unternehmen,
+  company,
+  slotsPerDay,
   handleChange,
+  handleSlotChange,
   formValues,
-  day,
-  handleDayChange
+  selectedDay,
+  handleDaySelect
 }) => (
   <>
     <Grid container spacing={2}>
       <Grid item md={6}>
         <h5>Ihre eMail Adresse</h5>
-        <p>{formValues.kunden_email}</p>
+        <p>{formValues.customerEmail}</p>
         <h5>Ihre Bestellung</h5>
         <p>{formValues.text}</p>
       </Grid>
       <Grid item md={6}>
-        <h5>Pickup-Zeit: {(day >= 0 && formValues.slot >= 0) ? formatSlot(findSlot(unternehmen, day, formValues.slot)) : ''}</h5>
+        <h5>Pickup-Zeit: {formValues.slot && formValues.slot.id !== ''  && `${formValues.slot.labels.startLabel.shortDate} ${formValues.slot.labels.startLabel.timeString} Uhr`}</h5>
         <DayPicker
-          slots={unternehmen.available_time_slots}
-          handleDayChange={handleDayChange}
-          day={day}
+          slotsPerDay={slotsPerDay}
+          selectedDay={selectedDay}
+          handleDaySelect={handleDaySelect}
         />
         <br />
         <br />
         <Divider />
-        {day > -1 ? (
+        {selectedDay ? (
           <SlotPicker
-            day={day}
-            slots={unternehmen.available_time_slots}
+            slotsPerDay={slotsPerDay}
+            selectedDay={selectedDay}
             slot={formValues.slot}
-            handleChange={handleChange}
+            handleChange={handleSlotChange}
           />
         ) : (
           <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
@@ -56,7 +58,7 @@ const StepSlot = ({
           <Button
             onClick={() => nextStep()}
             color="success"
-            disabled={!(formValues.slot >= 0)}
+            disabled={!formValues.slot}
           >
             Anfrage senden
           </Button>

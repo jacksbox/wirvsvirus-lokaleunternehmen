@@ -6,16 +6,16 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 import { getTimeString, formatSlotTime } from "utils/date"
 
-const SlotPicker = ({ day, slot, slots, handleChange }) => {
+const SlotPicker = ({ selectedDay, slot, slotsPerDay, handleChange }) => {
   return (
     <div>
-      <RadioGroup name="slot" value={`${slot}`} onChange={handleChange}>
-        {slots[day].map(slot => (
+      <RadioGroup name="slot" value={slot && slot.id} onChange={handleChange}>
+        {slotsPerDay.find(({ date }) => date === selectedDay).slots.map(({ id, labels: { startLabel, endLabel } }) => (
             <FormControlLabel
-              value={`${slot.id}`}
+              value={`${id}`}
               control={<Radio />}
-              label={formatSlotTime(slot)}
-              key={slot.id}
+              label={`${startLabel.timeString} - ${endLabel.timeString} Uhr`}
+              key={id}
             />
         ))}
       </RadioGroup>
