@@ -14,8 +14,6 @@ const StepSlot = ({
   slotsPerDay,
   handleSlotChange,
   formValues: {
-    customerEmail,
-    text,
     slot
   },
   selectedDay,
@@ -23,13 +21,7 @@ const StepSlot = ({
 }) => (
   <>
     <Grid container spacing={2}>
-      <Grid item md={6}>
-        <h5>Ihre eMail Adresse</h5>
-        <p>{customerEmail}</p>
-        <h5>Ihre Bestellung</h5>
-        <p>{text}</p>
-      </Grid>
-      <Grid item md={6}>
+      <Grid item md={12}>
         <h5>Pickup-Zeit: {slot && slot.id !== ''  && `${slot.startLabel.shortDate} ${slot.startLabel.timeString} Uhr`}</h5>
         <DayPicker
           slotsPerDay={slotsPerDay}
@@ -50,17 +42,15 @@ const StepSlot = ({
           <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
         )}
       </Grid>
-      <Grid item md={12}>
-        <Grid container justify="space-between">
-          <Button onClick={() => prevStep()}>zurück</Button>
-          <Button
-            onClick={() => nextStep()}
-            color="success"
-            disabled={!slot}
-          >
-            Anfrage senden
-          </Button>
-        </Grid>
+      <Grid item md={12} container  justify="space-between">
+        <Button onClick={() => prevStep()}>zurück</Button>
+        <Button
+          onClick={() => nextStep()}
+          color="success"
+          disabled={!slot}
+        >
+          Anfrage senden
+        </Button>
       </Grid>
     </Grid>
   </>
