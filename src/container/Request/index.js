@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import RequestView from "functionalComponents/Request/Request.js";
 
@@ -23,7 +23,7 @@ const prepareLabel = isoDate => ({
 
 const prepareSlotLabels = slot => {
   const startDate = new Date(slot.start)
-  const endDate = new Date(slot.start)
+  const endDate = new Date(slot.end)
   return {
     startLabel: prepareLabel(startDate),
     endLabel: prepareLabel(endDate),
@@ -33,14 +33,14 @@ const prepareSlotLabels = slot => {
 const prepareSlots = slots => {
   const slotsPerDay = []
   slots.forEach(({ node: slot }) => {
-    const slotEnhanced = { ...slot, labels: prepareSlotLabels(slot) }
+    const slotEnhanced = { ...slot, ...prepareSlotLabels(slot) }
     const date = new Date(slot.start)
     const dateString = date.toLocaleDateString()
     const dayObject = slotsPerDay.find(({ date }) => date === dateString)
     if (dayObject) {
       dayObject.slots.push(slotEnhanced)
     } else {
-      slotsPerDay.push({ date: dateString, label: prepareLabel(date), slots: [slotEnhanced] })
+      slotsPerDay.push({ date: dateString, shortDate: getShortDate(date), slots: [slotEnhanced] })
     }
   })
   return slotsPerDay
@@ -56,7 +56,8 @@ const initialFormValues = {
 };
 
 const Request = ({ company, handleClose }) => {
-  const slotsPerDay = prepareSlots(company.properties.timeslotSet.edges)
+  const [slotsPerDay, setSlotsPerDay ] = useState(null)
+
 
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
@@ -66,6 +67,11 @@ const Request = ({ company, handleClose }) => {
   const [requestStep, setRequestStep] = useState(0);
 
   const [ selectedDay, setSelectedDay ] = useState(null)
+
+  if (!slotsPerDay) {
+    setSlotsPerDay(prepareSlots(company.properties.timeslotSet.edges))
+    return <></>
+  }
 
   const nextStep = () => {
     const newStep = (requestStep + 1) % 4

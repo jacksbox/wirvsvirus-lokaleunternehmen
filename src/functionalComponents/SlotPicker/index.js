@@ -8,7 +8,7 @@ const SlotPicker = ({ selectedDay, slot, slotsPerDay, handleChange }) => {
   return (
     <div>
       <RadioGroup name="slot" value={slot && slot.id} onChange={handleChange}>
-        {slotsPerDay.find(({ date }) => date === selectedDay).slots.map(({ id, labels: { startLabel, endLabel } }) => (
+        {slotsPerDay.find(({ date }) => date === selectedDay).slots.map(({ id, startLabel, endLabel }) => (
             <FormControlLabel
               value={`${id}`}
               control={<Radio />}

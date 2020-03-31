@@ -30,7 +30,7 @@ const StepSlot = ({
         <p>{text}</p>
       </Grid>
       <Grid item md={6}>
-        <h5>Pickup-Zeit: {slot && slot.id !== ''  && `${slot.labels.startLabel.shortDate} ${slot.labels.startLabel.timeString} Uhr`}</h5>
+        <h5>Pickup-Zeit: {slot && slot.id !== ''  && `${slot.startLabel.shortDate} ${slot.startLabel.timeString} Uhr`}</h5>
         <DayPicker
           slotsPerDay={slotsPerDay}
           selectedDay={selectedDay}

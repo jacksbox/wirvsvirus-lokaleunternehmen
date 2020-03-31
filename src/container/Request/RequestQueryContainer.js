@@ -44,7 +44,6 @@ const gqlQuery = graphql`
 `;
 
 const RequestQueryContainer = ({ companyId, handleClose }) => {
-  console.log({ companyId })
   return (
     <QueryRenderer
       environment={environment}
