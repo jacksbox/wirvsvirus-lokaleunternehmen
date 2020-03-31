@@ -3,7 +3,9 @@ import React, { Component, createRef } from "react";
 import { QueryRenderer } from "react-relay";
 import graphql from "babel-plugin-relay/macro";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet"
+import L from "leaflet";
+import Modal from "@material-ui/core/Modal";
+import RequestQueryContainer from "container/Request/RequestQueryContainer.js";
 
 import environment from "graphql/environment.js";
 
@@ -17,6 +19,8 @@ let redIcon = new L.Icon({
 });
 
 const initialState = {
+  open: false,
+  company: null,
   position: [52.498588, 13.442352],
   bounds: {
     type: "Polygon",
@@ -29,12 +33,13 @@ const gqlQuery = graphql`
     allCompanies(location_Intersects: $bounds) {
       edges {
         node {
+          id
           geometry {
             coordinates
           }
           properties {
-            name,
-            description,
+            name
+            description
             category {
               slug
             }
@@ -58,9 +63,11 @@ class Maps extends Component {
 
   componentDidMount() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
-        this.setState({ position: [ latitude, longitude ] })
-      });
+      navigator.geolocation.getCurrentPosition(
+        ({ coords: { latitude, longitude } }) => {
+          this.setState({ position: [latitude, longitude] });
+        }
+      );
     }
     this.updateBounds();
   }
@@ -84,14 +91,27 @@ class Maps extends Component {
     }
   };
 
+  handleOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  handleCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   renderMarkers = edges =>
     edges.map(
       ({
         node: {
+          id,
           geometry: {
             coordinates: [lng, lat]
           },
-          properties: { name, description, category: { slug } }
+          properties: {
+            name,
+            description,
+            category: { slug }
+          }
         }
       }) => {
         let icon = new L.Icon({
@@ -115,12 +135,12 @@ class Maps extends Component {
               e.target.closePopup();
             }}
             onClick={() => {
-              // this.setState({ unternehmen: u }, this.handleOpenModal);
+              this.setState({ companyId: id }, this.handleOpenModal);
             }}
           >
             <Popup>
               <h3>{name}</h3>
-              {description && <p>{description.substr(0,50)}...</p>}
+              {description && <p>{description.substr(0, 50)}...</p>}
             </Popup>
           </Marker>
         );
@@ -130,31 +150,47 @@ class Maps extends Component {
   renderMap = (
     { allCompanies: { edges } } = { allCompanies: { edges: [] } }
   ) => {
-    const { position } = this.state;
+    const { position, open, companyId } = this.state;
     const markers = edges ? this.renderMarkers(edges) : [];
     return (
-      <Map
-        center={position}
-        zoom={16}
-        maxZoom={16}
-        attributionControl={true}
-        zoomControl={true}
-        doubleClickZoom={true}
-        scrollWheelZoom={true}
-        dragging={true}
-        animate={true}
-        easeLinearity={0.35}
-        style={{ height: "100vH" }}
-        ref={this.mapRef}
-        onViewportChanged={this.updateBounds}
-      >
-        <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-        {markers}
-          <Marker
-            icon={redIcon}
-            position={position}
-          />
-      </Map>
+      <>
+        <Map
+          center={position}
+          zoom={16}
+          maxZoom={16}
+          attributionControl={true}
+          zoomControl={true}
+          doubleClickZoom={true}
+          scrollWheelZoom={true}
+          dragging={true}
+          animate={true}
+          easeLinearity={0.35}
+          style={{ height: "100vH" }}
+          ref={this.mapRef}
+          onViewportChanged={this.updateBounds}
+        >
+          <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+          {markers}
+          <Marker icon={redIcon} position={position} />
+        </Map>
+        <Modal open={open} onClose={this.handleCloseModal}>
+          <div
+            style={{
+              position: "absolute",
+              maxWidth: "100%",
+              width: "800px",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)"
+            }}
+          >
+            <RequestQueryContainer
+              companyId={companyId}
+              handleClose={this.handleCloseModal}
+            />
+          </div>
+        </Modal>
+      </>
     );
   };
 

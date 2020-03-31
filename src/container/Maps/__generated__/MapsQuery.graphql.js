@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5deddac95fd9c5c73020fdbea9b92d3f
+ * @relayHash 66e982bf657925915b35bff566fc920e
  */
 
 /* eslint-disable */
@@ -16,6 +16,7 @@ export type MapsQueryResponse = {|
   +allCompanies: ?{|
     +edges: $ReadOnlyArray<?{|
       +node: ?{|
+        +id: string,
         +geometry: {|
           +coordinates: ?any
         |},
@@ -44,6 +45,7 @@ query MapsQuery(
   allCompanies(location_Intersects: $bounds) {
     edges {
       node {
+        id
         geometry {
           coordinates
         }
@@ -55,7 +57,6 @@ query MapsQuery(
             id
           }
         }
-        id
       }
     }
   }
@@ -79,6 +80,13 @@ v1 = [
   }
 ],
 v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "geometry",
@@ -96,31 +104,24 @@ v2 = {
     }
   ]
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "description",
   "args": null,
   "storageKey": null
 },
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "slug",
-  "args": null,
-  "storageKey": null
-},
 v6 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "slug",
   "args": null,
   "storageKey": null
 };
@@ -161,6 +162,7 @@ return {
                 "plural": false,
                 "selections": [
                   (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -170,8 +172,8 @@ return {
                     "concreteType": "CompanyProperties",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/),
                       (v4/*: any*/),
+                      (v5/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -181,7 +183,7 @@ return {
                         "concreteType": "CategoryNode",
                         "plural": false,
                         "selections": [
-                          (v5/*: any*/)
+                          (v6/*: any*/)
                         ]
                       }
                     ]
@@ -227,6 +229,7 @@ return {
                 "plural": false,
                 "selections": [
                   (v2/*: any*/),
+                  (v3/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -236,8 +239,8 @@ return {
                     "concreteType": "CompanyProperties",
                     "plural": false,
                     "selections": [
-                      (v3/*: any*/),
                       (v4/*: any*/),
+                      (v5/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -247,13 +250,12 @@ return {
                         "concreteType": "CategoryNode",
                         "plural": false,
                         "selections": [
-                          (v5/*: any*/),
-                          (v6/*: any*/)
+                          (v6/*: any*/),
+                          (v2/*: any*/)
                         ]
                       }
                     ]
-                  },
-                  (v6/*: any*/)
+                  }
                 ]
               }
             ]
@@ -266,12 +268,12 @@ return {
     "operationKind": "query",
     "name": "MapsQuery",
     "id": null,
-    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          description\n          category {\n            slug\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n",
+    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        id\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          description\n          category {\n            slug\n            id\n          }\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '9b921203506d2fe90df259954ef568ff';
+(node/*: any*/).hash = 'c0bd593ce2ff78ffe27f2c809dbd5e16';
 
 module.exports = node;

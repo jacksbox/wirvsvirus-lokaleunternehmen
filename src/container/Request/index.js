@@ -33,7 +33,8 @@ const prepareUnternehmen = ({oeffnungszeiten, available_time_slots, ...unternehm
   available_time_slots: typeof available_time_slots === 'string' ? JSON.parse(available_time_slots) : available_time_slots
 })
 
-const Request = ({ preUnternehmen = mock, handleClose }) => {
+const Request = ({ preUnternehmen = mock, company, handleClose }) => {
+  console.log(company)
   const unternehmen = prepareUnternehmen(preUnternehmen)
 
   const [formValues, setFormValue] = useState({

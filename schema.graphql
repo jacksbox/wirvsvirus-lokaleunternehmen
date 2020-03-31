@@ -1,5 +1,5 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Mon Mar 30 2020 15:11:10 GMT+0200 (Central European Summer Time)
+# timestamp: Tue Mar 31 2020 11:45:49 GMT+0200 (Central European Summer Time)
 
 type CategoryNode implements Node {
   """The ID of the object."""
@@ -63,7 +63,6 @@ type CompanyProperties {
 
   """Maximum number of persons who can book a particular time slot"""
   maxPerSlot: Int!
-  businessHours: JSONString!
   description: String!
 
   """The company is only listed in the map when this flag is active"""
@@ -110,14 +109,6 @@ type GeometryObjectType {
   coordinates: GenericScalar
 }
 
-"""
-Allows use of a JSON String for input / output from the GraphQL schema.
-
-Use of this type is *not recommended* as you lose the benefits of having a defined, static
-schema (one of the key benefits of GraphQL).
-"""
-scalar JSONString
-
 """An object with an ID"""
 interface Node {
   """The ID of the object."""
@@ -144,7 +135,7 @@ type PageInfo {
 type Query {
   allCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): CategoryNodeConnection
   allSubCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection
-  allCompanies(before: String, after: String, first: Int, last: Int, name: String, location: Geometry, location_Intersects: Geometry, active: Boolean): CompanyNodeConnection
+  allCompanies(before: String, after: String, first: Int, last: Int, name: String, location: Geometry, location_Intersects: Geometry, active: Boolean, category: ID): CompanyNodeConnection
 
   """The ID of the object"""
   company(id: ID!): CompanyNode
