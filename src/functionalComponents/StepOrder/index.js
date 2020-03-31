@@ -16,8 +16,8 @@ const validateEmail = email => {
 
 const validate = formValues => {
   const errors = []
-  if(!validateEmail(formValues.kunden_email)) {
-    errors.push('kunden_email')
+  if(!validateEmail(formValues.customerEmail)) {
+    errors.push('customerEmail')
   }
   if(formValues.text.length === 0) {
     errors.push('text')
@@ -25,7 +25,7 @@ const validate = formValues => {
   return errors
 }
 
-const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValues }) => {
+const StepOverview = ({ nextStep, prevStep, company: { properties: { description }}, handleChange, formValues }) => {
   const [ errors, setErrors ] = useState([])
 
   const next = () => {
@@ -37,7 +37,7 @@ const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValue
     nextStep()
   }
 
-  const formFilled = formValues.kunden_email.length > 0 && formValues.text.length > 0
+  const formFilled = formValues.customerEmail && formValues.customerEmail.length > 0 && formValues.text && formValues.text.length > 0
 
   return (
     <>
@@ -48,19 +48,19 @@ const StepOverview = ({ nextStep, prevStep, unternehmen, handleChange, formValue
           <CustomInput
             formControlProps={{ fullWidth: true }}
             labelText="eMail Addresse"
-            id="kunden_email"
+            id="customerEmail"
             inputProps={{
-              name: "kunden_email",
-              value: formValues.kunden_email,
+              name: "customerEmail",
+              value: formValues.customerEmail,
               onChange: handleChange
             }}
           />
-          {errors.includes('kunden_email') && <Danger>Bitte überprüfe die eMail Adresse.</Danger>}
+          {errors.includes('customerEmail') && <Danger>Bitte überprüfe die eMail Adresse.</Danger>}
         </Grid>
         <Hidden xsDown>
           <Grid item md={6}>
             <h5>Beschreibung</h5>
-            <p>{unternehmen.beschreibung}</p>
+            <p>{description}</p>
           </Grid>
         </Hidden>
         <Grid item md={12} xs={12}>
