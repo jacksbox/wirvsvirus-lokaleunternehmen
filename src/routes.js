@@ -36,7 +36,7 @@ const dashboardRoutes = [
     rtlName: "قائمة الجدول",
     icon: Home,
     component: HomeComponent,
-    layout: "/customer"
+    layout: "/default"
   },
   {
     path: "/maps",
@@ -93,8 +93,6 @@ const dashboardRoutes = [
   },  {
     path: "/agb",
     name: "AGB",
-    rtlName: "خرائط",
-    icon: '',
     component: MetaTexte,
     layout: "/customer"
   },

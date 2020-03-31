@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { Router, Route, Switch, Redirect } from "react-router-dom";
 
 // core components
+import Default from "layouts/Default.js";
 import Business from "layouts/Business.js";
 import Customer from "layouts/Customer.js";
 
@@ -69,6 +70,7 @@ class App extends Component {
                 component={() => <Customer loggedIn={loggedIn} />}
               />
               <Route path="/business" render={() => <Business />} />
+              <Route path="/default" render={() => <Default />} />
               <Redirect from="/" to="/customer/home" />
             </Switch>
           </Router>
