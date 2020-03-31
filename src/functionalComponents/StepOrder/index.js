@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Hidden from "@material-ui/core/Hidden";
+import Divider from "@material-ui/core/Divider";
 
 import Input from "functionalComponents/Input";
 
@@ -49,7 +50,6 @@ const StepOverview = ({
       <Grid container spacing={2}>
         <Grid item md={6} xs={12}>
           <h5>Bestellungs-Details</h5>
-          <p>Trage hier ein welche Produkte du haben möchtest.</p>
           <Input
             id="kunden_email"
             value={formValues.kunden_email}
@@ -58,15 +58,11 @@ const StepOverview = ({
             required
             handleChange={handleChange}
             errors={errors}
+            variant="outlined"
             fullWidth
           />
         </Grid>
-        <Hidden xsDown>
-          <Grid item md={6}>
-            <h5>Beschreibung</h5>
-            <p>{unternehmen.beschreibung}</p>
-          </Grid>
-        </Hidden>
+        <Grid item xs={12} md={6} />
         <Grid item md={12} xs={12}>
           <Input
             id="text"
@@ -76,12 +72,16 @@ const StepOverview = ({
             required
             handleChange={handleChange}
             errors={errors}
+            variant="outlined"
             fullWidth
             multiline
             rows={5}
           />
+          <p>Trage hier ein welche Produkte du haben möchtest.</p>
         </Grid>
-
+        <Grid item xs={12}>
+          <Divider />
+        </Grid>
         <Grid item md={12} container justify="space-between">
           <Button onClick={() => prevStep()}>zurück</Button>
           <Button

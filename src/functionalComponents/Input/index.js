@@ -16,6 +16,7 @@ const Input = ({
   handleChange,
   errors,
   size = "small",
+  variant,
   fullWidth = false,
   multiline = false,
   rows = null
@@ -48,6 +49,7 @@ const Input = ({
       helperText={error ? helperText : null}
       onChange={handleChange}
       error={error}
+      variant={variant}
       fullWidth={fullWidth}
       size={size}
       multiline={multiline}

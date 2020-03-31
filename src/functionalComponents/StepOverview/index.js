@@ -5,6 +5,7 @@ import Table from "@material-ui/core/Table";
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
+import Divider from "@material-ui/core/Divider";
 
 import Button from "@material-ui/core/Button";
 
@@ -49,6 +50,12 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
       )}
       <Grid container spacing={2}>
         <Grid item md={7} xs={12}>
+          {unternehmen.beschreibung && (
+            <>
+              <h5>Beschreibung</h5>
+              <p>{unternehmen.beschreibung}</p>
+            </>
+          )}
           {(unternehmen.adresse || unternehmen.telefon) && (
             <>
               <h5>Adresse</h5>
@@ -63,12 +70,6 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
                   <span>Telefon: {unternehmen.telefon}</span>
                 )}
               </p>
-            </>
-          )}
-          {unternehmen.beschreibung && (
-            <>
-              <h5>Beschreibung</h5>
-              <p>{unternehmen.beschreibung}</p>
             </>
           )}
         </Grid>
@@ -93,6 +94,9 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
               ))}
             </tbody>
           </Table>
+        </Grid>
+        <Grid item xs={12}>
+          <Divider />
         </Grid>
         <Grid item xs={12} container justify="space-between">
           <Button onClick={handleClose}>zurück</Button>

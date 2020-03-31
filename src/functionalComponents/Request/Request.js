@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent"
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 
 import StepOverview from "functionalComponents/StepOverview";
 import StepOrder from "functionalComponents/StepOrder";
@@ -34,12 +35,15 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           {CATEGORIES.find(
-                  ({ value }) => value === unternehmen.ober_kategorie
-                ).label}
+            ({ value }) => value === unternehmen.ober_kategorie
+          ).label}
         </Typography>
         <Typography variant="h5" component="h2" gutterBottom>
           {unternehmen.name}
         </Typography>
+      <CardContent>
+      <Divider />
+      </CardContent>
         <StepComponent
           nextStep={nextStep}
           prevStep={prevStep}

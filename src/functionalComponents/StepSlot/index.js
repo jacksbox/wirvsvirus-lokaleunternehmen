@@ -55,6 +55,9 @@ const StepSlot = ({
           <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
         )}
       </Grid>
+      <Grid item xs={12}>
+        <Divider />
+      </Grid>
       <Grid item md={12} container justify="space-between">
         <Button onClick={() => prevStep()}>zurück</Button>
         <Button
