@@ -11,7 +11,7 @@ import StepOrder from "functionalComponents/StepOrder";
 import StepSlot from "functionalComponents/StepSlot";
 import StepSuccess from "functionalComponents/StepSuccess";
 
-const styles = theme => ({
+const styles = () => ({
   cardTitle: {
     margin: 0
   }
@@ -23,11 +23,15 @@ const steps = {
   1: StepOrder,
   2: StepSlot,
   3: StepSuccess
-}
+};
 
-const Request = ({ requestStep, nextStep, prevStep, handleChange, handleSlotChange, company, slotsPerDay, formValues, selectedDay, handleDaySelect, handleClose }) => {
+const Request = ({
+  requestStep,
+  company,
+  ...rest
+}) => {
   const classes = useStyles();
-  const StepComponent = steps[requestStep]
+  const StepComponent = steps[requestStep];
   return (
     <Card>
       <CardHeader color="info">
@@ -37,16 +41,8 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, handleSlotChan
       </CardHeader>
       <CardBody>
         <StepComponent
-          nextStep={nextStep}
-          prevStep={prevStep}
-          handleClose={handleClose}
-          handleChange={handleChange}
-          handleSlotChange={handleSlotChange}
           company={company}
-          slotsPerDay={slotsPerDay}
-          formValues={formValues}
-          selectedDay={selectedDay}
-          handleDaySelect={handleDaySelect}
+          {...rest}
         />
       </CardBody>
     </Card>

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 import RequestView from "functionalComponents/Request/Request.js";
 
-import apiClient from 'utils/apiClient'
-
 export const getShortDate = isoDate => {
   const date = new Date(isoDate);
   const month = date.toLocaleString('de-DE', { month: 'long' });;
@@ -50,8 +48,8 @@ const prepareSlots = slots => {
 
 const initialFormValues = {
   companyId: null,
-  customerEmail: null,
-  text: null,
+  customerEmail: '',
+  text: '',
   slot: {
     id: ''
   }
@@ -63,7 +61,6 @@ const Request = ({ company, handleClose }) => {
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
     companyId: company.id,
-
   });
 
   const [requestStep, setRequestStep] = useState(0);
