@@ -2,14 +2,16 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import Card from "components/Card/Card.js";
-import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent"
+import Typography from '@material-ui/core/Typography';
 
 import StepOverview from "functionalComponents/StepOverview";
 import StepOrder from "functionalComponents/StepOrder";
 import StepSlot from "functionalComponents/StepSlot";
 import StepSuccess from "functionalComponents/StepSuccess";
+
+import { CATEGORIES } from "consts";
 
 const styles = theme => ({
   cardTitle: {
@@ -26,16 +28,18 @@ const steps = {
 }
 
 const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, formValues, day, handleDayChange, handleClose }) => {
-  const classes = useStyles();
   const StepComponent = steps[requestStep]
   return (
     <Card>
-      <CardHeader color="info">
-        <h3 className={classes.cardTitle}>
-          <strong>{unternehmen.name}</strong>
-        </h3>
-      </CardHeader>
-      <CardBody>
+      <CardContent>
+        <Typography color="textSecondary" gutterBottom>
+          {CATEGORIES.find(
+                  ({ value }) => value === unternehmen.ober_kategorie
+                ).label}
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          {unternehmen.name}
+        </Typography>
         <StepComponent
           nextStep={nextStep}
           prevStep={prevStep}
@@ -46,7 +50,7 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
           day={day}
           handleDayChange={handleDayChange}
         />
-      </CardBody>
+      </CardContent>
     </Card>
   );
 };

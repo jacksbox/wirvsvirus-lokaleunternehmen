@@ -10,16 +10,15 @@ import Button from "@material-ui/core/Button";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import { CATEGORIES } from "consts";
-
 const styles = theme => ({
-  categoryList: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(0.5)
-    }
-  }
+  chipsContainer: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
+    '& > *': {
+      margin: theme.spacing(0.5),
+    },
+  },
 });
 
 const days = [
@@ -38,12 +37,14 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
   const classes = useStyles();
   return (
     <>
-      {(unternehmen.ober_kategorie ||  unternehmen.unter_kategorien)&& (
-        <div className={classes.categoryList}>
-          {unternehmen.ober_kategorie && <Chip label={CATEGORIES.find(({ value }) => value === unternehmen.ober_kategorie).label} />}
-          {unternehmen.unter_kategorien && unternehmen.unter_kategorien.split(',').map(category => (
-            <Chip label={category} key={category} />
-          ))}
+      {(unternehmen.ober_kategorie || unternehmen.unter_kategorien) && (
+        <div className={classes.chipsContainer}>
+          {unternehmen.unter_kategorien &&
+            unternehmen.unter_kategorien
+              .split(",")
+              .map(category => (
+                <Chip variant="outline" size="small" label={category} key={category} />
+              ))}
         </div>
       )}
       <Grid container spacing={2}>
@@ -52,8 +53,15 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
             <>
               <h5>Adresse</h5>
               <p>
-                {unternehmen.adresse && <><span>{unternehmen.adresse}</span><br /></>}
-                {unternehmen.telefon && <span>Telefon: {unternehmen.telefon}</span>}
+                {unternehmen.adresse && (
+                  <>
+                    <span>{unternehmen.adresse}</span>
+                    <br />
+                  </>
+                )}
+                {unternehmen.telefon && (
+                  <span>Telefon: {unternehmen.telefon}</span>
+                )}
               </p>
             </>
           )}
@@ -72,9 +80,14 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
                 <TableRow key={day}>
                   <TableCell className={classes.inlineList}>{day}: </TableCell>
                   <TableCell className={classes.inlineList}>
-                    {unternehmen.oeffnungszeiten[i].closed ? 'geschlossen' : (<>
-                      {unternehmen.oeffnungszeiten[i].start} - {unternehmen.oeffnungszeiten[i].end} Uhr
-                    </>)}
+                    {unternehmen.oeffnungszeiten[i].closed ? (
+                      "geschlossen"
+                    ) : (
+                      <>
+                        {unternehmen.oeffnungszeiten[i].start} -{" "}
+                        {unternehmen.oeffnungszeiten[i].end} Uhr
+                      </>
+                    )}
                   </TableCell>
                 </TableRow>
               ))}

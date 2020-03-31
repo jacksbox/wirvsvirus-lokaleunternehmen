@@ -18,7 +18,7 @@ const RegisterForm = ({ saved, handleChange, handleSubmit, errors }) => {
     <>
       <BusinessForm handleChange={handleChange} errors={errors} />
       <PasswordForm handleChange={handleChange} errors={errors} />
-      <Grid container>
+      <Grid container justify="center">
         <Grid item xs={12}>
           <Button variant="contained" onClick={handleSubmit} color="secondary">
             Jetzt registrieren

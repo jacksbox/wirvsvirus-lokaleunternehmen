@@ -3,6 +3,8 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 
+import CardContent from "@material-ui/core/CardContent"
+import Typography from '@material-ui/core/Typography';
 import CardHeader from "functionalComponents/CardHeader";
 import CardBody from "functionalComponents/CardBody";
 
@@ -46,29 +48,33 @@ const LoginRegister = ({
       <Grid container spacing={1}>
         <Grid item xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>Login</h4>
-            </CardHeader>
-            <CardBody>
+            <CardContent>
+              <Typography color="textSecondary" gutterBottom>
+                Ihr Unternehmen bei <strong>Bleib Lokal!</strong>
+              </Typography>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Login
+              </Typography>
               <LoginForm handleSubmit={handleLogin} />
-            </CardBody>
+            </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} sm={12} md={6}>
           <Card>
-            <CardHeader color="primary">
-              <h4 className={classes.cardTitleWhite}>
-                Unternehmen Registrieren
-              </h4>
-            </CardHeader>
-            <CardBody>
+            <CardContent>
+              <Typography color="textSecondary" gutterBottom>
+              Ihr Unternehmen bei <strong>Bleib Lokal!</strong>
+              </Typography>
+              <Typography variant="h5" component="h2" gutterBottom>
+                Registrierung
+              </Typography>
               <RegisterForm
                 handleChange={handleRegisterFormChange}
                 handleSubmit={handleRegister}
                 saved={saved}
                 errors={registerErrors}
               />
-            </CardBody>
+            </CardContent>
           </Card>
         </Grid>
       </Grid>
