@@ -163,7 +163,7 @@ class HereMap extends Component {
 
 
     return (
-      <div>
+      <div style={{ position: 'relative' }}>
         <div className={this.props.classes.searchbar} >
           <Search searchName={this.searchName} filterValue={this.filterValue} names={this.state.data? this.state.data.map((el, i)=>{return {"id": i, "name": el.name}}):[]}/>
         </div>

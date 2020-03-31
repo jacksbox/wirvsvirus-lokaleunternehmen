@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import { NavLink as NavLinkBase } from "react-router-dom";
+
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Drawer from "@material-ui/core/Drawer";
@@ -12,12 +14,16 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Hidden from "@material-ui/core/Hidden";
 import Divider from "@material-ui/core/Divider";
 
-
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
 import InfoIcon from "@material-ui/icons/Info";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+
+
+import logo from "assets/img/logo-web.jpg";
+
+const NavLink = ({ to, children }) => <NavLinkBase to={to} style={{ color: 'inherit', textDecoration: 'none' }}>{children}</NavLinkBase>
 
 const MenuBar = () => {
   const [open, setOpen] = useState(false);
@@ -29,24 +35,43 @@ const MenuBar = () => {
   return (
     <>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{
+          margin: "0 auto",
+          width: "100%",
+          maxWidth: "1024px"
+        }}>
+          <img src={logo} style={{ width: '100px' }}/>
           <Hidden smDown>
-            <Button color="inherit">Home</Button>
-            <Button color="inherit">Karte</Button>
-            <Button color="inherit">Registrieren</Button>
-            <Button color="inherit">Über Bleib Lokal!</Button>
+            <NavLink to="/home">
+              <Button color="inherit">Home</Button>
+            </NavLink>
+            <NavLink to="/maps">
+              <Button color="inherit">Karte</Button>
+            </NavLink>
+            <NavLink to="/register">
+              <Button color="inherit">Registrieren</Button>
+            </NavLink>
+            <NavLink to="/about">
+              <Button color="inherit">Über Bleib Lokal!</Button>
+            </NavLink>
           </Hidden>
           <div style={{ flexGrow: 1 }} />
           <Hidden smDown>
-            <Button size="small" color="inherit">
-              Impressum
-            </Button>
-            <Button size="small" color="inherit">
-              Datenschutz
-            </Button>
-            <Button size="small" color="inherit">
-              AGBs
-            </Button>
+            <NavLink to="/impressum">
+              <Button size="small" color="inherit">
+                Impressum
+              </Button>
+            </NavLink>
+            <NavLink to="/datenschutz">
+              <Button size="small" color="inherit">
+                Datenschutz
+              </Button>
+            </NavLink>
+            <NavLink to="/agb">
+              <Button size="small" color="inherit">
+                AGBs
+              </Button>
+            </NavLink>
           </Hidden>
           <Hidden mdUp>
             <IconButton
@@ -62,45 +87,61 @@ const MenuBar = () => {
       </AppBar>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         <List>
-          <ListItem button>
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <LocationOnIcon />
-            </ListItemIcon>
-            <ListItemText primary="Karte" />
-          </ListItem>
-          <ListItem button>
-            <ListItemIcon>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText primary="Über Bleib Lokal!" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemIcon>
-              <BusinessCenterIcon />
-            </ListItemIcon>
-            <ListItemText primary="Registrieren" />
-          </ListItem>
-          <Divider />
-          <ListItem button>
-            <ListItemText primary="Impressum" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="Datenschutz" />
-          </ListItem>
-          <ListItem button>
-            <ListItemText primary="AGBs" />
-          </ListItem>
+          <NavLink to="/home">
+            <ListItem button>
+              <ListItemIcon>
+                <HomeIcon />
+              </ListItemIcon>
+              <ListItemText primary="Home" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/maps">
+            <ListItem button>
+              <ListItemIcon>
+                <LocationOnIcon />
+              </ListItemIcon>
+              <ListItemText primary="Karte" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/about">
+            <ListItem button>
+              <ListItemIcon>
+                <InfoIcon />
+              </ListItemIcon>
+              <ListItemText primary="Über Bleib Lokal!" />
+            </ListItem>
+            <Divider />
+          </NavLink>
+
+          <NavLink to="/register">
+            <ListItem button>
+              <ListItemIcon>
+                <BusinessCenterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Registrieren" />
+            </ListItem>
+            <Divider />
+          </NavLink>
+
+          <NavLink to="/impressum">
+            <ListItem button>
+              <ListItemText primary="Impressum" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/datenschutz">
+            <ListItem button>
+              <ListItemText primary="Datenschutz" />
+            </ListItem>
+          </NavLink>
+          <NavLink to="/agb">
+            <ListItem button>
+              <ListItemText primary="AGBs" />
+            </ListItem>
+          </NavLink>
         </List>
       </Drawer>
     </>
   );
 };
 
-export default MenuBar
+export default MenuBar;

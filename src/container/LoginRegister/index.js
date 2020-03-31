@@ -69,7 +69,7 @@ const LoginRegister = () => {
   const [registerErrors, setRegisterErrors] = useState([]);
 
   if (loggedIn) {
-    return <Redirect to="/business/profil" />
+    return <Redirect to="/profil" />
   }
 
   const handleRegisterFormChange = event => {

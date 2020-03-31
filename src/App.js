@@ -1,12 +1,10 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 
 import { createBrowserHistory } from "history";
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router } from "react-router-dom";
 
 // core components
 import Default from "layouts/Default.js";
-import Business from "layouts/Business.js";
-import Customer from "layouts/Customer.js";
 
 import apiClient from "utils/apiClient";
 import { API_URL } from "consts";
@@ -16,7 +14,7 @@ import {
   MuiThemeProvider
 } from "@material-ui/core/styles";
 
-import "assets/css/material-dashboard-react.css?v=1.8.0";
+import '@material-ui/core/styles'
 
 apiClient.init(API_URL);
 
@@ -48,13 +46,8 @@ class App extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log("mount App");
-  }
-
   setLoggedIn = value => {
     this.setState({ loggedIn: value });
-    hist.push("/business/profil");
   };
 
   render() {
@@ -64,15 +57,7 @@ class App extends Component {
       <AuthContext.Provider value={{ loggedIn, setLoggedIn: this.setLoggedIn }}>
         <MuiThemeProvider theme={theme}>
           <Router history={hist}>
-            <Switch>
-              <Route
-                path="/customer"
-                component={() => <Customer loggedIn={loggedIn} />}
-              />
-              <Route path="/business" render={() => <Business />} />
-              <Route path="/default" render={() => <Default />} />
-              <Redirect from="/" to="/customer/home" />
-            </Switch>
+            <Default />
           </Router>
         </MuiThemeProvider>
       </AuthContext.Provider>
