@@ -25,14 +25,14 @@ const steps = {
   3: StepSuccess
 }
 
-const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, formValues, day, handleDayChange, handleClose }) => {
+const Request = ({ requestStep, nextStep, prevStep, handleChange, company, slots, formValues, day, handleDayChange, handleClose }) => {
   const classes = useStyles();
   const StepComponent = steps[requestStep]
   return (
     <Card>
       <CardHeader color="info">
         <h3 className={classes.cardTitle}>
-          <strong>{unternehmen.name}</strong>
+          <strong>{company.properties.name}</strong>
         </h3>
       </CardHeader>
       <CardBody>
@@ -41,7 +41,8 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
           prevStep={prevStep}
           handleClose={handleClose}
           handleChange={handleChange}
-          unternehmen={unternehmen}
+          company={company}
+          slots={slots}
           formValues={formValues}
           day={day}
           handleDayChange={handleDayChange}
