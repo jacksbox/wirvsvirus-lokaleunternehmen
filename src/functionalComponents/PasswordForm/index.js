@@ -1,6 +1,7 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
+import Input from "functionalComponents/Input";
 
 import CustomInput from "components/CustomInput/CustomInput.js";
 import Danger from "components/Typography/Danger.js";
@@ -11,47 +12,33 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
   const labelPwdConfirm = newPassword ? 'Neues Passwort bestätigen' : 'Passwort bestätigen'
   const namePwdConfirm = newPassword ? 'newPasswordConfirm' : 'passwordConfirm'
   return (
-    <Grid container>
+    <Grid container spacing={2}>
       <Grid item xs={6} sm={6} md={6}>
-        <CustomInput
-          labelText={labelPwd}
+        <Input
           id={namePwd}
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            type: "password",
-            name: namePwd,
-            onChange: handleChange
-          }}
+          labelText={labelPwd}
+          helperText="Passwort übperprüfen"
+          required
+          type="password"
+          variant="outlined"
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        <i>min. 6 Zeichen</i>
-        <br />
-        {errors.includes(namePwd) && (
-          <Danger>Passwort wird benötigt.</Danger>
-        )}
-        {errors.includes("passwordToShort") && (
-          <Danger>Passwort ist zu kurz.</Danger>
-        )}
+        <p><i>Min. 6 Zeichen</i></p>
       </Grid>
       <Grid item xs={6} sm={6} md={6}>
-        <CustomInput
-          labelText={labelPwdConfirm}
+        <Input
           id={namePwdConfirm}
-          formControlProps={{
-            fullWidth: true,
-            required: true
-          }}
-          inputProps={{
-            type: "password",
-            name: namePwdConfirm,
-            onChange: handleChange
-          }}
+          labelText={labelPwdConfirm}
+          helperText="Bitte bestätigen Sie ihr gewähltes Passwort."
+          required
+          type="password"
+          variant="outlined"
+          handleChange={handleChange}
+          errors={errors}
+          fullWidth
         />
-        {errors.includes(namePwdConfirm) && (
-          <Danger>Bitte bestätigen Sie ihr gewähltes Passwort.</Danger>
-        )}
       </Grid>
       <Grid item xs={12}>
         {errors.includes("noMatch") && (

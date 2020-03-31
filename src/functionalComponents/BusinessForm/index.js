@@ -45,6 +45,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Unternehmen (Name) wird benötigt."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -60,6 +61,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Kategorie bitte auswählen."
           handleChange={handleCategoryChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -71,6 +73,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Bitte überpüfen Sie die eMail Adresse."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -82,6 +85,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Bitte überpüfen Sie die Telefonummer."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -93,6 +97,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="PLZ wird benötigt."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -104,6 +109,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Stadt wird benötigt."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -115,6 +121,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Adresse wird benötigt."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
         />
       </Grid>
@@ -126,6 +133,7 @@ const BusinessForm = ({ handleChange, errors }) => {
           helperText="Beschreibung wird benötigt."
           handleChange={handleChange}
           errors={errors}
+          variant="outlined"
           fullWidth
           multiline
           rows={5}

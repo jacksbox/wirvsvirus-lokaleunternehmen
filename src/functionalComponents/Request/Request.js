@@ -41,9 +41,9 @@ const Request = ({ requestStep, nextStep, prevStep, handleChange, unternehmen, f
         <Typography variant="h5" component="h2" gutterBottom>
           {unternehmen.name}
         </Typography>
-      <CardContent>
-      <Divider />
+        <Divider />
       </CardContent>
+      <CardContent>
         <StepComponent
           nextStep={nextStep}
           prevStep={prevStep}
