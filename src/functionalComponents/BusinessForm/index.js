@@ -28,7 +28,7 @@ const BusinessForm = ({ handleChange, errors }) => {
 
   return (
     <Grid container spacing={2}>
-      <Grid item>
+      <Grid item xs={12}>
         <p style={{ fontSize: "18px" }}>
           Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
           Registrierung dieses{" "}

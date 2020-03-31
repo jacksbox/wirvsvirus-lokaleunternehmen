@@ -1,15 +1,16 @@
 import React from "react";
 
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
-
-import BusinessForm from 'container/BusinessForm'
-import AccountForm from 'container/AccountForm'
+import BusinessForm from "container/BusinessForm";
+import AccountForm from "container/AccountForm";
 
 const TabPanel = props => {
   const { children, value, index, ...other } = props;
@@ -28,28 +29,64 @@ const Profil = ({ handleChange, errors }) => {
 
   return (
     <Card>
-      <CardHeader color="info">
-        <Tabs
-          value={value}
-          onChange={handleTabChange}
-          indicatorColor="primary"
-        >
-          <Tab label="Unternehmens-Profil" />
-          <Tab label="Pickup-Slots Verwaltung" />
-          <Tab label="Account Verwaltung" />
-        </Tabs>
-      </CardHeader>
-      <CardBody>
-        <TabPanel value={value} index={0}>
-          <BusinessForm handleChange={handleChange} errors={errors} />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-        Pickup-Slots Verwaltung
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <AccountForm />
-        </TabPanel>
-      </CardBody>
+      <CardContent>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Tabs
+              value={value}
+              onChange={handleTabChange}
+              indicatorColor="primary"
+            >
+              <Tab label="Unternehmensprofil" />
+              <Tab label="Pickup-Slots Verwaltung" />
+              <Tab label="Account Verwaltung" />
+            </Tabs>
+          </Grid>
+          <Grid item xs={12}>
+            <TabPanel value={value} index={0}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography color="textSecondary" gutterBottom>
+                    Informationen für Ihre Kunden
+                  </Typography>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Unternehmensprofil bearbeiten
+                  </Typography>
+                  <Divider />
+                  <BusinessForm handleChange={handleChange} errors={errors} />
+                </Grid>
+              </Grid>
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography color="textSecondary" gutterBottom>
+                    Wann sind Sie für Ihre Kunden verfügbar
+                  </Typography>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Pickup-Slots Verwalten
+                  </Typography>
+                  <Divider />
+                </Grid>
+              </Grid>
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <Typography color="textSecondary" gutterBottom>
+                    Private Informationen
+                  </Typography>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Account Verwaltung
+                  </Typography>
+                  <Divider />
+                </Grid>
+              </Grid>
+              <AccountForm />
+            </TabPanel>
+          </Grid>
+        </Grid>
+      </CardContent>
     </Card>
   );
 };

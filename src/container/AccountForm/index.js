@@ -1,11 +1,10 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
+import Divider from "@material-ui/core/Divider";
 
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Button from "components/CustomButtons/Button.js";
-import Danger from "components/Typography/Danger.js";
-
+import Input from "functionalComponents/Input";
 import PasswordForm from "functionalComponents/PasswordForm";
 
 const AccountForm = () => {
@@ -15,35 +14,28 @@ const AccountForm = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
-          <h3>Passwort ändern</h3>
-        </Grid>
-        <Grid item xs={6}>
-          <CustomInput
-            labelText="Passwort"
+          <Input
             id="password"
-            formControlProps={{
-              fullWidth: true,
-              required: true
-            }}
-            inputProps={{
-              name: "password",
-              type: "password",
-              onChange: handleChange
-            }}
+            labelText="Passwort"
+            helperText="Passwort wird benötigt."
+            required
+            type="password"
+            variant="outlined"
+            handleChange={handleChange}
+            errors={errors}
+            fullWidth
           />
-          <i>min. 6 Zeichen</i>
-          <br />
-          {errors.includes("password") && (
-            <Danger>Passwort wird benötigt.</Danger>
-          )}
         </Grid>
       </Grid>
       <PasswordForm handleChange={handleChange} errors={errors} newPassword />
-      <Grid container>
+      <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Button onClick={handleSubmit} color="success">
+          <Divider />
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="contained" onClick={handleSubmit} color="secondary">
             Neues Passwort speichern
           </Button>
         </Grid>

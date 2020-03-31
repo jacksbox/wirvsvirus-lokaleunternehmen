@@ -3,9 +3,6 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Input from "functionalComponents/Input";
 
-import CustomInput from "components/CustomInput/CustomInput.js";
-import Danger from "components/Typography/Danger.js";
-
 const PasswordForm = ({ handleChange, errors, newPassword }) => {
   const labelPwd = newPassword ? 'Neues Passwort' : 'Passwort'
   const namePwd = newPassword ? 'newPassword' : 'password'
@@ -31,7 +28,7 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
         <Input
           id={namePwdConfirm}
           labelText={labelPwdConfirm}
-          helperText="Bitte bestätigen Sie ihr gewähltes Passwort."
+          helperText="Passwörter stimmen nicht überein."
           required
           type="password"
           variant="outlined"
@@ -39,11 +36,6 @@ const PasswordForm = ({ handleChange, errors, newPassword }) => {
           errors={errors}
           fullWidth
         />
-      </Grid>
-      <Grid item xs={12}>
-        {errors.includes("noMatch") && (
-          <Danger>Passwörter stimmen nicht überein.</Danger>
-        )}
       </Grid>
     </Grid>
   );
