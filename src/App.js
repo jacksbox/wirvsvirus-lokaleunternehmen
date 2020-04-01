@@ -36,6 +36,20 @@ const theme = createMuiTheme({
       constrastText: '#fff'
     }
   },
+  typography: {
+    h3: {
+      fontWeight: 300
+    },
+    h4: {
+      fontWeight: 300
+    },
+    h5: {
+      fontWeight: 300
+    },
+    h6: {
+      fontWeight: 300
+    },
+  }
 });
 
 class App extends Component {
