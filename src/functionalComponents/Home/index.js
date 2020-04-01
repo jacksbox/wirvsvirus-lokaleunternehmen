@@ -41,7 +41,7 @@ const Home = () => (
           <Grid item xs={12}>
             <Fab
               variant="contained"
-              onClick={() => (window.location = "/customer/maps")}
+              onClick={() => (window.location = "/maps")}
               color="primary"
             >
               Jetzt lokale Unternehmen finden
