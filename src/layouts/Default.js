@@ -13,17 +13,36 @@ const Default = () => {
     <>
       <Box component="div" style={{ position: "relative", zIndex: 1000 }}>
         <MenuBar />
-        <Box
-          component="div"
-          style={{ padding: "40px", maxWidth: "1024px", margin: "0 auto" }}
-        >
-          <Switch>
-            {routes.map(({ path, component, fullWidth }) => (
-              <Route path={path} component={component} key={path} />
-            ))}
-          </Switch>
-        </Box>
+        <Switch>
+          {routes.map(({ path, Component, fullWidth }) => {
+            if (fullWidth) {
+              return (
+                <Route path={path} key={path}>
+                  <Box component="div">
+                    <Component />
+                  </Box>
+                </Route>
+              );
+            }
+
+            return (
+              <Route path={path} key={path}>
+                <Box
+                  component="div"
+                  style={{
+                    padding: "40px",
+                    maxWidth: "1024px",
+                    margin: "0 auto"
+                  }}
+                >
+                  <Component />
+                </Box>
+              </Route>
+            );
+          })}
+        </Switch>
       </Box>
+
       <img
         src={bgImage}
         style={{

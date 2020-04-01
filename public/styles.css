@@ -1,5 +1,7 @@
 html {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 300;
+  line-Height: 1.5em;
 }
 
 html, body {

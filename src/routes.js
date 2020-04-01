@@ -10,52 +10,52 @@ const routes = [
   {
     path: "/home",
     title: "Home",
-    component: Home
+    Component: Home
   },
   {
     path: "/maps",
     title: "Karte",
-    component: Maps,
+    Component: Maps,
     fullWidth: true
   },
   {
     path: "/about",
     title: "Über Bleib Lokal!",
-    component: About
+    Component: About
   },
   {
     loginState: "notLoggedIn",
     path: "/register",
     title: "Login/Registrieren",
-    component: LoginRegister
+    Component: LoginRegister
   },
   {
     loginState: "loggedIn",
     path: "/profil",
     title: "Mein Unternehmen",
-    component: Profil
+    Component: Profil
   },
   ,
   {
     loginState: "loggedIn",
     path: "/logout",
     title: "Logout",
-    component: Logout
+    Component: Logout
   },
   {
     path: "/impressum",
     title: "Impressum",
-    component: MetaTexte
+    Component: MetaTexte
   },
   {
     path: "/datenschutz",
     title: "Datenschutz",
-    component: MetaTexte
+    Component: MetaTexte
   },
   {
     path: "/agb",
     title: "AGB",
-    component: MetaTexte
+    Component: MetaTexte
   }
 ];
 
