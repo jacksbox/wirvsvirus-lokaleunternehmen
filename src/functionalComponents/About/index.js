@@ -16,7 +16,12 @@ import step6 from "assets/img/6.png";
 const About = () => (
   <Card elevation={2}>
     <CardContent>
-      <Grid container>
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <center>
+            <img width="60%" src={logo} alt="Bleib Lokal!" />
+          </center>
+        </Grid>
         <Grid item xs={12}>
           <center>
             <Typography variant="h4">Die Herausforderung</Typography>
@@ -42,11 +47,6 @@ const About = () => (
               Produkte für ein Zeitfenster vorbestellt und anschließend vom
               Kunden kontaktlos an der Ladentür abgeholt werden können.
             </p>
-          </center>
-        </Grid>
-        <Grid item xs={12}>
-          <center>
-            <img width="60%" src={logo} alt="Bleib Lokal!" />
           </center>
         </Grid>
         <Grid item xs={12}>
