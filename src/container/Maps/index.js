@@ -6,7 +6,7 @@ import Request from "container/Request";
 import { Map, TileLayer, Marker, Popup, } from "react-leaflet";
 import Search from "./Search";
 
-import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/styles";
 
 import apiClient from 'utils/apiClient'
 

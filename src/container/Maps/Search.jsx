@@ -95,7 +95,7 @@ class Search extends Component {
       onChange: this.onChange
     };
 
-    
+
 
     return (
         <Grid container spacing={6}>

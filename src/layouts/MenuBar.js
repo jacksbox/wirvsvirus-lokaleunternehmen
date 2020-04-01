@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { NavLink as NavLinkBase } from "react-router-dom";
 
+import Box from "@material-ui/core/Box";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Drawer from "@material-ui/core/Drawer";
@@ -34,13 +35,15 @@ const MenuBar = () => {
 
   return (
     <>
-      <AppBar position="static">
-        <Toolbar style={{
+      <AppBar position="static" style={{ zIndex: 9999 }}>
+        <Box  style={{
+          display: 'flex',
           margin: "0 auto",
           width: "100%",
           maxWidth: "1024px"
         }}>
-          <img src={logo} style={{ width: '100px' }}/>
+          <img src={logo} style={{ height: '70px' }}/>
+        <Toolbar>
           <Hidden smDown>
             <NavLink to="/home">
               <Button color="inherit">Home</Button>
@@ -84,6 +87,7 @@ const MenuBar = () => {
             </IconButton>
           </Hidden>
         </Toolbar>
+        </Box>
       </AppBar>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         <List>
