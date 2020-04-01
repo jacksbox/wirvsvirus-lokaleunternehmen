@@ -5,10 +5,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
-import StepOverview from "functionalComponents/StepOverview";
-import StepOrder from "functionalComponents/StepOrder";
-import StepSlot from "functionalComponents/StepSlot";
-import StepSuccess from "functionalComponents/StepSuccess";
+import StepOverview from "components/StepOverview";
+import StepOrder from "components/StepOrder";
+import StepSlot from "components/StepSlot";
+import StepSuccess from "components/StepSuccess";
 
 const steps = {
   0: StepOverview,

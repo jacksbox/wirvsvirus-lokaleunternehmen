@@ -5,8 +5,8 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 
-import MenuBar from "functionalComponents/MenuBar";
-import Footer from "functionalComponents/Footer";
+import MenuBar from "components/MenuBar";
+import Footer from "components/Footer";
 
 import routes from "routes";
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";

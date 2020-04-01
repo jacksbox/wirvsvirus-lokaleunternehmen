@@ -1,6 +1,6 @@
 import React from "react";
 
-import DemoBanner from "functionalComponents/DemoBanner";
+import DemoBanner from "components/DemoBanner";
 
 const StepSuccess = ({ formValues: { slot } }) => {
   const slotString = `${slot.startLabel.shortDate} ${slot.startLabel.timeString} Uhr`

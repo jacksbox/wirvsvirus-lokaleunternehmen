@@ -2,9 +2,9 @@ import LoginRegister from "container/LoginRegister";
 import Maps from "container/Maps";
 import Profil from "container/Profil";
 import Logout from "container/Logout";
-import Home from "functionalComponents/Home";
-import MetaTexte from "functionalComponents/MetaTexte";
-import About from "functionalComponents/About";
+import Home from "components/Home";
+import MetaTexte from "components/MetaTexte";
+import About from "components/About";
 
 const routes = [
   {

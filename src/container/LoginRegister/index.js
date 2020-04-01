@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 
-import LoginRegisterComponent from "functionalComponents/LoginRegister";
+import LoginRegisterComponent from "components/LoginRegister";
 
 import { AuthContext } from 'App.js'
 

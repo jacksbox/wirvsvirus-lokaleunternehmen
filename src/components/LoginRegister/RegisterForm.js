@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
-import BusinessForm from 'functionalComponents/BusinessForm'
-import PasswordForm from 'functionalComponents/PasswordForm'
+import BusinessForm from 'components/BusinessForm'
+import PasswordForm from 'components/PasswordForm'
 
 import SuccessMessage from "./SuccessMessage";
 

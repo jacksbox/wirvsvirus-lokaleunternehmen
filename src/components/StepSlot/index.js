@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 
-import SlotPicker from "functionalComponents/SlotPicker";
-import DayPicker from "functionalComponents/DayPicker";
+import SlotPicker from "components/SlotPicker";
+import DayPicker from "components/DayPicker";
 
 import { formatSlot } from "utils/date";
 

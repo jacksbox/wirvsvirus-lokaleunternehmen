@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Redirect } from "react-router-dom";
 
-import ProfilComponent from 'functionalComponents/Profil'
+import ProfilComponent from 'components/Profil'
 
 import { AuthContext } from 'App.js'
 

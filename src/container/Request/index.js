@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import RequestView from "functionalComponents/Request/Request.js";
+import RequestView from "components/Request/Request.js";
 
 export const getShortDate = isoDate => {
   const date = new Date(isoDate);

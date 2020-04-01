@@ -1,7 +1,7 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
-import Input from "functionalComponents/Input";
+import Input from "components/Input";
 
 const PasswordForm = ({ handleChange, errors, newPassword }) => {
   const labelPwd = newPassword ? 'Neues Passwort' : 'Passwort'

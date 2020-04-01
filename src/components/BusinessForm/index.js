@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 
-import Input from "functionalComponents/Input";
+import Input from "components/Input";
 
 import { makeStyles } from "@material-ui/core/styles";
 

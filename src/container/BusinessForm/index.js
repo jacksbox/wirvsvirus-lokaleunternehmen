@@ -4,8 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
-import BusinessFormComponent from "functionalComponents/BusinessForm";
-import OpeningHoursForm from "functionalComponents/OpeningHoursForm";
+import BusinessFormComponent from "components/BusinessForm";
+import OpeningHoursForm from "components/OpeningHoursForm";
 
 const BusinessForm = () => {
   const handleChange = () => {}
