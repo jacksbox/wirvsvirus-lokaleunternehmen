@@ -6,7 +6,7 @@ import Select from "react-select";
 
 import Grid from "@material-ui/core/Grid";
 
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
+// import { ReactSearchAutocomplete } from "react-search-autocomplete";
 
 const items = [
   {
@@ -100,14 +100,14 @@ class Search extends Component {
     return (
         <Grid container spacing={6}>
           <Grid item xs={12} md={6}>
-            <label>Suche</label>
+            {/* <label>Suche</label>
             <ReactSearchAutocomplete
               items={this.props.names}
               onSearch={this.handleOnSearch}
               onSelect={this.handleOnSelect}
               onFocus={this.handleOnFocus}
               autoFocus
-            />
+            /> */}
           </Grid>
 
           <Grid item xs={12} md={6}>

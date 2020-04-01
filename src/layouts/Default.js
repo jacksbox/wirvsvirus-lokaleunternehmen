@@ -40,6 +40,7 @@ const Default = () => {
               </Route>
             );
           })}
+          <Redirect from="/" to="/home" />
         </Switch>
       </Box>
 
