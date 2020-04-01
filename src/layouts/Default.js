@@ -12,6 +12,8 @@ import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+const footerHeigth = '48px'
+
 const styles = theme => ({
   AppContainer: {
     position: "relative",
@@ -33,17 +35,17 @@ const styles = theme => ({
   },
   MainContainer: {
     position: 'relative',
-    paddingBottom: "40px"
+    paddingBottom: footerHeigth
   },
   MapContainer: {
     position: "absolute",
     top: 0,
     left: 0,
     right: 0,
-    bottom: "40px"
+    bottom: footerHeigth
   },
   ContentContainer: {
-    padding: "40px"
+    padding: '40px'
   }
 });
 const useStyles = makeStyles(styles);

@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 
 import { NavLink as NavLinkBase } from "react-router-dom";
 
-import Box from "@material-ui/core/Box";
 import Container from '@material-ui/core/Container';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -62,21 +61,6 @@ const MenuBar = () => {
           </Hidden>
           <div style={{ flexGrow: 1 }} />
           <Hidden smDown>
-            <NavLink to="/impressum">
-              <Button size="small" color="inherit">
-                Impressum
-              </Button>
-            </NavLink>
-            <NavLink to="/datenschutz">
-              <Button size="small" color="inherit">
-                Datenschutz
-              </Button>
-            </NavLink>
-            <NavLink to="/agb">
-              <Button size="small" color="inherit">
-                AGBs
-              </Button>
-            </NavLink>
             {loggedIn && <NavLink to="/logout">
               <Button color="inherit">logout</Button>
             </NavLink>}
