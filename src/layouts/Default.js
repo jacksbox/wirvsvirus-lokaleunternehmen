@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 
 import MenuBar from "functionalComponents/MenuBar";
 import Footer from "functionalComponents/Footer";
@@ -81,7 +82,7 @@ const Default = () => {
           </Switch>
         </Box>
       </Box>
-      <Footer></Footer>
+      <Hidden smDown><Footer /></Hidden>
     </>
   );
 };
