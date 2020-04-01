@@ -39,7 +39,7 @@ const Footer = () => {
           </NavLink>
           <NavLink to="/agb">
             <Button size="small" color="inherit">
-              AGBs
+              AGB
             </Button>
           </NavLink>
         </Toolbar>
