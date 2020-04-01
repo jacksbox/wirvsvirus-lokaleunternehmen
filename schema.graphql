@@ -1,0 +1,220 @@
+# source: https://bleiblokal-dev.herokuapp.com/graphql/
+# timestamp: Wed Apr 01 2020 17:29:33 GMT+0200 (Central European Summer Time)
+
+type CategoryNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  slug: String!
+  name: String!
+  companySet(before: String, after: String, first: Int, last: Int): CompanyNodeConnection!
+}
+
+type CategoryNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CategoryNodeEdge]!
+}
+
+"""A Relay edge containing a `CategoryNode` and its cursor."""
+type CategoryNodeEdge {
+  """The item at the end of the edge"""
+  node: CategoryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CompanyNode implements Node {
+  type: String
+
+  """The ID of the object."""
+  id: ID!
+  geometry: GeometryObjectType!
+  bbox: GenericScalar
+  properties: CompanyProperties
+}
+
+type CompanyNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CompanyNodeEdge]!
+}
+
+"""A Relay edge containing a `CompanyNode` and its cursor."""
+type CompanyNodeEdge {
+  """The item at the end of the edge"""
+  node: CompanyNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CompanyProperties {
+  email: String!
+  name: String!
+  address: String!
+
+  """Use international format: e.g. +491235565"""
+  phone: String!
+
+  """Maximum number of persons who can book a particular time slot"""
+  maxPerSlot: Int!
+  description: String!
+
+  """The company is only listed in the map when this flag is active"""
+  active: Boolean!
+  category: CategoryNode!
+  subCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection!
+  timeslotSet(before: String, after: String, first: Int, last: Int, start: DateTime, end: DateTime): TimeSlotNodeConnection!
+  requestSet(before: String, after: String, first: Int, last: Int): RequestNodeConnection!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+"""
+
+`Geometry` scalar may be represented in a few ways:
+- Well-known text (WKT)
+- Hexadecimal (HEX)
+- GeoJSON
+
+"""
+scalar Geometry
+
+"""
+
+`GeometryObjectType` represents a pair of values:
+- Geometry `type`
+- Geometry `coordinates`
+
+"""
+type GeometryObjectType {
+  type: String
+  coordinates: GenericScalar
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object."""
+  id: ID!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  allCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): CategoryNodeConnection
+  allSubCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection
+  allCompanies(before: String, after: String, first: Int, last: Int, name: String, location: Geometry, location_Intersects: Geometry, active: Boolean, category: ID): CompanyNodeConnection
+
+  """The ID of the object"""
+  company(id: ID!): CompanyNode
+}
+
+type RequestNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  company: CompanyNode!
+  customerEmail: String!
+  text: String!
+  approved: Boolean!
+  slot: TimeSlotNode!
+}
+
+type RequestNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [RequestNodeEdge]!
+}
+
+"""A Relay edge containing a `RequestNode` and its cursor."""
+type RequestNodeEdge {
+  """The item at the end of the edge"""
+  node: RequestNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type SubCategoryNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  slug: String!
+  name: String!
+  companySet(before: String, after: String, first: Int, last: Int): CompanyNodeConnection!
+}
+
+type SubCategoryNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [SubCategoryNodeEdge]!
+}
+
+"""A Relay edge containing a `SubCategoryNode` and its cursor."""
+type SubCategoryNodeEdge {
+  """The item at the end of the edge"""
+  node: SubCategoryNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type TimeSlotNode implements Node {
+  """The ID of the object."""
+  id: ID!
+  start: DateTime!
+  end: DateTime!
+  company: CompanyNode!
+  requestSet(before: String, after: String, first: Int, last: Int): RequestNodeConnection!
+}
+
+type TimeSlotNodeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [TimeSlotNodeEdge]!
+}
+
+"""A Relay edge containing a `TimeSlotNode` and its cursor."""
+type TimeSlotNodeEdge {
+  """The item at the end of the edge"""
+  node: TimeSlotNode
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}

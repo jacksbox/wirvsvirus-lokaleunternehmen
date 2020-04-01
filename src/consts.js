@@ -1,4 +1,5 @@
 export const API_URL = 'https://nameless-retreat-67960.herokuapp.com/'
+export const GRAPHQL_URL = 'https://bleiblokal-dev.herokuapp.com/graphql/'
 
 export const CATEGORIES = [
   { value: "LEB", label: "Lebensmittel" },

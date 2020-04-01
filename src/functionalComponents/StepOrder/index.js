@@ -14,9 +14,9 @@ const validateEmail = email => {
 };
 
 const validate = formValues => {
-  const errors = [];
-  if (!validateEmail(formValues.kunden_email)) {
-    errors.push("kunden_email");
+  const errors = []
+  if(!validateEmail(formValues.customerEmail)) {
+    errors.push('customerEmail')
   }
   if (formValues.text.length === 0) {
     errors.push("text");
@@ -24,14 +24,8 @@ const validate = formValues => {
   return errors;
 };
 
-const StepOverview = ({
-  nextStep,
-  prevStep,
-  unternehmen,
-  handleChange,
-  formValues
-}) => {
-  const [errors, setErrors] = useState([]);
+const StepOverview = ({ nextStep, prevStep, company: { properties: { description }}, handleChange, formValues }) => {
+  const [ errors, setErrors ] = useState([])
 
   const next = () => {
     const errors = validate(formValues);
@@ -42,8 +36,7 @@ const StepOverview = ({
     nextStep();
   };
 
-  const formFilled =
-    formValues.kunden_email.length > 0 && formValues.text.length > 0;
+  const formFilled = formValues.customerEmail && formValues.customerEmail.length > 0 && formValues.text && formValues.text.length > 0
 
   return (
     <>
@@ -51,8 +44,8 @@ const StepOverview = ({
         <Grid item md={6} xs={12}>
           <h5>Bestellungs-Details</h5>
           <Input
-            id="kunden_email"
-            value={formValues.kunden_email}
+            id="customerEmail"
+            value={formValues.customerEmail}
             labelText="eMail Addresse"
             helperText="Bitte überprüfe die eMail Adresse."
             required

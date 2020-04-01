@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "BleibLokal": {
+      "schemaPath": "schema.graphql",
+      "extensions": {
+        "endpoints": {
+          "dev": "https://bleiblokal-dev.herokuapp.com/graphql/"
+        }
+      }
+    }
+  }
+}

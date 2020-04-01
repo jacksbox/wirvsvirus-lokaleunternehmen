@@ -2,27 +2,23 @@ import React from "react";
 
 import Button from "@material-ui/core/Button";
 
-import { getShortDate } from "utils/date";
-
-const DayPicker = ({ handleDayChange, slots, day }) => {
-  return (
-    <>
-      {slots.map((slotsPerDay, i) => {
-        const selected = i === day;
-        return (
-          <Button
-            style={{ margin: '6px' }}
-            variant={selected ? "contained" : "outlined"}
-            onClick={handleDayChange(i)}
-            color={selected ? "primary" : null}
-            key={`${i}`}
-          >
-            {getShortDate(slotsPerDay[0].start)}
-          </Button>
-        );
-      })}
-    </>
-  );
-};
+const DayPicker = ({ handleDaySelect, slotsPerDay, selectedDay }) => (
+  <>
+    {slotsPerDay.map(({ date, shortDate }) => {
+      const selected = date === selectedDay;
+      return (
+        <Button
+          style={{ margin: "6px" }}
+          onClick={handleDaySelect(date)}
+          variant={selected ? "contained" : "outlined"}
+          color={selected ? "primary" : null}
+          key={`${date}`}
+        >
+          {shortDate}
+        </Button>
+      );
+    })}
+  </>
+);
 
 export default DayPicker;

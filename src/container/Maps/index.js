@@ -1,93 +1,95 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 
+import { QueryRenderer } from "react-relay";
+import graphql from "babel-plugin-relay/macro";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import L from "leaflet";
 import Modal from "@material-ui/core/Modal";
-import Request from "container/Request";
+import RequestQueryContainer from "container/Request/RequestQueryContainer.js";
 
-import { Map, TileLayer, Marker, Popup, } from "react-leaflet";
-import Search from "./Search";
-
-import { withStyles } from "@material-ui/styles";
-
-import apiClient from 'utils/apiClient'
-
-const styles = {
-  searchbar: {
-    position: "absolute",
-    top: 0,
-    left: '60px',
-    right: '80px',
-    zIndex: 1000,
-    "& $label": {
-      fontWeight: "bold",
-      color: "#000"
-    }
-  }
-};
-
-const L = require("leaflet");
+import environment from "graphql/environment.js";
 
 let redIcon = new L.Icon({
-  iconUrl:
-    "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
-  shadowUrl:
-    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconUrl: require(`assets/img/icons/POSITION.png`),
+  shadowUrl: require(`assets/img/icons/SHADOW.png`),
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   shadowSize: [41, 41]
 });
 
-class HereMap extends Component {
+const initialState = {
+  open: false,
+  company: null,
+  position: [52.498588, 13.442352],
+  bounds: {
+    type: "Polygon",
+    coordinates: [[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]]
+  }
+};
+
+const gqlQuery = graphql`
+  query MapsQuery($bounds: Geometry!) {
+    allCompanies(location_Intersects: $bounds) {
+      edges {
+        node {
+          id
+          geometry {
+            coordinates
+          }
+          properties {
+            name
+            description
+            category {
+              slug
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const lngLatToArray = lngLat => {
+  return [lngLat.lng, lngLat.lat];
+};
+
+class Maps extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      circles: [],
-      circlesArray: [],
-      points: false,
-      currentLat: 50,
-      currentLong: 10,
-      radius: 2,
-      open: false,
-      unternehmen: null
-    };
-
-    this.setCurrentPosition = this.setCurrentPosition.bind(this);
-    this.filterValue = this.filterValue.bind(this);
-    this.filterValue = this.filterValue.bind(this);
-    this.searchName = this.searchName.bind(this)
-  }
-
-  componentWillMount() {
-    /* let arr = this.state.circlesArray;
-    if (this.props.data && this.props.data[0]) arr.push(this.props.data[0]);
-    this.setState({ circlesArray: arr });
-    console.log("circle array", this.state.circlesArray);*/
-    /*if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setCurrentPosition)}*/
-  }
-
-  filterValue(value) {
-    this.setState({ filterValue: value });
-  }
-
-  setCurrentPosition(position) {
-    console.log("GOT POSITION", position.coords.longitude);
-
-    this.setState({
-      currentLat: position.coords.latitude,
-      currentLong: position.coords.longitude
-    });
+    this.mapRef = createRef();
+    this.state = initialState;
   }
 
   componentDidMount() {
-    apiClient.instance
-      .get("/unternehmen")
-      .then(res => {
-        this.setState({ data: res.data });
-      })
-      .catch(err => console.log(err));
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        ({ coords: { latitude, longitude } }) => {
+          this.setState({ position: [latitude, longitude] });
+        }
+      );
+    }
+    this.updateBounds();
   }
+
+  updateBounds = () => {
+    if (this.mapRef && this.mapRef.current) {
+      const bbox = this.mapRef.current.leafletElement.getBounds();
+      const bounds = {
+        type: "Polygon",
+        coordinates: [
+          [
+            lngLatToArray(bbox.getSouthWest()),
+            lngLatToArray(bbox.getNorthWest()),
+            lngLatToArray(bbox.getNorthEast()),
+            lngLatToArray(bbox.getSouthEast()),
+            lngLatToArray(bbox.getSouthWest())
+          ]
+        ]
+      };
+      this.setState({ bounds });
+    }
+  };
 
   handleOpenModal = () => {
     this.setState({ open: true });
@@ -97,37 +99,24 @@ class HereMap extends Component {
     this.setState({ open: false });
   };
 
-
-  searchName(name){
-    this.setState({searchName: name})
-  }
-
-  render() {
-    let markers;
-
-    if (this.state.data) {
-      let data = this.state.data;
-
-
-      if (this.state.searchName && this.state.searchName!="alle"){
-
-        data = data? data.filter(el => el.name==this.state.searchName.name) : this.state.data.filter(el => el.name==this.state.searchName.name)
-
-      } else if (this.state.searchName==="alle"){
-          data= this.state.data
-      }
-
-
-   if (this.state.filterValue) {
-        let filteredKats = this.state.filterValue.map((el => el.value));
-        data = data.filter(el => filteredKats.includes(el.ober_kategorie));
-      }
-
-      markers = data.map((u, i) => {
-        let greenIcon = new L.Icon({
-          iconUrl: require(`./icons/${u.ober_kategorie}.png`),
-          shadowUrl:
-            "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  renderMarkers = edges =>
+    edges.map(
+      ({
+        node: {
+          id,
+          geometry: {
+            coordinates: [lng, lat]
+          },
+          properties: {
+            name,
+            description,
+            category: { slug }
+          }
+        }
+      }) => {
+        let icon = new L.Icon({
+          iconUrl: require(`assets/img/icons/${slug}.png`),
+          shadowUrl: require(`assets/img/icons/SHADOW.png`),
           iconSize: [66 * 0.75, 94 * 0.75],
           iconAnchor: [24, 41],
           popupAnchor: [1, -34],
@@ -136,9 +125,9 @@ class HereMap extends Component {
 
         return (
           <Marker
-            key={`${i}:${u.langitude},${u.longitude}`}
-            position={[parseFloat(u.langitude), parseFloat(u.longitude)]}
-            icon={greenIcon}
+            key={`${name}:${lat},${lng}`}
+            position={[lat, lng]}
+            icon={icon}
             onMouseOver={e => {
               e.target.openPopup();
             }}
@@ -146,29 +135,27 @@ class HereMap extends Component {
               e.target.closePopup();
             }}
             onClick={() => {
-              this.setState({ unternehmen: u }, this.handleOpenModal);
+              this.setState({ companyId: id }, this.handleOpenModal);
             }}
           >
             <Popup>
-              <h3>{u.name}</h3>
-              {u.beschreibung && <p>{u.beschreibung.substr(0,50)}...</p>}
+              <h3>{name}</h3>
+              {description && <p>{description.substr(0, 50)}...</p>}
             </Popup>
           </Marker>
         );
-      });
-    }
+      }
+    );
 
-    const { open, unternehmen } = this.state;
-
-
-
+  renderMap = (
+    { allCompanies: { edges } } = { allCompanies: { edges: [] } }
+  ) => {
+    const { position, open, companyId } = this.state;
+    const markers = edges ? this.renderMarkers(edges) : [];
     return (
-      <div style={{ position: 'relative' }}>
-        <div className={this.props.classes.searchbar} >
-          <Search searchName={this.searchName} filterValue={this.filterValue} names={this.state.data? this.state.data.map((el, i)=>{return {"id": i, "name": el.name}}):[]}/>
-        </div>
+      <>
         <Map
-          center={[49.794714, 9.932212]}
+          center={position}
           zoom={16}
           maxZoom={16}
           attributionControl={true}
@@ -178,40 +165,57 @@ class HereMap extends Component {
           dragging={true}
           animate={true}
           easeLinearity={0.35}
-          style={{ height: '100vH' }}
+          style={{ height: "100vH" }}
+          ref={this.mapRef}
+          onViewportChanged={this.updateBounds}
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
-          <Marker
-            icon={redIcon}
-            position={[49.795028, 9.931700]}
-            onMouseOver={e => {
-              e.target.openPopup();
-            }}
-            onMouseOut={e => {
-              e.target.closePopup();
-            }}
-          >
-            <Popup>Your location</Popup>
-          </Marker>
+          <Marker icon={redIcon} position={position} />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
           <div
             style={{
-              position: 'absolute',
+              position: "absolute",
               maxWidth: "100%",
               width: "800px",
-              top: '50%',
+              top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)"
             }}
           >
-            <Request preUnternehmen={unternehmen} handleClose={this.handleCloseModal} />
+            <RequestQueryContainer
+              companyId={companyId}
+              handleClose={this.handleCloseModal}
+            />
           </div>
         </Modal>
-      </div>
+      </>
+    );
+  };
+
+  renderQueryResult = ({ error, props }) => {
+    if (error) {
+      console.log(error);
+      // TODO: just display an error notification on top the map
+      return <div>Error!</div>;
+    }
+    return props ? this.renderMap(props) : this.renderMap();
+  };
+
+  render() {
+    const { bounds } = this.state;
+
+    return (
+      <QueryRenderer
+        environment={environment}
+        fetchPolicy="store-and-network"
+        query={gqlQuery}
+        variables={{ bounds: JSON.stringify(bounds) }}
+        render={resp => this.renderQueryResult(resp)}
+      />
     );
   }
 }
 
-export default withStyles(styles)(HereMap);
+export default Maps;

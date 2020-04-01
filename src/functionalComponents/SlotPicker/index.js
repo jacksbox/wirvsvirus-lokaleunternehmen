@@ -4,22 +4,26 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-import { getTimeString, formatSlotTime } from "utils/date"
+import Grid from "@material-ui/core/Grid";
 
-const SlotPicker = ({ day, slot, slots, handleChange }) => {
+const SlotPicker = ({ selectedDay, slot, slotsPerDay, handleChange }) => {
   return (
-    <div>
-      <RadioGroup name="slot" value={`${slot}`} onChange={handleChange}>
-        {slots[day].map(slot => (
-            <FormControlLabel
-              value={`${slot.id}`}
-              control={<Radio />}
-              label={formatSlotTime(slot)}
-              key={slot.id}
-            />
-        ))}
-      </RadioGroup>
-    </div>
+    <RadioGroup name="slot" value={slot && slot.id} onChange={handleChange}>
+      <Grid container spacing={1}>
+        {slotsPerDay
+          .find(({ date }) => date === selectedDay)
+          .slots.map(({ id, startLabel, endLabel }) => (
+            <Grid item xs={6} sm={4} md={3}>
+              <FormControlLabel
+                value={`${id}`}
+                control={<Radio />}
+                label={`${startLabel.timeString} - ${endLabel.timeString} Uhr`}
+                key={id}
+              />
+            </Grid>
+          ))}
+      </Grid>
+    </RadioGroup>
   );
 };
 

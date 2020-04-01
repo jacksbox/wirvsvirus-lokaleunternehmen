@@ -1,9 +1,9 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
-import Table from "@material-ui/core/Table";
-import TableCell from "@material-ui/core/TableCell";
-import TableRow from "@material-ui/core/TableRow";
+// import Table from "@material-ui/core/Table";
+// import TableCell from "@material-ui/core/TableCell";
+// import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
 
@@ -13,67 +13,76 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const styles = theme => ({
   chipsContainer: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
-  },
+    display: "flex",
+    justifyContent: "flex-start",
+    flexWrap: "wrap",
+    "& > *": {
+      margin: theme.spacing(0.5)
+    }
+  }
 });
 
-const days = [
-  "Montag",
-  "Dienstag",
-  "Mittwoch",
-  "Donnerstag",
-  "Freitag",
-  "Samstag",
-  "Sonntag"
-];
+// const days = [
+//   "Montag",
+//   "Dienstag",
+//   "Mittwoch",
+//   "Donnerstag",
+//   "Freitag",
+//   "Samstag",
+//   "Sonntag"
+// ];
 
 const useStyles = makeStyles(styles);
 
-const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
+const StepOverview = ({
+  nextStep,
+  handleClose,
+  company: {
+    properties: {
+      address,
+      phone,
+      description,
+      category: { name: categoryName },
+      subCategories: { edges: subCategories }
+    }
+  }
+}) => {
   const classes = useStyles();
   return (
     <>
-      {(unternehmen.ober_kategorie || unternehmen.unter_kategorien) && (
+      {subCategories && (
         <div className={classes.chipsContainer}>
-          {unternehmen.unter_kategorien &&
-            unternehmen.unter_kategorien
-              .split(",")
-              .map(category => (
-                <Chip variant="outline" size="small" label={category} key={category} />
-              ))}
+          {subCategories &&
+            subCategories.length > 0 &&
+            subCategories.map(({ node: { name } }) => (
+              <Chip variant="outlined" size="small" label={name} key={name} />
+            ))}
         </div>
       )}
       <Grid container spacing={2}>
         <Grid item md={7} xs={12}>
-          {unternehmen.beschreibung && (
-            <>
-              <h5>Beschreibung</h5>
-              <p>{unternehmen.beschreibung}</p>
-            </>
-          )}
-          {(unternehmen.adresse || unternehmen.telefon) && (
+          {(address || phone) && (
             <>
               <h5>Adresse</h5>
               <p>
-                {unternehmen.adresse && (
+                {address && (
                   <>
-                    <span>{unternehmen.adresse}</span>
+                    <span>{address}</span>
                     <br />
                   </>
                 )}
-                {unternehmen.telefon && (
-                  <span>Telefon: {unternehmen.telefon}</span>
-                )}
+                {phone && <span>Telefon: {phone}</span>}
               </p>
             </>
           )}
+          {description && (
+            <>
+              <h5>Beschreibung</h5>
+              <p>{description}</p>
+            </>
+          )}
         </Grid>
-        <Grid item md={5} xs={12}>
+        {/* <Grid item md={5} xs={12}>
           <h5>Öffnungszeiten</h5>
           <Table size="small">
             <tbody>
@@ -95,6 +104,7 @@ const StepOverview = ({ nextStep, handleClose, unternehmen }) => {
             </tbody>
           </Table>
         </Grid>
+        </Grid> */}
         <Grid item xs={12}>
           <Divider />
         </Grid>
