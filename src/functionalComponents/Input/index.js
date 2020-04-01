@@ -33,7 +33,7 @@ const Input = ({
   }
 
   let valueOrDefault = {};
-  if (value) {
+  if (typeof value !== 'undefined' && value !== null) {
     valueOrDefault.value = value;
   } else if (defaultValue) {
     valueOrDefault.defaultValue = defaultValue;
