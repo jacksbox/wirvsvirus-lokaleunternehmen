@@ -35,7 +35,6 @@ const routes = [
     title: "Mein Unternehmen",
     Component: Profil
   },
-  ,
   {
     loginState: "loggedIn",
     path: "/logout",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { NavLink as NavLinkBase } from "react-router-dom";
 
@@ -21,12 +21,15 @@ import InfoIcon from "@material-ui/icons/Info";
 import BusinessCenterIcon from "@material-ui/icons/BusinessCenter";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 
+import { AuthContext } from 'App.js'
+
 
 import logo from "assets/img/logo-web.jpg";
 
 const NavLink = ({ to, children }) => <NavLinkBase to={to} style={{ color: 'inherit', textDecoration: 'none' }}>{children}</NavLinkBase>
 
 const MenuBar = () => {
+  const { loggedIn, setLoggedIn } = useContext(AuthContext)
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = value => () => {
@@ -51,12 +54,15 @@ const MenuBar = () => {
             <NavLink to="/maps">
               <Button color="inherit">Karte</Button>
             </NavLink>
-            <NavLink to="/register">
-              <Button color="inherit">Registrieren</Button>
-            </NavLink>
+            {loggedIn && <NavLink to="/profil">
+              <Button color="inherit">Profil</Button>
+            </NavLink>}
             <NavLink to="/about">
               <Button color="inherit">Über Bleib Lokal!</Button>
             </NavLink>
+            {!loggedIn && <NavLink to="/register">
+              <Button color="inherit">Login/Registrieren</Button>
+            </NavLink>}
           </Hidden>
           <div style={{ flexGrow: 1 }} />
           <Hidden smDown>
@@ -75,6 +81,9 @@ const MenuBar = () => {
                 AGBs
               </Button>
             </NavLink>
+            {loggedIn && <NavLink to="/logout">
+              <Button color="inherit">logout</Button>
+            </NavLink>}
           </Hidden>
           <Hidden mdUp>
             <IconButton
