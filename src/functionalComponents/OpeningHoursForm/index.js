@@ -15,13 +15,13 @@ const days = [
 
 const OpeningHoursForm = () => {
   return (
-    <Grid container spacing={12}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <h4>Öffnungszeiten</h4>
       </Grid>
       <Grid item xs={6} container style={{ alignItems: "flex-start" }}>
         {days.map(({ label, abbr }) => (
-          <>
+          <Grid item xs={12} container key={abbr}>
             <Grid item xs={12} sm={4}>
               <label style={{ lineHeight: "60px" }}>{label}</label>
             </Grid>
@@ -31,7 +31,7 @@ const OpeningHoursForm = () => {
             <Grid item xs={6} sm={4}>
               <TextField id={`${abbr}to`} label="bis" />
             </Grid>
-          </>
+          </Grid>
         ))}
       </Grid>
     </Grid>

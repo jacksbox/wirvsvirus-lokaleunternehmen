@@ -40,7 +40,7 @@ const Home = () => (
           </Grid>
           <Grid item xs={12}>
             <Fab
-              variant="contained"
+              variant="extended"
               onClick={() => (window.location = "/maps")}
               color="primary"
             >

@@ -16,7 +16,7 @@ const TabPanel = props => {
   const { children, value, index, ...other } = props;
 
   return (
-    <Hidden hidden={value !== index}>{value === index && children}</Hidden>
+    value === index ? children : null
   );
 };
 
