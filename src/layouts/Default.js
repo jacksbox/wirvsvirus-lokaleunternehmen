@@ -29,7 +29,7 @@ const Default = () => {
         style={{
           minHeight: "100vH",
           minWidth: "100vH",
-          opacity: 0.25,
+          opacity: 0.5,
           position: "absolute",
           top: 0,
           left: 0,
