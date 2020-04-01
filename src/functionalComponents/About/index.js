@@ -3,6 +3,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
 import logo from "assets/img/logo-web.jpg";
 import step1 from "assets/img/1.png";
@@ -18,7 +19,7 @@ const About = () => (
       <Grid container>
         <Grid item xs={12}>
           <center>
-            <h2>Die Herausforderung</h2>
+            <Typography variant="h4">Die Herausforderung</Typography>
             <p>
               Die Corona-Krise trifft den lokalen Einzelhandel besonders hart.
               Die Einzelhändler müssen ihre Läden schließen, haben oft keinen
@@ -34,7 +35,7 @@ const About = () => (
         </Grid>
         <Grid item xs={12}>
           <center>
-            <h2>Unsere Lösung</h2>
+            <Typography variant="h4">Unsere Lösung</Typography>
             <p>
               Auf dem kostenlosen Portal Bleib Lokal! verbinden wir
               Einzelhändler mit ihren Stammkunden, indem über die Website
@@ -50,7 +51,7 @@ const About = () => (
         </Grid>
         <Grid item xs={12}>
           <center>
-            <h2>So funktioniert es:</h2>
+            <Typography variant="h4">So funktioniert es:</Typography>
           </center>
         </Grid>
       </Grid>
