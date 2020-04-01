@@ -43,7 +43,7 @@ const MenuBar = () => {
           maxWidth: "1024px"
         }}>
           <img src={logo} style={{ height: '70px' }}/>
-        <Toolbar>
+        <Toolbar style={{  flexGrow: 1 }}>
           <Hidden smDown>
             <NavLink to="/home">
               <Button color="inherit">Home</Button>

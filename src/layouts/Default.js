@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import Box from "@material-ui/core/Box";
 
-import MenuBar from "layouts/MenuBar.js";
+import MenuBar from "functionalComponents/MenuBar";
 
 import routes from "routes";
 import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
