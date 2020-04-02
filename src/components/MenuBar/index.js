@@ -23,6 +23,8 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 import { AuthContext } from "App.js";
 
+import { featureFlags } from "consts";
+
 import logo from "assets/img/logo-web.png";
 
 const NavLink = ({ to, children }) => (
@@ -55,7 +57,7 @@ const MenuBar = () => {
               <NavLink to="/about">
                 <Button color="inherit">Über Bleib Lokal!</Button>
               </NavLink>
-              {!loggedIn && (
+              {featureFlags.authentication && !loggedIn && (
                 <NavLink to="/register">
                   <Button color="inherit">Login/Registrieren</Button>
                 </NavLink>
@@ -63,14 +65,19 @@ const MenuBar = () => {
             </Hidden>
             <div style={{ flexGrow: 1 }} />
             <Hidden smDown>
-              {loggedIn && (
+              {featureFlags.authentication && loggedIn && (
                 <NavLink to="/profil">
                   <Button color="inherit">Profil</Button>
                 </NavLink>
               )}
-              {loggedIn && (
+              {featureFlags.authentication && loggedIn && (
                 <NavLink to="/logout">
                   <Button color="inherit">logout</Button>
+                </NavLink>
+              )}
+              {featureFlags.signup && (
+                <NavLink to="/signup">
+                  <Button color="inherit">Unternehmen anmleden</Button>
                 </NavLink>
               )}
             </Hidden>
@@ -116,7 +123,7 @@ const MenuBar = () => {
 
           <Divider />
 
-          {!loggedIn && (
+          {featureFlags.authentication && !loggedIn && (
             <NavLink to="/register">
               <ListItem button>
                 <ListItemIcon>
@@ -126,7 +133,7 @@ const MenuBar = () => {
               </ListItem>
             </NavLink>
           )}
-          {loggedIn && (
+          {featureFlags.authentication && loggedIn && (
             <NavLink to="/profil">
             <ListItem button>
               <ListItemIcon>
@@ -136,13 +143,23 @@ const MenuBar = () => {
             </ListItem>
             </NavLink>
           )}
-          {loggedIn && (
+          {featureFlags.authentication && loggedIn && (
             <NavLink to="/logout">
             <ListItem button>
               <ListItemIcon>
                 <BusinessCenterIcon />
               </ListItemIcon>
               <ListItemText primary="Logout" />
+            </ListItem>
+            </NavLink>
+          )}
+          {featureFlags.signup && loggedIn && (
+            <NavLink to="/signup">
+            <ListItem button>
+              <ListItemIcon>
+                <BusinessCenterIcon />
+              </ListItemIcon>
+              <ListItemText primary="Unternehmen anmleden" />
             </ListItem>
             </NavLink>
           )}

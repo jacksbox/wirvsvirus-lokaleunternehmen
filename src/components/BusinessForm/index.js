@@ -4,61 +4,52 @@ import Grid from "@material-ui/core/Grid";
 
 import Input from "components/Input";
 
-import { makeStyles } from "@material-ui/core/styles";
-
-import { CATEGORIES } from "consts";
-
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    paddingTop: "2px",
-    margin: theme.spacing(3, 0, 1, 0),
-    minWidth: "100%"
-  }
-}));
-
-
-const BusinessForm = ({ handleChange, errors }) => {
-  const classes = useStyles();
-  const [category, setCategory] = useState("");
+const BusinessForm = ({ formValues: { subCategoryIds }, handleChange, errors }) => {
+  const [categoryId, setCategoryId] = useState("");
 
   const handleCategoryChange = event => {
-    setCategory(event.target.value);
+    setCategoryId(event.target.value);
     handleChange(event);
   };
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12}>
-        <p style={{ fontSize: "18px" }}>
-          Das Angebot befindet sich im Aufbau, bitte nutzen Sie zur
-          Registrierung dieses{" "}
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCVS7ej3dcFbiOBTck3wcjDyytzvIFzvHCStJt8Ir-9u7vQ/viewform?usp=sf_link">
-            <strong>Formular</strong>
-          </a>
-        </p>
-      </Grid>
       <Grid item xs={12} sm={12} md={6}>
         <Input
           id="name"
           required
-          labelText="Unternehmen (Name)"
-          helperText="Unternehmen (Name) wird benötigt."
+          labelText="Unternehmen"
+          helperText="Unternehmen wird benötigt."
           handleChange={handleChange}
           errors={errors}
           variant="outlined"
           fullWidth
         />
       </Grid>
+      <Grid item xs={12} sm={12} md={6} />
       <Grid item xs={12} sm={12} md={6}>
-
-      <Input
-          id="ober_kategorie"
+        <Input
+          id="categoryId"
           select
-          value={category || CATEGORIES[0].value}
-          options={CATEGORIES}
+          value={categoryId}
+          options={[]}
           required
           labelText="Kategorie"
           helperText="Kategorie bitte auswählen."
+          handleChange={handleCategoryChange}
+          errors={errors}
+          variant="outlined"
+          fullWidth
+        />
+      </Grid>
+      <Grid item xs={12} sm={12} md={6}>
+        <Input
+          id="subCategoryIds"
+          select
+          value={subCategoryIds || []}
+          options={[]}
+          labelText="Unterkategorien"
+          helperText="Unterkategorie bitte auswählen."
           handleChange={handleCategoryChange}
           errors={errors}
           variant="outlined"
@@ -79,7 +70,7 @@ const BusinessForm = ({ handleChange, errors }) => {
       </Grid>
       <Grid item xs={12} sm={12} md={6}>
         <Input
-          id="telefon"
+          id="phone"
           required
           labelText="Telefon"
           helperText="Bitte überpüfen Sie die Telefonummer."
@@ -127,7 +118,7 @@ const BusinessForm = ({ handleChange, errors }) => {
       </Grid>
       <Grid item xs={12} sm={12} md={12}>
         <Input
-          id="beschreibung"
+          id="description"
           required
           labelText="Beschreibung"
           helperText="Beschreibung wird benötigt."

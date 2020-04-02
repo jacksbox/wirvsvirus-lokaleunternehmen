@@ -13,7 +13,7 @@ import bgImage from "assets/img/sidebar-wirvsvirus.jpeg";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-const footerHeigth = '48px'
+const footerHeigth = "48px";
 
 const styles = theme => ({
   AppContainer: {
@@ -35,7 +35,7 @@ const styles = theme => ({
     }
   },
   MainContainer: {
-    position: 'relative',
+    position: "relative",
     paddingBottom: footerHeigth
   },
   MapContainer: {
@@ -46,7 +46,7 @@ const styles = theme => ({
     bottom: footerHeigth
   },
   ContentContainer: {
-    padding: '40px'
+    padding: "40px"
   }
 });
 const useStyles = makeStyles(styles);
@@ -59,7 +59,10 @@ const Default = () => {
         <MenuBar />
         <Box className={classes.MainContainer}>
           <Switch>
-            {routes.map(({ path, Component, fullWidth }) => {
+            {routes.map(({ active, path, Component, fullWidth }) => {
+              if (!active) {
+                return null;
+              }
               if (fullWidth) {
                 return (
                   <Route path={path} key={path}>
@@ -72,7 +75,7 @@ const Default = () => {
 
               return (
                 <Route path={path} key={path}>
-                  <Container  className={classes.ContentContainer} maxWidth="lg">
+                  <Container className={classes.ContentContainer} maxWidth="lg">
                     <Component />
                   </Container>
                 </Route>
@@ -82,7 +85,9 @@ const Default = () => {
           </Switch>
         </Box>
       </Box>
-      <Hidden smDown><Footer /></Hidden>
+      <Hidden smDown>
+        <Footer />
+      </Hidden>
     </>
   );
 };

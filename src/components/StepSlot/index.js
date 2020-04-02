@@ -7,8 +7,6 @@ import Button from "@material-ui/core/Button";
 import SlotPicker from "components/SlotPicker";
 import DayPicker from "components/DayPicker";
 
-import { formatSlot } from "utils/date";
-
 const StepSlot = ({
   nextStep,
   prevStep,

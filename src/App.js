@@ -6,17 +6,12 @@ import { Router } from "react-router-dom";
 // core components
 import Default from "layouts/Default.js";
 
-import apiClient from "utils/apiClient";
-import { API_URL } from "consts";
-
 import {
   createMuiTheme,
   MuiThemeProvider
 } from "@material-ui/core/styles";
 
 import '@material-ui/core/styles'
-
-apiClient.init(API_URL);
 
 const hist = createBrowserHistory();
 
@@ -57,7 +52,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: true
+      loggedIn: false
     };
   }
 
