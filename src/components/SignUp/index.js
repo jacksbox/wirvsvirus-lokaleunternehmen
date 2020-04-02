@@ -11,11 +11,7 @@ import BusinessForm from "components/BusinessForm";
 
 import SuccessMessage from "./SuccessMessage";
 
-const SignUp = ({ saved, handleSubmit, ...rest}) => {
-  if (saved) {
-    return <SuccessMessage />;
-  }
-
+const SignUp = ({ saved, handleSubmit, ...rest }) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
@@ -30,21 +26,27 @@ const SignUp = ({ saved, handleSubmit, ...rest}) => {
             <Divider />
           </CardContent>
           <CardContent>
-            <BusinessForm {...rest} />
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <Divider />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  onClick={handleSubmit}
-                  color="secondary"
-                >
-                  Jetzt registrieren
-                </Button>
-              </Grid>
-            </Grid>
+            {saved ? (
+              <SuccessMessage />
+            ) : (
+              <>
+                <BusinessForm {...rest} />
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      variant="contained"
+                      onClick={handleSubmit}
+                      color="secondary"
+                    >
+                      Jetzt registrieren
+                    </Button>
+                  </Grid>
+                </Grid>
+              </>
+            )}
           </CardContent>
         </Card>
       </Grid>

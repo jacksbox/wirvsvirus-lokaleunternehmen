@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import { commitMutation } from "react-relay";
 import { fetchQuery } from "relay-runtime";
 import graphql from "babel-plugin-relay/macro";
+import Nominatim from "nominatim-geocoder";
 
 import SignUpComponent from "components/SignUp";
 
 import environment from "graphql/environment.js";
+
+const geocoder = new Nominatim()
 
 const availableCategoriesGqlQuery = graphql`
   query SignUpCategoriesQuery {
@@ -28,6 +32,15 @@ const availableCategoriesGqlQuery = graphql`
   }
 `;
 
+
+const companyMutationGql = graphql`
+  mutation SignUpMutation($input: CreateCompanyInput!) {
+    createCompany(input: $input) {
+      clientMutationId
+    }
+  }
+`;
+
 const initialFormValues = {
   name: null,
   email: null,
@@ -36,7 +49,8 @@ const initialFormValues = {
   subCategoryIds: null,
   zip: null,
   city: null,
-  address: null,
+  street: null,
+  streetNo: null,
   description: null
 };
 
@@ -101,15 +115,60 @@ const SignUp = () => {
     setFormValues(formValues);
   };
 
+  const prepareCompanyData = ([ lng, lat ]) => {
+    const {
+      name, email, phone, description, categoryId, subCategoryIds,
+      zip, city, street, streetNo
+    } = formValues
+    return {
+      name,
+      address: `${street} ${streetNo}, ${zip} ${city}`,
+      email,
+      phone,
+      description,
+      categoryId,
+      subCategoryIds,
+      location: `{'type': 'point', 'coordinates': [${parseFloat(lng)}, ${parseFloat(lat)}]}`
+    }
+  }
+
   const handleSubmit = () => {
     console.log(formValues);
+    const { zip, city, street, streetNo } = formValues
     const errors = validateRegisterForm(formValues);
     if (errors.length > 0) {
       setErrors(errors);
       return false;
     }
-    // call the api please
-    setSaved(true);
+    geocoder.search( { q: `${streetNo}, ${street}, ${zip} ${city}` } ).then(response => {
+      console.log(response);
+      if (!response.length) {
+        errors.push('noGeo', 'street', 'streetNo', 'zip', 'city')
+        setErrors(errors);
+      } else {
+        if (!response[0].lon || !response[0].lat) {
+          throw new Error('No long/lat available')
+        }
+        const lngLat =  [response[0].lon, response[0].lat]
+        const input = prepareCompanyData(lngLat)
+        console.log(input)
+        commitMutation(environment, {
+          mutation: companyMutationGql,
+          variables: {
+            input
+          },
+          onCompleted: () => {
+            setSaved(true);
+          },
+          onError: () => {
+            console.log('mutation error')
+          }
+        })
+      }
+    })
+    .catch(error => {
+        console.log('geocoder error', error)
+    })
   };
 
   return (

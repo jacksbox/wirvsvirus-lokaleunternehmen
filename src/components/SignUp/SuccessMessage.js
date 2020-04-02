@@ -1,11 +1,13 @@
 import React from "react";
 
+import Typography from '@material-ui/core/Typography'
+
 const SuccessMessage = () => (
   <>
-    <h3>Ihr Unternehmen wurde registriert!</h3>
-    <h5>
-      Ab jetzt können Ihre Kunden Sie auf unserer Karte finde
-    </h5>
+    <Typography variant="h3">Ihr Unternehmen wurde registriert!</Typography>
+    <Typography variant="body1">
+      Sobald Ihr Eintrag von uns verifiziert wurde, können Kunden Sie auf unserer Karte finden.
+    </Typography>
   </>
 )
 
