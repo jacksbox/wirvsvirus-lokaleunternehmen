@@ -1,15 +1,19 @@
 import React, { Component, createRef } from "react";
-
 import { QueryRenderer } from "react-relay";
-import graphql from "babel-plugin-relay/macro";
+import { fetchQuery } from 'relay-runtime';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import L from "leaflet";
+import graphql from "babel-plugin-relay/macro";
+
 import Modal from "@material-ui/core/Modal";
+
 import RequestQueryContainer from "container/Request/RequestQueryContainer.js";
+import SearchBar from "components/SearchBar";
 
 import environment from "graphql/environment.js";
 
-let redIcon = new L.Icon({
+import L from "leaflet";
+
+const redIcon = new L.Icon({
   iconUrl: require(`assets/img/icons/POSITION.png`),
   shadowUrl: require(`assets/img/icons/SHADOW.png`),
   iconSize: [25, 41],
@@ -21,6 +25,7 @@ let redIcon = new L.Icon({
 const initialState = {
   open: false,
   company: null,
+  categories: [],
   position: [52.498588, 13.442352],
   bounds: {
     type: "Polygon",
@@ -49,6 +54,19 @@ const gqlQuery = graphql`
     }
   }
 `;
+const categoriesGqlQuery = graphql`
+  query MapsCategoriesQuery {
+    allCategories {
+      edges {
+        node {
+          id
+          slug
+          name
+        }
+      }
+    }
+  }
+`;
 
 const lngLatToArray = lngLat => {
   return [lngLat.lng, lngLat.lat];
@@ -70,6 +88,16 @@ class Maps extends Component {
       );
     }
     this.updateBounds();
+
+    fetchQuery(environment, categoriesGqlQuery).then(
+      (
+        { allCategories: { edges: categories } } = {
+          allCategories: { edges: [] }
+        }
+      ) => {
+        this.setState({ categories });
+      }
+    );
   }
 
   updateBounds = () => {
@@ -148,10 +176,12 @@ class Maps extends Component {
     );
 
   renderMap = (
-    { allCompanies: { edges } } = { allCompanies: { edges: [] } }
+    { allCompanies: { edges: companies } = { allCompanies: { edges: [] } } } = {
+      allCompanies: { edges: [] }
+    }
   ) => {
-    const { position, open, companyId } = this.state;
-    const markers = edges ? this.renderMarkers(edges) : [];
+    const { position, open, companyId, categories } = this.state;
+    const markers = companies ? this.renderMarkers(companies) : [];
     return (
       <>
         <Map
@@ -172,6 +202,7 @@ class Maps extends Component {
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
           <Marker icon={redIcon} position={position} />
+          <SearchBar categories={categories} />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
           <div
