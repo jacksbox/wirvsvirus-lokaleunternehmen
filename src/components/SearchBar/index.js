@@ -1,13 +1,28 @@
-import React from 'react'
+import React from "react";
 
-import CategorySelect from './CategorySelect'
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
+
+import CategorySelect from "./CategorySelect";
 
 const SearchBar = ({ categories, handleCategoriesChange }) => {
   return (
-    <div style={{ position: 'absolute', top: 8, left: 60, right: 20, zIndex: 1200 }}>
-      <CategorySelect categories={categories} handleCategoriesChange={handleCategoriesChange} />
-    </div>
-  )
-}
+    <Box
+      style={{
+        position: "absolute",
+        top: 60,
+        right: 10,
+        width: 270,
+        maxWidth: 270,
+        zIndex: 1000
+      }}
+    >
+      <CategorySelect
+        categories={categories}
+        handleCategoriesChange={handleCategoriesChange}
+      />
+    </Box>
+  );
+};
 
-export default SearchBar
+export default SearchBar;

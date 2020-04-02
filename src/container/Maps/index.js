@@ -13,6 +13,10 @@ import environment from "graphql/environment.js";
 
 import L from "leaflet";
 
+import ReactLeafletSearch from "react-leaflet-search";
+
+const defaultZoom = 16
+
 const redIcon = new L.Icon({
   iconUrl: require(`assets/img/icons/POSITION.png`),
   shadowUrl: require(`assets/img/icons/SHADOW.png`),
@@ -195,7 +199,7 @@ class Maps extends Component {
         <SearchBar categories={categories} handleCategoriesChange={this.handleCategoriesChange} />
         <Map
           center={position}
-          zoom={16}
+          zoom={defaultZoom}
           maxZoom={16}
           attributionControl={true}
           zoomControl={true}
@@ -210,7 +214,16 @@ class Maps extends Component {
         >
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
-          <Marker icon={redIcon} position={position} />
+          <ReactLeafletSearch
+            position="topright"
+            zoom={defaultZoom}
+            search={position}
+            inputPlaceholder="Straße, PLZ..."
+            openSearchOnLoad={true}
+            markerIcon={redIcon}
+            showPopup={false}
+            closeResultsOnClick={true}
+          />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
           <div
