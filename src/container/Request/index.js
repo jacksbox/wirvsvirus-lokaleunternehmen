@@ -1,13 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import graphql from "babel-plugin-relay/macro";
+import { commitMutation } from "react-relay";
 
 import RequestView from "components/Request/Request.js";
 
+import environment from "graphql/environment.js";
+
+const requestGqlMutation = graphql`
+  mutation RequestMutation($input: CreateRequestInput!) {
+    createRequest(input: $input) {
+      clientMutationId
+    }
+  }
+`;
+
 export const getShortDate = isoDate => {
   const date = new Date(isoDate);
-  const month = date.toLocaleString('de-DE', { month: 'long' });;
+  const month = date.toLocaleString("de-DE", { month: "long" });
   const day = date.getDate();
   return `${day}. ${month}`;
-}
+};
 
 export const getTimeString = isoDate => {
   const date = new Date(isoDate);
@@ -19,102 +31,116 @@ export const getTimeString = isoDate => {
 const prepareLabel = isoDate => ({
   shortDate: getShortDate(isoDate),
   timeString: getTimeString(isoDate)
-})
+});
 
 const prepareSlotLabels = slot => {
-  const startDate = new Date(slot.start)
-  const endDate = new Date(slot.end)
+  const startDate = new Date(slot.start);
+  const endDate = new Date(slot.end);
   return {
     startLabel: prepareLabel(startDate),
-    endLabel: prepareLabel(endDate),
-  }
-}
+    endLabel: prepareLabel(endDate)
+  };
+};
 
 const prepareSlots = slots => {
-  const slotsPerDay = []
+  const slotsPerDay = [];
   slots.forEach(({ node: slot }) => {
-    const slotEnhanced = { ...slot, ...prepareSlotLabels(slot) }
-    const date = new Date(slot.start)
-    const dateString = date.toLocaleDateString()
-    const dayObject = slotsPerDay.find(({ date }) => date === dateString)
+    const slotEnhanced = { ...slot, ...prepareSlotLabels(slot) };
+    const date = new Date(slot.start);
+    const dateString = date.toLocaleDateString();
+    const dayObject = slotsPerDay.find(({ date }) => date === dateString);
     if (dayObject) {
-      dayObject.slots.push(slotEnhanced)
+      dayObject.slots.push(slotEnhanced);
     } else {
-      slotsPerDay.push({ date: dateString, shortDate: getShortDate(date), slots: [slotEnhanced] })
+      slotsPerDay.push({
+        date: dateString,
+        shortDate: getShortDate(date),
+        slots: [slotEnhanced]
+      });
     }
-  })
-  return slotsPerDay
-}
+  });
+  return slotsPerDay;
+};
 
 const initialFormValues = {
   companyId: null,
-  customerEmail: '',
-  text: '',
+  customerEmail: "",
+  text: "",
   slot: {
-    id: ''
+    id: ""
   }
 };
 
 const Request = ({ company, handleClose }) => {
-  const [slotsPerDay, setSlotsPerDay ] = useState(null)
-
+  const [slotsPerDay, setSlotsPerDay] = useState(null);
 
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
-    companyId: company.id,
+    companyId: company.id
   });
 
   const [requestStep, setRequestStep] = useState(0);
 
-  const [ selectedDay, setSelectedDay ] = useState(null)
+  const [selectedDay, setSelectedDay] = useState(null);
 
   if (!slotsPerDay) {
-    setSlotsPerDay(prepareSlots(company.properties.timeslotSet.edges))
-    return <></>
+    setSlotsPerDay(prepareSlots(company.properties.timeslotSet.edges));
+    return <></>;
   }
 
   const nextStep = () => {
-    const newStep = (requestStep + 1) % 4
+    const newStep = (requestStep + 1) % 4;
     // send order
     if (requestStep === 2) {
-      const { company, customerEmail, text, slot } = formValues
-      // const cSlot = unternehmen.available_time_slots[day].find(({ id: sid }) => `${sid}` === `${slot}`)
-      // apiClient.instance.post('anfragen', {
-      //   kunden_email,
-      //   text,
-      //   unternehmen_id: id,
-      //   slot: cSlot
-      // }).then(() => setRequestStep(newStep))
-      setRequestStep(newStep)
+      const { companyId, customerEmail, text, slot } = formValues;
+      commitMutation(environment, {
+        mutation: requestGqlMutation,
+        variables: {
+          input: {
+            companyId,
+            slotId: slot.id,
+            customerEmail,
+            text
+          }
+        },
+        onCompleted: () => {
+          setRequestStep(newStep);
+        },
+        onError: () => {
+          console.log('mutation error')
+        }
+      })
     } else {
-      setRequestStep(newStep)
+      setRequestStep(newStep);
     }
-  }
+  };
 
   const prevStep = () => {
-    const newStep = requestStep - 1
-    setRequestStep(newStep)
-  }
+    const newStep = requestStep - 1;
+    setRequestStep(newStep);
+  };
 
   const handleDaySelect = date => () => {
-    setSelectedDay(date)
-  }
+    setSelectedDay(date);
+  };
 
   const handleChange = event => {
-    const key = event.target.name
-    const value = event.target.value
-    const newFormValues = { ...formValues }
-    newFormValues[key] = value
-    setFormValue(newFormValues)
-  }
+    const key = event.target.name;
+    const value = event.target.value;
+    const newFormValues = { ...formValues };
+    newFormValues[key] = value;
+    setFormValue(newFormValues);
+  };
 
   const handleSlotChange = event => {
-    const key = event.target.name
-    const value = event.target.value
-    const newFormValues = { ...formValues }
-    newFormValues[key] = slotsPerDay.find(({ date }) => date === selectedDay).slots.find(({ id }) => id === value)
-    setFormValue(newFormValues)
-  }
+    const key = event.target.name;
+    const value = event.target.value;
+    const newFormValues = { ...formValues };
+    newFormValues[key] = slotsPerDay
+      .find(({ date }) => date === selectedDay)
+      .slots.find(({ id }) => id === value);
+    setFormValue(newFormValues);
+  };
 
   return (
     <RequestView
@@ -130,7 +156,7 @@ const Request = ({ company, handleClose }) => {
       handleDaySelect={handleDaySelect}
       handleClose={handleClose}
     />
-  )
+  );
 };
 
 export default Request;
