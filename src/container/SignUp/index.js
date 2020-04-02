@@ -1,6 +1,32 @@
 import React, { useState, useEffect } from "react";
 
+import { fetchQuery } from "relay-runtime";
+import graphql from "babel-plugin-relay/macro";
+
 import SignUpComponent from "components/SignUp";
+
+import environment from "graphql/environment.js";
+
+const availableCategoriesGqlQuery = graphql`
+  query SignUpCategoriesQuery {
+    allCategories {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    allSubCategories {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+  }
+`;
 
 const initialFormValues = {
   name: null,
@@ -28,7 +54,7 @@ const requiredFormValues = [
   "zip",
   "city",
   "address",
-  "description",
+  "description"
 ];
 
 const validateRegisterForm = formValues => {
@@ -48,24 +74,35 @@ const validateRegisterForm = formValues => {
 };
 
 const SignUp = () => {
+  const [{ categories, subCategories }, setAvailableCategories] = useState({
+    categories: [],
+    subCategories: []
+  });
   const [saved, setSaved] = useState(false);
-  const [formValues, setFormValues] = useState(
-    initialFormValues
-  );
+  const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-
-  }, [])
+    fetchQuery(environment, availableCategoriesGqlQuery).then(
+      (
+        { allCategories: { edges: categories }, allSubCategories: { edges: subCategories } } = {
+          allCategories: { edges: [] },
+          allSubCategories: { edges: [] }
+        }
+      ) => {
+        setAvailableCategories({ categories, subCategories });
+      }
+    );
+  }, []);
 
   const handleChange = event => {
     const { name, value } = event.target;
     formValues[name] = value;
-    setFormValues(formValues)
+    setFormValues(formValues);
   };
 
   const handleSubmit = () => {
-    console.log(formValues)
+    console.log(formValues);
     const errors = validateRegisterForm(formValues);
     if (errors.length > 0) {
       setErrors(errors);
@@ -80,6 +117,8 @@ const SignUp = () => {
       formValues={formValues}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      categories={categories}
+      subCategories={subCategories}
       errors={errors}
       saved={saved}
     />

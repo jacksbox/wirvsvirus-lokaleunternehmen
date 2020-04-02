@@ -11,7 +11,7 @@ import BusinessForm from "components/BusinessForm";
 
 import SuccessMessage from "./SuccessMessage";
 
-const SignUp = ({ saved, formValues, handleChange, handleSubmit, errors }) => {
+const SignUp = ({ saved, handleSubmit, ...rest}) => {
   if (saved) {
     return <SuccessMessage />;
   }
@@ -30,7 +30,7 @@ const SignUp = ({ saved, formValues, handleChange, handleSubmit, errors }) => {
             <Divider />
           </CardContent>
           <CardContent>
-            <BusinessForm formValues={formValues} handleChange={handleChange} errors={errors} />
+            <BusinessForm {...rest} />
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <Divider />

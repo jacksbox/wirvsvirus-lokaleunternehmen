@@ -2,15 +2,26 @@ import React, { useState } from "react";
 
 import Grid from "@material-ui/core/Grid";
 
+import Select from "react-select";
+
 import Input from "components/Input";
 
-const BusinessForm = ({ formValues: { subCategoryIds }, handleChange, errors }) => {
+const BusinessForm = ({ categories, subCategories, handleChange, errors }) => {
   const [categoryId, setCategoryId] = useState("");
+  const [subCategoriesValues, setSubCategoriesValues] = useState(null);
 
   const handleCategoryChange = event => {
     setCategoryId(event.target.value);
     handleChange(event);
   };
+
+  const handleSubCategoriesChange = values => {
+    setSubCategoriesValues(values);
+    handleChange({ target: {
+      name: 'subCategoryIds',
+      value: values ? values.map(({ value }) => value) : []
+    }})
+  }
 
   return (
     <Grid container spacing={2}>
@@ -32,7 +43,7 @@ const BusinessForm = ({ formValues: { subCategoryIds }, handleChange, errors }) 
           id="categoryId"
           select
           value={categoryId}
-          options={[]}
+          options={categories.map(({ node: { id, name} }) => ({ value: id, label: name }))}
           required
           labelText="Kategorie"
           helperText="Kategorie bitte auswählen."
@@ -43,17 +54,28 @@ const BusinessForm = ({ formValues: { subCategoryIds }, handleChange, errors }) 
         />
       </Grid>
       <Grid item xs={12} sm={12} md={6}>
-        <Input
-          id="subCategoryIds"
-          select
-          value={subCategoryIds || []}
-          options={[]}
-          labelText="Unterkategorien"
-          helperText="Unterkategorie bitte auswählen."
-          handleChange={handleCategoryChange}
-          errors={errors}
-          variant="outlined"
-          fullWidth
+        <Select
+          isMulti
+          name="subCategories"
+          value={subCategoriesValues}
+          onChange={handleSubCategoriesChange}
+          options={subCategories.map(({ node: { id, name } }) => ({
+            value: id,
+            label: name
+          }))}
+          classNamePrefix="ReactSelect"
+          placeholder="Unterkategorien"
+          styles={{
+            container: (provided) => ({
+              ...provided,
+              zIndex: 7000,
+              height: 56
+            }),
+            control: (provided) => ({
+              ...provided,
+              height: 56
+            })
+          }}
         />
       </Grid>
       <Grid item xs={12} sm={12} md={6}>
