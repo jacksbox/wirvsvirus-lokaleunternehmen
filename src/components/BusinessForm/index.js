@@ -74,13 +74,16 @@ const BusinessForm = ({ categories, subCategories, handleChange, errors }) => {
           styles={{
             container: provided => ({
               ...provided,
-              zIndex: 7000,
               height: 56
             }),
             control: provided => ({
               ...provided,
               height: 56
-            })
+            }),
+            menu: provided => ({
+              ...provided,
+              zIndex: 5000
+            }),
           }}
         />
       </Grid>
