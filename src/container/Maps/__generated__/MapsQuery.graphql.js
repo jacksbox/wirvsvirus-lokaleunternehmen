@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 66e982bf657925915b35bff566fc920e
+ * @relayHash 86868f924bf5db49c9f9fc0522f7f9de
  */
 
 /* eslint-disable */
@@ -24,7 +24,8 @@ export type MapsQueryResponse = {|
           +name: string,
           +description: string,
           +category: {|
-            +slug: string
+            +id: string,
+            +slug: string,
           |},
         |},
       |}
@@ -53,8 +54,8 @@ query MapsQuery(
           name
           description
           category {
-            slug
             id
+            slug
           }
         }
       }
@@ -72,59 +73,117 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = [
-  {
-    "kind": "Variable",
-    "name": "location_Intersects",
-    "variableName": "bounds"
-  }
-],
-v2 = {
+v1 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "geometry",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "GeometryObjectType",
-  "plural": false,
-  "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "coordinates",
-      "args": null,
-      "storageKey": null
-    }
-  ]
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "description",
-  "args": null,
-  "storageKey": null
-},
-v6 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "slug",
-  "args": null,
-  "storageKey": null
-};
+v2 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "allCompanies",
+    "storageKey": null,
+    "args": [
+      {
+        "kind": "Variable",
+        "name": "location_Intersects",
+        "variableName": "bounds"
+      }
+    ],
+    "concreteType": "CompanyNodeConnection",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "edges",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "CompanyNodeEdge",
+        "plural": true,
+        "selections": [
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "node",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "CompanyNode",
+            "plural": false,
+            "selections": [
+              (v1/*: any*/),
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "geometry",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "GeometryObjectType",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "coordinates",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "properties",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "CompanyProperties",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "name",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "description",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "category",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "CategoryNode",
+                    "plural": false,
+                    "selections": [
+                      (v1/*: any*/),
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "slug",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+];
 return {
   "kind": "Request",
   "fragment": {
@@ -133,147 +192,24 @@ return {
     "type": "Query",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "allCompanies",
-        "storageKey": null,
-        "args": (v1/*: any*/),
-        "concreteType": "CompanyNodeConnection",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "edges",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "CompanyNodeEdge",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "node",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "CompanyNode",
-                "plural": false,
-                "selections": [
-                  (v2/*: any*/),
-                  (v3/*: any*/),
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "properties",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "CompanyProperties",
-                    "plural": false,
-                    "selections": [
-                      (v4/*: any*/),
-                      (v5/*: any*/),
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "category",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "CategoryNode",
-                        "plural": false,
-                        "selections": [
-                          (v6/*: any*/)
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "selections": (v2/*: any*/)
   },
   "operation": {
     "kind": "Operation",
     "name": "MapsQuery",
     "argumentDefinitions": (v0/*: any*/),
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "name": "allCompanies",
-        "storageKey": null,
-        "args": (v1/*: any*/),
-        "concreteType": "CompanyNodeConnection",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "edges",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "CompanyNodeEdge",
-            "plural": true,
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "node",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "CompanyNode",
-                "plural": false,
-                "selections": [
-                  (v2/*: any*/),
-                  (v3/*: any*/),
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "properties",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "CompanyProperties",
-                    "plural": false,
-                    "selections": [
-                      (v4/*: any*/),
-                      (v5/*: any*/),
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "category",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "CategoryNode",
-                        "plural": false,
-                        "selections": [
-                          (v6/*: any*/),
-                          (v2/*: any*/)
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "selections": (v2/*: any*/)
   },
   "params": {
     "operationKind": "query",
     "name": "MapsQuery",
     "id": null,
-    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        id\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          description\n          category {\n            slug\n            id\n          }\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query MapsQuery(\n  $bounds: Geometry!\n) {\n  allCompanies(location_Intersects: $bounds) {\n    edges {\n      node {\n        id\n        geometry {\n          coordinates\n        }\n        properties {\n          name\n          description\n          category {\n            id\n            slug\n          }\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c0bd593ce2ff78ffe27f2c809dbd5e16';
+(node/*: any*/).hash = '5fc240e1d026def82e03e9349cb73989';
 
 module.exports = node;

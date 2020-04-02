@@ -26,6 +26,7 @@ const initialState = {
   open: false,
   company: null,
   categories: [],
+  selectedCategories: [],
   position: [52.498588, 13.442352],
   bounds: {
     type: "Polygon",
@@ -46,6 +47,7 @@ const gqlQuery = graphql`
             name
             description
             category {
+              id
               slug
             }
           }
@@ -127,8 +129,13 @@ class Maps extends Component {
     this.setState({ open: false });
   };
 
-  renderMarkers = edges =>
-    edges.map(
+  handleCategoriesChange = selectedCategories => {
+    this.setState({ selectedCategories })
+  }
+
+  renderMarkers = edges => {
+    const { selectedCategories } = this.state
+    return edges.filter(({ node: { properties: { category: { id } } } }) => selectedCategories.length === 0 || selectedCategories.includes(id)).map(
       ({
         node: {
           id,
@@ -174,6 +181,7 @@ class Maps extends Component {
         );
       }
     );
+  }
 
   renderMap = (
     { allCompanies: { edges: companies } = { allCompanies: { edges: [] } } } = {
@@ -184,6 +192,7 @@ class Maps extends Component {
     const markers = companies ? this.renderMarkers(companies) : [];
     return (
       <>
+        <SearchBar categories={categories} handleCategoriesChange={this.handleCategoriesChange} />
         <Map
           center={position}
           zoom={16}
@@ -202,7 +211,6 @@ class Maps extends Component {
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
           <Marker icon={redIcon} position={position} />
-          <SearchBar categories={categories} />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
           <div
