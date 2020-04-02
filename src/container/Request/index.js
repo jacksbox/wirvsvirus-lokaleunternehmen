@@ -6,7 +6,7 @@ import RequestView from "components/Request/Request.js";
 
 import environment from "graphql/environment.js";
 
-const requestGqlMutation = graphql`
+const requestMutationGql = graphql`
   mutation RequestMutation($input: CreateRequestInput!) {
     createRequest(input: $input) {
       clientMutationId
@@ -94,7 +94,7 @@ const Request = ({ company, handleClose }) => {
     if (requestStep === 2) {
       const { companyId, customerEmail, text, slot } = formValues;
       commitMutation(environment, {
-        mutation: requestGqlMutation,
+        mutation: requestMutationGql,
         variables: {
           input: {
             companyId,
