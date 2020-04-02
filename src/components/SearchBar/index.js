@@ -4,7 +4,7 @@ import CategorySelect from './CategorySelect'
 
 const SearchBar = ({ categories, handleCategoriesChange }) => {
   return (
-    <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 1200 }}>
+    <div style={{ position: 'absolute', top: 8, left: 60, right: 20, zIndex: 1200 }}>
       <CategorySelect categories={categories} handleCategoriesChange={handleCategoriesChange} />
     </div>
   )
