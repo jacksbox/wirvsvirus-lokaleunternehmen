@@ -1,5 +1,55 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Wed Apr 01 2020 17:29:33 GMT+0200 (Central European Summer Time)
+# timestamp: Wed Apr 01 2020 23:43:03 GMT+0200 (Central European Summer Time)
+
+type BusinessHours implements Node {
+  """The ID of the object."""
+  id: ID!
+  weekday: BusinessHoursWeekday!
+  start: Time!
+  end: Time!
+  company: CompanyNode!
+}
+
+type BusinessHoursConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BusinessHoursEdge]!
+}
+
+"""A Relay edge containing a `BusinessHours` and its cursor."""
+type BusinessHoursEdge {
+  """The item at the end of the edge"""
+  node: BusinessHours
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""An enumeration."""
+enum BusinessHoursWeekday {
+  """Monday"""
+  A_1
+
+  """Tuesday"""
+  A_2
+
+  """Wednesday"""
+  A_3
+
+  """Thursday"""
+  A_4
+
+  """Friday"""
+  A_5
+
+  """Saturday"""
+  A_6
+
+  """Sunday"""
+  A_7
+}
 
 type CategoryNode implements Node {
   """The ID of the object."""
@@ -69,8 +119,39 @@ type CompanyProperties {
   active: Boolean!
   category: CategoryNode!
   subCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection!
+  businesshoursSet(before: String, after: String, first: Int, last: Int): BusinessHoursConnection!
   timeslotSet(before: String, after: String, first: Int, last: Int, start: DateTime, end: DateTime): TimeSlotNodeConnection!
   requestSet(before: String, after: String, first: Int, last: Int): RequestNodeConnection!
+}
+
+input CreateCompanyInput {
+  name: String!
+  address: String!
+  email: String!
+  description: String!
+  location: Geometry!
+  categoryId: ID!
+  subCategoryIds: [ID]
+  phone: String
+  clientMutationId: String
+}
+
+type CreateCompanyPayload {
+  data: CompanyNode
+  clientMutationId: String
+}
+
+input CreateRequestInput {
+  companyId: ID!
+  slotId: ID!
+  customerEmail: String!
+  text: String!
+  clientMutationId: String
+}
+
+type CreateRequestPayload {
+  data: RequestNode
+  clientMutationId: String
 }
 
 """
@@ -107,6 +188,11 @@ scalar Geometry
 type GeometryObjectType {
   type: String
   coordinates: GenericScalar
+}
+
+type Mutation {
+  createRequest(input: CreateRequestInput!): CreateRequestPayload
+  createCompany(input: CreateCompanyInput!): CreateCompanyPayload
 }
 
 """An object with an ID"""
@@ -193,6 +279,13 @@ type SubCategoryNodeEdge {
   cursor: String!
 }
 
+"""
+The `Time` scalar type represents a Time value as
+specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Time
+
 type TimeSlotNode implements Node {
   """The ID of the object."""
   id: ID!
@@ -200,6 +293,7 @@ type TimeSlotNode implements Node {
   end: DateTime!
   company: CompanyNode!
   requestSet(before: String, after: String, first: Int, last: Int): RequestNodeConnection!
+  available: Boolean
 }
 
 type TimeSlotNodeConnection {
