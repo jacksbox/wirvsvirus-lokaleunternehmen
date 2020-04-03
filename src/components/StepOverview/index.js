@@ -79,14 +79,18 @@ const StepOverview = ({
           {description && (
             <>
               <h5>Beschreibung</h5>
-              <ExpansionPanel>
-                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                  <p>{description.substr(0, 350)}...</p>
-                </ExpansionPanelSummary>
-                <ExpansionPanelDetails>
-                  <p>{description.slice(350)}</p>
-                </ExpansionPanelDetails>
-              </ExpansionPanel>
+              {description.length > 350 ? (
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                    <p>{description.substr(0, 350)}...</p>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <p>{description.slice(350)}</p>
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              ) : (
+                description
+              )}
             </>
           )}
         </Grid>
