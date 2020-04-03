@@ -9,7 +9,9 @@ import SignUpComponent from "components/SignUp";
 
 import environment from "graphql/environment.js";
 
-const geocoder = new Nominatim()
+const geocoder = new Nominatim({
+  secure: true,
+})
 
 const availableCategoriesGqlQuery = graphql`
   query SignUpCategoriesQuery {
