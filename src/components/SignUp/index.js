@@ -33,6 +33,11 @@ const SignUp = ({ saved, handleSubmit, ...rest }) => {
                 <BusinessForm {...rest} />
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
+                    <Typography variant="body2">
+                    Sie wollen bestehende Daten in Ihrem Unternehmensprofil ändern? Dann schreiben Sie uns bitte eine Mail an <a href="mailto:bleib.lokal2020@gmail.com">bleib.lokal2020@gmail.com</a>. Wir nehmen die gewünschten Änderungen gerne für Sie vor!
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
                     <Divider />
                   </Grid>
                   <Grid item xs={12}>
