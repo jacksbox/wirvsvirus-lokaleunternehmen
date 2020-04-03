@@ -48,7 +48,7 @@ const initialFormValues = {
   email: null,
   phone: null,
   categoryId: null,
-  subCategoryIds: null,
+  subCategoryIds: [],
   zip: null,
   city: null,
   street: null,
