@@ -49,7 +49,7 @@ const StepSlot = ({
       </Grid>
       <Grid item md={12} container justify="space-between">
         <Button onClick={() => prevStep()}>zurück</Button>
-        <Button onClick={() => nextStep()} color="primary" disabled={!slot}>
+        <Button onClick={() => nextStep()} variant="contained" color="primary" disabled={!slot.id}>
           Anfrage senden
         </Button>
       </Grid>
