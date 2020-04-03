@@ -1,15 +1,21 @@
 import React from "react";
 
-import DemoBanner from "components/DemoBanner";
-
-const StepSuccess = ({ formValues: { slot } }) => {
-  const slotString = `${slot.startLabel.shortDate} ${slot.startLabel.timeString} Uhr`
+const StepSuccess = () => {
   return (
-  <div>
-    <h3>Danke, die Bestellung wurde übermittelt!</h3>
-    <h5>Ihr lokales Unternehmen freut sich auf Sie!</h5>
-    <p>Ihr reservierter Slot: <strong>{slotString}</strong></p>
-  </div>
-)}
+    <div>
+      <h3>Danke, die Bestellung wurde übermittelt!</h3>
+      <p>
+        Die Bestellung wurde per Mail an Ihr lokales Unternehmen übermittelt.
+        Sie erhalten eine Bestätigungsmail sowie den zu bezahlenden Preis,
+        sobald Ihr lokales Unternehmen Ihre Bestellung geprüft hat.
+      </p>
+      <p>
+        Sollten Sie weitere Fragen haben, wenden Sie sich gerne an{" "}
+        <a href="mailto:bleib.lokal2020@gmail.com">bleib.lokal2020@gmail.com</a>
+        .
+      </p>
+    </div>
+  );
+};
 
-export default StepSuccess
+export default StepSuccess;
