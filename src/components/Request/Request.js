@@ -20,7 +20,7 @@ const steps = {
 const Request = ({ requestStep, company, ...rest }) => {
   const StepComponent = steps[requestStep];
   return (
-    <Card>
+    <Card style={{ maxHeight: '80vH', overflowY: 'scroll' }}>
       <CardContent>
         <Typography color="textSecondary" gutterBottom>
           {company.properties.category.name}

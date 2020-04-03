@@ -1,11 +1,12 @@
 import React from "react";
 
 import Grid from "@material-ui/core/Grid";
-// import Table from "@material-ui/core/Table";
-// import TableCell from "@material-ui/core/TableCell";
-// import TableRow from "@material-ui/core/TableRow";
 import Chip from "@material-ui/core/Chip";
 import Divider from "@material-ui/core/Divider";
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import Button from "@material-ui/core/Button";
 
@@ -60,7 +61,7 @@ const StepOverview = ({
         </div>
       )}
       <Grid container spacing={2}>
-        <Grid item md={7} xs={12}>
+        <Grid item xs={12} md={12}>
           {(address || phone) && (
             <>
               <h5>Adresse</h5>
@@ -78,7 +79,14 @@ const StepOverview = ({
           {description && (
             <>
               <h5>Beschreibung</h5>
-              <p>{description}</p>
+              <ExpansionPanel>
+                <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                  <p>{description.substr(0, 350)}...</p>
+                </ExpansionPanelSummary>
+                <ExpansionPanelDetails>
+                  <p>{description.slice(350)}</p>
+                </ExpansionPanelDetails>
+              </ExpansionPanel>
             </>
           )}
         </Grid>
