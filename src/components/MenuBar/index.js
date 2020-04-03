@@ -153,7 +153,7 @@ const MenuBar = () => {
             </ListItem>
             </NavLink>
           )}
-          {featureFlags.signup && loggedIn && (
+          {featureFlags.signup && (
             <NavLink to="/signup">
             <ListItem button>
               <ListItemIcon>
