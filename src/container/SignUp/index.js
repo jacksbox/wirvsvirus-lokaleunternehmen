@@ -53,7 +53,8 @@ const initialFormValues = {
   city: null,
   street: null,
   streetNo: null,
-  description: null
+  description: null,
+  maxPerSlot: null
 };
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -70,7 +71,8 @@ const requiredFormValues = [
   "zip",
   "city",
   "address",
-  "description"
+  "description",
+  "maxPerSlot"
 ];
 
 const validateRegisterForm = formValues => {
@@ -121,7 +123,7 @@ const SignUp = () => {
   const prepareCompanyData = ([ lng, lat ]) => {
     const {
       name, email, phone, description, categoryId, subCategoryIds,
-      zip, city, street, streetNo
+      zip, city, street, streetNo, maxPerSlot
     } = formValues
     return {
       name,
@@ -131,12 +133,12 @@ const SignUp = () => {
       description,
       categoryId,
       subCategoryIds,
+      maxPerSlot,
       location: `{'type': 'point', 'coordinates': [${parseFloat(lng)}, ${parseFloat(lat)}]}`
     }
   }
 
   const handleSubmit = () => {
-    console.log(formValues);
     const { zip, city, street, streetNo } = formValues
     const errors = validateRegisterForm(formValues);
     if (errors.length > 0) {
