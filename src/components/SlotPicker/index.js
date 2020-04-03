@@ -19,6 +19,7 @@ const SlotPicker = ({ selectedDay, slot, slotsPerDay, handleChange }) => {
                 control={<Radio />}
                 label={`${startLabel.timeString} - ${endLabel.timeString} Uhr`}
                 key={id}
+                // disabled={!slot.available}
               />
             </Grid>
           ))}

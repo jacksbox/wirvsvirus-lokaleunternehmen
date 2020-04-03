@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9eb65021ddde807ce947e93adac52878
+ * @relayHash d9af076baa776260a179636dc8a84b62
  */
 
 /* eslint-disable */
@@ -40,6 +40,7 @@ export type RequestQueryContainerQueryResponse = {|
             +id: string,
             +start: any,
             +end: any,
+            +available: ?boolean,
           |}
         |}>
       |},
@@ -86,6 +87,7 @@ query RequestQueryContainerQuery(
             id
             start
             end
+            available
           }
         }
       }
@@ -212,6 +214,13 @@ v10 = {
               "kind": "ScalarField",
               "alias": null,
               "name": "end",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "available",
               "args": null,
               "storageKey": null
             }
@@ -391,12 +400,12 @@ return {
     "operationKind": "query",
     "name": "RequestQueryContainerQuery",
     "id": null,
-    "text": "query RequestQueryContainerQuery(\n  $id: ID!\n) {\n  company(id: $id) {\n    id\n    geometry {\n      coordinates\n    }\n    properties {\n      email\n      name\n      address\n      phone\n      description\n      category {\n        name\n        id\n      }\n      subCategories {\n        edges {\n          node {\n            name\n            id\n          }\n        }\n      }\n      timeslotSet {\n        edges {\n          node {\n            id\n            start\n            end\n          }\n        }\n      }\n    }\n  }\n}\n",
+    "text": "query RequestQueryContainerQuery(\n  $id: ID!\n) {\n  company(id: $id) {\n    id\n    geometry {\n      coordinates\n    }\n    properties {\n      email\n      name\n      address\n      phone\n      description\n      category {\n        name\n        id\n      }\n      subCategories {\n        edges {\n          node {\n            name\n            id\n          }\n        }\n      }\n      timeslotSet {\n        edges {\n          node {\n            id\n            start\n            end\n            available\n          }\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'a95f68776862222d496c7dbb24bce743';
+(node/*: any*/).hash = '3db7b6bccbef7afdd36543d924cd7464';
 
 module.exports = node;

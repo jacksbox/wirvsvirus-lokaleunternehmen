@@ -35,6 +35,7 @@ const gqlQuery = graphql`
               id
               start
               end
+              available
             }
           }
         }
