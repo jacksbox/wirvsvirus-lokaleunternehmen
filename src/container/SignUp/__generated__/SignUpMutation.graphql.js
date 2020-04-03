@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 01fc52cb6ba9bc45f1e115126232c1ea
+ * @relayHash 26c12b6baa3dcf6901af6e9971476117
  */
 
 /* eslint-disable */
@@ -18,6 +18,7 @@ export type CreateCompanyInput = {|
   categoryId: string,
   subCategoryIds?: ?$ReadOnlyArray<?string>,
   phone?: ?string,
+  maxPerSlot?: ?number,
   clientMutationId?: ?string,
 |};
 export type SignUpMutationVariables = {|
