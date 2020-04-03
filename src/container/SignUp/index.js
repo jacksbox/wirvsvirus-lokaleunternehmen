@@ -161,7 +161,6 @@ const SignUp = () => {
             input
           },
           onCompleted: (resp, errors) => {
-            console.log(resp, errors)
             if (errors && errors.length > 0) {
               setSubmitError(true)
             } else {

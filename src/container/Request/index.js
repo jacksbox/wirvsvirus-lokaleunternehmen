@@ -73,6 +73,7 @@ const initialFormValues = {
 
 const Request = ({ company, handleClose }) => {
   const [slotsPerDay, setSlotsPerDay] = useState(null);
+  const [submitError, setSubmitError] = useState(null);
 
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
@@ -103,8 +104,12 @@ const Request = ({ company, handleClose }) => {
             text
           }
         },
-        onCompleted: () => {
-          setRequestStep(newStep);
+        onCompleted: (resp, errors) => {
+          if (errors && errors.length > 0) {
+            setSubmitError(true)
+          } else {
+            setRequestStep(newStep);
+          }
         },
         onError: () => {
           console.log('mutation error')
@@ -150,6 +155,7 @@ const Request = ({ company, handleClose }) => {
       handleChange={handleChange}
       handleSlotChange={handleSlotChange}
       company={company}
+      submitError={submitError}
       slotsPerDay={slotsPerDay}
       formValues={formValues}
       selectedDay={selectedDay}

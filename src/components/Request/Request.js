@@ -4,6 +4,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import MuiAlert from '@material-ui/lab/Alert';
 
 import StepOverview from "components/StepOverview";
 import StepOrder from "components/StepOrder";
@@ -17,7 +18,7 @@ const steps = {
   3: StepSuccess
 };
 
-const Request = ({ requestStep, company, ...rest }) => {
+const Request = ({ requestStep, company, submitError,...rest }) => {
   const StepComponent = steps[requestStep];
   return (
     <Card style={{ maxHeight: '80vH', overflowY: 'scroll' }}>
@@ -30,6 +31,11 @@ const Request = ({ requestStep, company, ...rest }) => {
         </Typography>
         <Divider />
       </CardContent>
+      {submitError &&  (
+        <CardContent>
+          <MuiAlert severity="error">{submitError.msg ? submitError.msg : 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.'}</MuiAlert>
+        </CardContent>
+      )}
       <CardContent>
         <StepComponent company={company} {...rest} />
       </CardContent>
