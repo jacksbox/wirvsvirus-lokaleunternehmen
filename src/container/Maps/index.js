@@ -212,7 +212,7 @@ class Maps extends Component {
           ref={this.mapRef}
           onViewportChanged={this.updateBounds}
         >
-          <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+          <TileLayer url="https://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           {markers}
           <ReactLeafletSearch
             position="topright"
