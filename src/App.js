@@ -30,6 +30,18 @@ const theme = createMuiTheme({
     secondary: {
       main: '#33507C',
       constrastText: '#fff'
+    },
+    success: {
+      main: 'rgb(237, 247, 237)',
+      contrastText: 'rgb(30, 70, 32)'
+    },
+    info: {
+      main: 'rgb(232, 244, 253)',
+      contrastText: 'rgb(13, 60, 97)'
+    },
+    warning: {
+      main: 'rgb(255, 244, 229)',
+      contrastText: 'rgb(102, 60, 0)'
     }
   },
   typography: {

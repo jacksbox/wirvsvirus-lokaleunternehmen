@@ -97,6 +97,7 @@ const SignUp = () => {
   const [saved, setSaved] = useState(false);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [errors, setErrors] = useState([]);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     fetchQuery(environment, availableCategoriesGqlQuery).then(
@@ -159,8 +160,13 @@ const SignUp = () => {
           variables: {
             input
           },
-          onCompleted: () => {
-            setSaved(true);
+          onCompleted: (resp, errors) => {
+            console.log(resp, errors)
+            if (errors && errors.length > 0) {
+              setSubmitError(true)
+            } else {
+              setSaved(true);
+            }
           },
           onError: () => {
             console.log('mutation error')
@@ -181,6 +187,7 @@ const SignUp = () => {
       categories={categories}
       subCategories={subCategories}
       errors={errors}
+      submitError={submitError}
       saved={saved}
     />
   );

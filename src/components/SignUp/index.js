@@ -6,12 +6,13 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
+import MuiAlert from '@material-ui/lab/Alert';
 
 import BusinessForm from "components/BusinessForm";
 
 import SuccessMessage from "./SuccessMessage";
 
-const SignUp = ({ saved, handleSubmit, ...rest }) => {
+const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
@@ -25,6 +26,11 @@ const SignUp = ({ saved, handleSubmit, ...rest }) => {
             </Typography>
             <Divider />
           </CardContent>
+          {submitError &&  (
+            <CardContent>
+              <MuiAlert severity="error">{submitError.msg ? submitError.msg : 'Leider ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.'}</MuiAlert>
+            </CardContent>
+          )}
           <CardContent>
             {saved ? (
               <SuccessMessage />
