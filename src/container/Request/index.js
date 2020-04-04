@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import graphql from "babel-plugin-relay/macro";
 import { commitMutation } from "react-relay";
 
@@ -83,6 +83,11 @@ const Request = ({ companyId, company, handleClose, loading }) => {
   const [requestStep, setRequestStep] = useState(0);
 
   const [selectedDay, setSelectedDay] = useState(null);
+  const [isLoading, setIsLoading] = useState(loading);
+
+  useEffect(() => {
+    setIsLoading(loading)
+  }, [loading])
 
   if (!slotsPerDay && company) {
     setSlotsPerDay(prepareSlots(company.properties.timeslotSet.edges));
@@ -94,6 +99,7 @@ const Request = ({ companyId, company, handleClose, loading }) => {
     // send order
     if (requestStep === 2) {
       const { companyId, customerEmail, text, slot } = formValues;
+      setIsLoading(true)
       commitMutation(environment, {
         mutation: requestMutationGql,
         variables: {
@@ -105,6 +111,7 @@ const Request = ({ companyId, company, handleClose, loading }) => {
           }
         },
         onCompleted: (resp, errors) => {
+          setIsLoading(false)
           if (errors && errors.length > 0) {
             setSubmitError(true)
           } else {
@@ -161,7 +168,7 @@ const Request = ({ companyId, company, handleClose, loading }) => {
       selectedDay={selectedDay}
       handleDaySelect={handleDaySelect}
       handleClose={handleClose}
-      loading={loading}
+      loading={isLoading}
     />
   );
 };
