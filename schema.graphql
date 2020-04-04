@@ -1,5 +1,5 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Fri Apr 03 2020 21:16:41 GMT+0200 (Central European Summer Time)
+# timestamp: Sat Apr 04 2020 21:36:24 GMT+0200 (Central European Summer Time)
 
 type BusinessHours implements Node {
   """The ID of the object."""
