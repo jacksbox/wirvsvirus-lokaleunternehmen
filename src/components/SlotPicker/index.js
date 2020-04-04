@@ -12,14 +12,14 @@ const SlotPicker = ({ selectedDay, slot, slotsPerDay, handleChange }) => {
       <Grid container spacing={1}>
         {slotsPerDay
           .find(({ date }) => date === selectedDay)
-          .slots.map(({ id, startLabel, endLabel }) => (
+          .slots.map(({ id, startLabel, endLabel, available }) => (
             <Grid item xs={6} sm={4} md={3} key={id}>
               <FormControlLabel
                 value={`${id}`}
                 control={<Radio />}
                 label={`${startLabel.timeString} - ${endLabel.timeString} Uhr`}
                 key={id}
-                // disabled={!slot.available}
+                disabled={!available}
               />
             </Grid>
           ))}
