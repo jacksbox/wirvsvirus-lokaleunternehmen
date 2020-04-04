@@ -71,20 +71,20 @@ const initialFormValues = {
   }
 };
 
-const Request = ({ company, handleClose }) => {
+const Request = ({ companyId, company, handleClose, loading }) => {
   const [slotsPerDay, setSlotsPerDay] = useState(null);
   const [submitError, setSubmitError] = useState(null);
 
   const [formValues, setFormValue] = useState({
     ...initialFormValues,
-    companyId: company.id
+    companyId
   });
 
   const [requestStep, setRequestStep] = useState(0);
 
   const [selectedDay, setSelectedDay] = useState(null);
 
-  if (!slotsPerDay) {
+  if (!slotsPerDay && company) {
     setSlotsPerDay(prepareSlots(company.properties.timeslotSet.edges));
     return <></>;
   }
@@ -161,6 +161,7 @@ const Request = ({ company, handleClose }) => {
       selectedDay={selectedDay}
       handleDaySelect={handleDaySelect}
       handleClose={handleClose}
+      loading={loading}
     />
   );
 };

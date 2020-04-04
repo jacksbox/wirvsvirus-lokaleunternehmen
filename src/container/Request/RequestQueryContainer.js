@@ -57,10 +57,10 @@ const RequestQueryContainer = ({ companyId, handleClose }) => {
           return null;
         }
         if (!props) {
-          return "Loading";
+          return <Request companyId={companyId} loading handleClose={handleClose} />;
         }
         const { company } = props;
-        return <Request company={company} handleClose={handleClose} />;
+        return <Request companyId={companyId} company={company} handleClose={handleClose} />;
       }}
     />
   );
