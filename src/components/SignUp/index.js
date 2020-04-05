@@ -43,22 +43,27 @@ const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
               <>
                 <BusinessForm {...rest} />
                 <Grid container spacing={2}>
-                  <Grid item xs={12} sm={12} md={3}>
-                    <Typography variant="body2">Wieviele Kunden sollen in einem Pickup Zeitslot ihre Bestellung abholen können?</Typography>
+                  <Grid item xs={12} sm={12} md={6}>
+                    <Typography variant="body2">
+                      Wieviele Kunden dürfen <strong>maximal</strong> in einem Zeitfenster von 30 Minuten sich für eine Abholung anmelden?
+                    </Typography>
+                    <br />
                     <Input
                       id="maxPerSlot"
                       required
-                      labelText="Kunden pro Time Slot"
-                      helperText="Dieses Feld wird benötigt"
+                      labelText="Anzahl Kunden"
+                      helperText="Bitte einen Wert zwischen 1 und 10 eintragen."
                       handleChange={rest.handleChange}
                       errors={rest.errors}
                       variant="outlined"
                       type="number"
-                      fullWidth
                     />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
                   <Grid item xs={12}>
                     <Typography variant="body2">
                       Sie wollen bestehende Daten in Ihrem Unternehmensprofil
@@ -68,11 +73,9 @@ const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
                       </a>
                       . Wir nehmen die gewünschten Änderungen gerne für Sie vor!
                     </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
+                    <br />
                     <Divider />
-                  </Grid>
-                  <Grid item xs={12}>
+                    <br />
                     <Typography variant="body2">
                       Indem ich mich registriere, erkläre ich mich mit den <a href="/agb">AGB</a> einverstanden und willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz">Datenschutzerklärung</a> ein.
                     </Typography>

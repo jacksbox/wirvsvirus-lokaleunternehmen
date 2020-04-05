@@ -84,6 +84,10 @@ const validateRegisterForm = formValues => {
     }
   });
 
+  if(formValues.maxPerSlot && (formValues.maxPerSlot < 1 || formValues.maxPerSlot > 10)) {
+    errors.add("maxPerSlot")
+  }
+
   if (formValues.email && !validateEmail(formValues.email)) {
     errors.add("email");
   }
