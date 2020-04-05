@@ -223,6 +223,7 @@ class Maps extends Component {
             markerIcon={redIcon}
             showPopup={false}
             closeResultsOnClick={true}
+            providerOptions={{se:[5.98865807458, 47.3024876979],nw: [15.0169958839, 54.983104153]}}
           />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
