@@ -63,6 +63,26 @@ class Search extends Component {
               onSelect={this.handleOnSelect}
               onFocus={this.handleOnFocus}
               autoFocus
+              placeholder={"Suche nach Namen"}
+              showIcon={false}
+              styling={{
+                
+                   
+                     borderColor: "hsl(0,0%,80%)",
+                     height: "36px",
+                     borderRadius: "4px",
+                     borderWidth: "1px",
+                    backgroundColor: "white",
+                    boxShadow: "rgba(32, 33, 36, 0.28) 0px 1px 6px 0px",
+                    hoverBackgroundColor: "#eee",
+                    color: "#212121",
+                    fontSize: "16px",
+                     fontFamily: "Arial",
+                     iconColor: "grey",
+                    lineColor: "rgb(232, 234, 237)",
+                     placeholderColor: "grey"}
+                    }
+              
             />
        
 

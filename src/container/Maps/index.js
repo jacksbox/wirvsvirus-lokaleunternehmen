@@ -208,7 +208,7 @@ class Maps extends Component {
 
     if (companiesFiltered.length >0) companies = companiesFiltered
 
-    console.log(companies)
+    //console.log(companies)
 
     const markers = companies ? this.renderMarkers(companies) : [];
     const names = companies? companies.map((c, i)=>
