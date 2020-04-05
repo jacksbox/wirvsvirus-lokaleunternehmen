@@ -145,7 +145,7 @@ const SignUp = () => {
       setErrors(errors);
       return false;
     }
-    geocoder.search( { q: `${streetNo}, ${street}, ${zip} ${city}` } ).then(response => {
+    geocoder.search( { q: `${streetNo}, ${street}, ${zip} ${city}, Germany` } ).then(response => {
       console.log(response);
       if (!response.length) {
         errors.push('noGeo', 'street', 'streetNo', 'zip', 'city')
