@@ -73,6 +73,14 @@ const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
                     <Divider />
                   </Grid>
                   <Grid item xs={12}>
+                    <Typography variant="body2">
+                      Indem ich mich registriere, erkläre ich mich mit den <a href="/agb">AGB</a> einverstanden und willige in die Verarbeitung meiner Daten gemäß der <a href="/datenschutz">Datenschutzerklärung</a> ein.
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Divider />
+                  </Grid>
+                  <Grid item xs={12}>
                     <Button
                       variant="contained"
                       onClick={handleSubmit}
