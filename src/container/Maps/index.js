@@ -137,6 +137,10 @@ class Maps extends Component {
     this.setState({ selectedCategories })
   }
 
+  searchName = (name) => {
+    this.setState({searchName: name})
+  }
+
   renderMarkers = edges => {
     const { selectedCategories } = this.state
     return edges.filter(({ node: { properties: { category: { id } } } }) => selectedCategories.length === 0 || selectedCategories.includes(id)).map(
@@ -193,10 +197,30 @@ class Maps extends Component {
     }
   ) => {
     const { position, open, companyId, categories } = this.state;
+
+    let companiesFiltered = [];
+
+    if (this.state.searchName && this.state.searchName!=="alle"){
+
+      companiesFiltered = companies? companies.filter(c => c.node.properties.name==this.state.searchName.name) : []
+
+    }
+
+    if (companiesFiltered.length >0) companies = companiesFiltered
+
+    console.log(companies)
+
     const markers = companies ? this.renderMarkers(companies) : [];
+    const names = companies? companies.map((c, i)=>
+      {
+        return  {"id": i, "name": c.node.properties.name}
+      }
+     ): []
+  
+    
     return (
       <>
-        <SearchBar categories={categories} handleCategoriesChange={this.handleCategoriesChange} />
+        <SearchBar categories={categories} handleCategoriesChange={this.handleCategoriesChange} searchName={this.searchName} names={names}/>
         <Map
           center={position}
           zoom={defaultZoom}
