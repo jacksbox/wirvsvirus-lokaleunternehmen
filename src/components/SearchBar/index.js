@@ -6,10 +6,12 @@ import Grid from "@material-ui/core/Grid";
 import CategorySelect from "./CategorySelect";
 import SearchName from "./SearchName";
 
-const SearchBar = ({ categories, handleCategoriesChange, searchName, names }) => {
-
-
-
+const SearchBar = ({
+  categories,
+  handleCategoriesChange,
+  handleOnSearch,
+  companyNames,
+}) => {
   return (
     <Box
       style={{
@@ -18,18 +20,14 @@ const SearchBar = ({ categories, handleCategoriesChange, searchName, names }) =>
         right: 10,
         width: 270,
         maxWidth: 270,
-        zIndex: 1000
+        zIndex: 1000,
       }}
     >
-      
       <CategorySelect
         categories={categories}
         handleCategoriesChange={handleCategoriesChange}
       />
-      <SearchName
-      names={names}
-      searchName={searchName}
-      />
+      <SearchName companyNames={companyNames} handleOnSearch={handleOnSearch} />
     </Box>
   );
 };

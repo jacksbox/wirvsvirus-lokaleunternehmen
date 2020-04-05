@@ -1,6 +1,6 @@
 import React, { Component, createRef } from "react";
 import { QueryRenderer } from "react-relay";
-import { fetchQuery } from 'relay-runtime';
+import { fetchQuery } from "relay-runtime";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import graphql from "babel-plugin-relay/macro";
 
@@ -15,7 +15,7 @@ import L from "leaflet";
 
 import ReactLeafletSearch from "react-leaflet-search";
 
-const defaultZoom = 16
+const defaultZoom = 16;
 
 const redIcon = new L.Icon({
   iconUrl: require(`assets/img/icons/POSITION.png`),
@@ -23,7 +23,7 @@ const redIcon = new L.Icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+  shadowSize: [41, 41],
 });
 
 const initialState = {
@@ -31,11 +31,12 @@ const initialState = {
   company: null,
   categories: [],
   selectedCategories: [],
+  searchName: null,
   position: [52.498588, 13.442352],
   bounds: {
     type: "Polygon",
-    coordinates: [[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]]
-  }
+    coordinates: [[[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]]],
+  },
 };
 
 const gqlQuery = graphql`
@@ -74,7 +75,7 @@ const categoriesGqlQuery = graphql`
   }
 `;
 
-const lngLatToArray = lngLat => {
+const lngLatToArray = (lngLat) => {
   return [lngLat.lng, lngLat.lat];
 };
 
@@ -98,7 +99,7 @@ class Maps extends Component {
     fetchQuery(environment, categoriesGqlQuery).then(
       (
         { allCategories: { edges: categories } } = {
-          allCategories: { edges: [] }
+          allCategories: { edges: [] },
         }
       ) => {
         this.setState({ categories });
@@ -117,9 +118,9 @@ class Maps extends Component {
             lngLatToArray(bbox.getNorthWest()),
             lngLatToArray(bbox.getNorthEast()),
             lngLatToArray(bbox.getSouthEast()),
-            lngLatToArray(bbox.getSouthWest())
-          ]
-        ]
+            lngLatToArray(bbox.getSouthWest()),
+          ],
+        ],
       };
       this.setState({ bounds });
     }
@@ -133,29 +134,42 @@ class Maps extends Component {
     this.setState({ open: false });
   };
 
-  handleCategoriesChange = selectedCategories => {
-    this.setState({ selectedCategories })
-  }
+  handleCategoriesChange = (selectedCategories) => {
+    this.setState({ selectedCategories });
+  };
 
-  searchName = (name) => {
-    this.setState({searchName: name})
-  }
+  setSearchName = (name) => {
+    this.setState({ searchName: name });
+  };
 
-  renderMarkers = edges => {
-    const { selectedCategories } = this.state
-    return edges.filter(({ node: { properties: { category: { id } } } }) => selectedCategories.length === 0 || selectedCategories.includes(id)).map(
+  filterCompanies = (edges) => {
+    const { selectedCategories, searchName } = this.state;
+    const edgesCategoryFiltered =
+      selectedCategories.length > 0
+        ? edges.filter(({ node: { properties: { category: { id } } } }) =>
+            selectedCategories.includes(id)
+          )
+        : edges;
+    const edgesNameFiltered = searchName
+      ? edgesCategoryFiltered.filter(({ node: { id } }) => id === searchName.id)
+      : edgesCategoryFiltered;
+    return edgesNameFiltered;
+  };
+
+  renderMarkers = (edges) => {
+    return this.filterCompanies(edges).map(
       ({
         node: {
           id,
           geometry: {
-            coordinates: [lng, lat]
+            coordinates: [lng, lat],
           },
           properties: {
             name,
             description,
-            category: { slug }
-          }
-        }
+            category: { slug },
+          },
+        },
       }) => {
         let icon = new L.Icon({
           iconUrl: require(`assets/img/icons/${slug}.png`),
@@ -163,7 +177,7 @@ class Maps extends Component {
           iconSize: [66 * 0.75, 94 * 0.75],
           iconAnchor: [24, 41],
           popupAnchor: [1, -34],
-          shadowSize: [41, 41]
+          shadowSize: [41, 41],
         });
 
         return (
@@ -171,10 +185,10 @@ class Maps extends Component {
             key={`${name}:${lat},${lng}`}
             position={[lat, lng]}
             icon={icon}
-            onMouseOver={e => {
+            onMouseOver={(e) => {
               e.target.openPopup();
             }}
-            onMouseOut={e => {
+            onMouseOut={(e) => {
               e.target.closePopup();
             }}
             onClick={() => {
@@ -189,38 +203,32 @@ class Maps extends Component {
         );
       }
     );
-  }
+  };
 
   renderMap = (
     { allCompanies: { edges: companies } = { allCompanies: { edges: [] } } } = {
-      allCompanies: { edges: [] }
+      allCompanies: { edges: [] },
     }
   ) => {
     const { position, open, companyId, categories } = this.state;
 
-    let companiesFiltered = [];
-
-    if (this.state.searchName && this.state.searchName!=="alle"){
-
-      companiesFiltered = companies? companies.filter(c => c.node.properties.name==this.state.searchName.name) : []
-
-    }
-
-    if (companiesFiltered.length >0) companies = companiesFiltered
-
-    //console.log(companies)
-
     const markers = companies ? this.renderMarkers(companies) : [];
-    const names = companies? companies.map((c, i)=>
-      {
-        return  {"id": i, "name": c.node.properties.name}
-      }
-     ): []
-  
-    
+
+    const companyNames = companies
+      ? companies.map(({ node: { id, properties: { name } } }) => ({
+          id,
+          name,
+        }))
+      : [];
+
     return (
       <>
-        <SearchBar categories={categories} handleCategoriesChange={this.handleCategoriesChange} searchName={this.searchName} names={names}/>
+        <SearchBar
+          categories={categories}
+          handleCategoriesChange={this.handleCategoriesChange}
+          handleOnSearch={this.setSearchName}
+          companyNames={companyNames}
+        />
         <Map
           center={position}
           zoom={defaultZoom}
@@ -247,7 +255,10 @@ class Maps extends Component {
             markerIcon={redIcon}
             showPopup={false}
             closeResultsOnClick={true}
-            providerOptions={{se:[5.98865807458, 47.3024876979],nw: [15.0169958839, 54.983104153]}}
+            providerOptions={{
+              se: [5.98865807458, 47.3024876979],
+              nw: [15.0169958839, 54.983104153],
+            }}
           />
         </Map>
         <Modal open={open} onClose={this.handleCloseModal}>
@@ -258,7 +269,7 @@ class Maps extends Component {
               width: "800px",
               top: "50%",
               left: "50%",
-              transform: "translate(-50%, -50%)"
+              transform: "translate(-50%, -50%)",
             }}
           >
             <RequestQueryContainer
@@ -289,7 +300,7 @@ class Maps extends Component {
         fetchPolicy="store-and-network"
         query={gqlQuery}
         variables={{ bounds: JSON.stringify(bounds) }}
-        render={resp => this.renderQueryResult(resp)}
+        render={(resp) => this.renderQueryResult(resp)}
       />
     );
   }
