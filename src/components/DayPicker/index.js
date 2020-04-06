@@ -11,7 +11,7 @@ const DayPicker = ({ handleDaySelect, slotsPerDay, selectedDay }) => (
           style={{ margin: "6px" }}
           onClick={handleDaySelect(date)}
           variant={selected ? "contained" : "outlined"}
-          color={selected ? "primary" : null}
+          color={selected ? "primary" : 'default'}
           key={`${date}`}
         >
           {shortDate}
