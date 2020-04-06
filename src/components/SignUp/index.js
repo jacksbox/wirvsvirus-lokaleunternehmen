@@ -9,11 +9,12 @@ import Divider from "@material-ui/core/Divider";
 import MuiAlert from "@material-ui/lab/Alert";
 
 import BusinessForm from "components/BusinessForm";
+import BusinessHours from "components/BusinessHours";
 import Input from "components/Input";
 
 import SuccessMessage from "./SuccessMessage";
 
-const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
+const SignUp = ({ saved, handleSubmit, updateBusinessHours, submitError, ...rest }) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={12}>
@@ -42,6 +43,8 @@ const SignUp = ({ saved, handleSubmit, submitError, ...rest }) => {
             ) : (
               <>
                 <BusinessForm {...rest} />
+                <BusinessHours updateBusinessHours={updateBusinessHours} erros={rest.errors} />
+                <br />
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={12} md={6}>
                     <Typography variant="body2">

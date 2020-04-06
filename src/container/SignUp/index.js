@@ -54,7 +54,8 @@ const initialFormValues = {
   street: null,
   streetNo: null,
   description: null,
-  maxPerSlot: null
+  maxPerSlot: null,
+  businessHours: []
 };
 
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -75,6 +76,25 @@ const requiredFormValues = [
   "maxPerSlot"
 ];
 
+// const validateBusinessHours = businessHours => {
+//   const len = businessHours.length
+//   const errors = new Set()
+//   let cur = null
+//   let com = null
+//   for (let i = 0; i < len; i++) {
+//     for (let j = i + 1; j < len; j++) {
+//       if (businessHours[i].d === businessHours[j].d) {
+//         cur = parseInt(`${businessHours[i].h}${businessHours[i].m}`)
+//         com = parseInt(`${businessHours[j].h}${businessHours[j].m}`)
+//         if (cur > com) {
+
+//         }
+//       }
+//     }
+//   }
+//   return Array.from(errors);
+// }
+
 const validateRegisterForm = formValues => {
   const errors = new Set();
   // check required
@@ -91,6 +111,8 @@ const validateRegisterForm = formValues => {
   if (formValues.email && !validateEmail(formValues.email)) {
     errors.add("email");
   }
+
+  // errors.add(validateBusinessHours(formValues.businessHours))
 
   return Array.from(errors);
 };
@@ -123,6 +145,14 @@ const SignUp = () => {
     formValues[name] = value;
     setFormValues(formValues);
   };
+
+  const updateBusinessHours = newItems => {
+    const newFormValues = {
+      ...formValues,
+      businessHours: newItems
+    }
+    setFormValues(newFormValues);
+  }
 
   const prepareCompanyData = ([ lng, lat ]) => {
     const {
@@ -187,6 +217,7 @@ const SignUp = () => {
   return (
     <SignUpComponent
       formValues={formValues}
+      updateBusinessHours={updateBusinessHours}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
       categories={categories}
