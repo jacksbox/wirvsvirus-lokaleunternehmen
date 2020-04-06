@@ -36,7 +36,10 @@ const styles = theme => ({
   },
   MainContainer: {
     position: "relative",
-    paddingBottom: footerHeigth
+    paddingBottom: footerHeigth,
+    [theme.breakpoints.down('xs')]: {
+      paddingBottom: 0
+    },
   },
   MapContainer: {
     position: "absolute",
@@ -46,7 +49,13 @@ const styles = theme => ({
     bottom: footerHeigth
   },
   ContentContainer: {
-    padding: "40px"
+    padding: "40px",
+    [theme.breakpoints.down('xs')]: {
+      padding: 0,
+      "& .MuiPaper-root": {
+        borderRadius: 0
+      }
+    },
   }
 });
 const useStyles = makeStyles(styles);
