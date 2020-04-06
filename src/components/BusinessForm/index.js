@@ -50,6 +50,7 @@ const BusinessForm = ({ categories, subCategories, handleChange, errors }) => {
             value: id,
             label: name
           }))}
+          size="large"
           required
           labelText="Kategorie"
           helperText="Kategorie bitte auswählen."

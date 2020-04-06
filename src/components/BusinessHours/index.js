@@ -9,13 +9,13 @@ import Input from "components/Input";
 import update from "immutability-helper";
 
 const daysOptions = [
-  { label: "Montag", value: "A_1" },
-  { label: "Dienstag", value: "A_2" },
-  { label: "Mittwoch", value: "A_3" },
-  { label: "Donnerstag", value: "A_4" },
-  { label: "Freitag", value: "A_5" },
-  { label: "Samstag", value: "A_6" },
-  { label: "Sonntag", value: "A_7" },
+  { label: "Montag", value: "Monday" },
+  { label: "Dienstag", value: "Tuesday" },
+  { label: "Mittwoch", value: "Wednesday" },
+  { label: "Donnerstag", value: "Thursday" },
+  { label: "Freitag", value: "Friday" },
+  { label: "Samstag", value: "Saturday" },
+  { label: "Sonntag", value: "Sunday" },
 ];
 
 const hoursOptions = [...new Array(24)].map((_, index) => ({
@@ -138,12 +138,16 @@ const renderItem = ({
 };
 
 const baseItem = {
-  day: "A_1",
+  day: "Monday",
+  start: '12:00',
   start_hours: 12,
   start_minutes: 0,
+  end: '18:00',
   end_hours: 18,
   end_minutes: 0,
 };
+
+const needsZero = value => value < 10 ? `0${value}` : value
 
 const BusinessHours = ({ updateBusinessHours, errors = [] }) => {
   const [items, setItems] = useState([{ ...baseItem }]);
@@ -158,7 +162,7 @@ const BusinessHours = ({ updateBusinessHours, errors = [] }) => {
     }
     const newItems = update(items, { $push: [{ ...baseItem }] });
     setItems(newItems);
-    console.log(newItems)
+    updateBusinessHours(newItems);
   };
 
   const handleChange = (index) => (event) => {
@@ -166,10 +170,11 @@ const BusinessHours = ({ updateBusinessHours, errors = [] }) => {
       ...items[index],
       [event.target.name.split("-")[0]]: event.target.value,
     };
+    newItem.start = `${needsZero(newItem.start_hours)}:${needsZero(newItem.start_minutes)}`
+    newItem.end = `${needsZero(newItem.end_hours)}:${needsZero(newItem.end_minutes)}`
     const newItems = update(items, { [index]: { $set: newItem } });
     setItems(newItems);
     updateBusinessHours(newItems);
-    console.log(newItems)
   };
 
   const handleDelete = (index) => () => {
@@ -178,6 +183,7 @@ const BusinessHours = ({ updateBusinessHours, errors = [] }) => {
     }
     const newItems = update(items, { $splice: [[index, 1]] });
     setItems(newItems);
+    updateBusinessHours(newItems);
   };
 
   return (
