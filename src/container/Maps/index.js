@@ -240,7 +240,7 @@ class Maps extends Component {
           dragging={true}
           animate={true}
           easeLinearity={0.35}
-          style={{ height: "100vH" }}
+          style={{ height: "100%" }}
           ref={this.mapRef}
           onViewportChanged={this.updateBounds}
         >
