@@ -7,7 +7,7 @@ import graphql from "babel-plugin-relay/macro";
 import Modal from "@material-ui/core/Modal";
 
 import RequestQueryContainer from "container/Request/RequestQueryContainer.js";
-import SearchBar from "components/SearchBar";
+import FilterBar from "components/FilterBar";
 
 import environment from "graphql/environment.js";
 
@@ -223,7 +223,7 @@ class Maps extends Component {
 
     return (
       <>
-        <SearchBar
+        <FilterBar
           categories={categories}
           handleCategoriesChange={this.handleCategoriesChange}
           handleOnSearch={this.setSearchName}

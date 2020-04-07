@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Select from "react-select";
 
-const CategorySelect = ({ categories, handleCategoriesChange }) => {
+const CategoryFilter = ({ categories, handleCategoriesChange }) => {
   const [value, setValue] = useState(null);
 
   const handleChange = values => {
@@ -26,4 +26,4 @@ const CategorySelect = ({ categories, handleCategoriesChange }) => {
   );
 };
 
-export default CategorySelect;
+export default CategoryFilter;
