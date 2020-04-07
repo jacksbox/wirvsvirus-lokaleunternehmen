@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
-
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 

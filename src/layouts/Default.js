@@ -23,8 +23,6 @@ const styles = theme => ({
     flexDirection: 'column',
     "&:after": {
       content: '""',
-      background: `url(${bgImage}) no-repeat center center fixed`,
-      backgroundSize: "cover",
       opacity: 0.5,
       background: `url(${bgImage}) no-repeat center center fixed`,
       backgroundSize: "cover",

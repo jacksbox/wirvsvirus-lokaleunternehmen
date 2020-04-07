@@ -40,7 +40,7 @@ const Impressum = () => (
       <a
         href="https://ec.europa.eu/consumers/odr/"
         target="_blank"
-        rel="noopener"
+        rel="noopener noreferrer"
       >
         https://ec.europa.eu/consumers/odr/
       </a>

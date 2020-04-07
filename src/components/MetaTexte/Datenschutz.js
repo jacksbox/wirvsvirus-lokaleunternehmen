@@ -134,7 +134,7 @@ const Datenschutz = () => {
         <a
           href="https://support.microsoft.com/de-de/help/17442/windows-internet-explorer-delete-manage-cookies"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Internet Explorer&trade;
         </a>
@@ -142,7 +142,7 @@ const Datenschutz = () => {
         <a
           href="https://support.apple.com/de-de/guide/safari/sfri11471/12.0/mac/10.14"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Safari&trade;
         </a>
@@ -150,7 +150,7 @@ const Datenschutz = () => {
         <a
           href="https://support.google.com/chrome/answer/95647?hl=de&amp;hlrm=en"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Chrome&trade;
         </a>
@@ -158,7 +158,7 @@ const Datenschutz = () => {
         <a
           href="https://support.mozilla.org/de/kb/cookies-erlauben-und-ablehnen"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Firefox&trade;
         </a>
@@ -166,7 +166,7 @@ const Datenschutz = () => {
         <a
           href="https://help.opera.com/de/latest/web-preferences/#cookies"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           Opera&trade;
         </a>
@@ -182,7 +182,7 @@ const Datenschutz = () => {
         Analytics ein. Der Webanalysedienst ist ein Angebot der Google Ireland
         Limited, einer nach irischem Recht eingetragenen und betriebenen
         Gesellschaft mit Sitz in Gordon House, Barrow Street, Dublin 4, Irland (
-        <a href="http://www.google.de" target="_blank" rel="noopener">
+        <a href="http://www.google.de" target="_blank" rel="noopener noreferrer">
           www.google.de
         </a>
         ). Dies dient der Wahrung unserer im Rahmen einer
@@ -213,7 +213,7 @@ const Datenschutz = () => {
         <a
           href="https://www.privacyshield.gov/list"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           hier
         </a>{" "}
@@ -231,7 +231,7 @@ const Datenschutz = () => {
         <a
           href="https://tools.google.com/dlpage/gaoptout?hl=de"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://tools.google.com/dlpage/gaoptout?hl=de{" "}
         </a>
@@ -265,7 +265,7 @@ const Datenschutz = () => {
         <a
           href="https://support.google.com/ads/answer/2662922?hl=de"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           deaktivieren
         </a>
@@ -311,7 +311,7 @@ const Datenschutz = () => {
         <a
           href="https://www.privacyshield.gov/list"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           hier
         </a>{" "}
@@ -330,7 +330,7 @@ const Datenschutz = () => {
         <a
           href="https://www.facebook.com/about/privacy"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://www.facebook.com/about/privacy/
         </a>
@@ -340,7 +340,7 @@ const Datenschutz = () => {
         <a
           href="https://www.facebook.com/legal/terms/page_controller_addendum"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           hier
         </a>{" "}
@@ -350,7 +350,7 @@ const Datenschutz = () => {
         <a
           href="https://www.facebook.com/legal/terms/information_about_page_insights_data"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           hier
         </a>
@@ -361,14 +361,14 @@ const Datenschutz = () => {
         <a
           href="https://policies.google.com/privacy?hl=de"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://policies.google.com/privacy?hl=de
         </a>
       </p>
       <p>
         Twitter:{" "}
-        <a href="https://twitter.com/de/privacy" target="_blank" rel="noopener">
+        <a href="https://twitter.com/de/privacy" target="_blank" rel="noopener noreferrer">
           https://twitter.com/de/privacy
         </a>
       </p>
@@ -377,7 +377,7 @@ const Datenschutz = () => {
         <a
           href="https://help.instagram.com/519522125107875"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://help.instagram.com/519522125107875
         </a>
@@ -387,7 +387,7 @@ const Datenschutz = () => {
         <a
           href="https://www.linkedin.com/legal/privacy-policy"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://www.linkedin.com/legal/privacy-policy
         </a>
@@ -398,7 +398,7 @@ const Datenschutz = () => {
         <a
           href="https://www.facebook.com/settings?tab=ads"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://www.facebook.com/settings?tab=ads
         </a>
@@ -408,7 +408,7 @@ const Datenschutz = () => {
         <a
           href="https://adssettings.google.com/authenticated?hl=de"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://adssettings.google.com/authenticated?hl=de
         </a>
@@ -418,7 +418,7 @@ const Datenschutz = () => {
         <a
           href="https://twitter.com/personalization"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://twitter.com/personalization{" "}
         </a>
@@ -428,7 +428,7 @@ const Datenschutz = () => {
         <a
           href="https://help.instagram.com/519522125107875"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://help.instagram.com/519522125107875
         </a>
@@ -438,7 +438,7 @@ const Datenschutz = () => {
         <a
           href="https://www.linkedin.com/psettings/guest-controls/retargeting-opt-out"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           https://www.linkedin.com/psettings/guest-controls/retargeting-opt-out
         </a>

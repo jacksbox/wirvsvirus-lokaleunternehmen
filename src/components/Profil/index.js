@@ -5,7 +5,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
@@ -13,7 +12,7 @@ import BusinessForm from "container/BusinessForm";
 import AccountForm from "container/AccountForm";
 
 const TabPanel = props => {
-  const { children, value, index, ...other } = props;
+  const { children, value, index } = props;
 
   return (
     value === index ? children : null

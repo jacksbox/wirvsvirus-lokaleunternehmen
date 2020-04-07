@@ -44,7 +44,10 @@ const MenuBarItem = ({ to, currentPath, children }) => {
 
 const MenuBar = () => {
   const { location : { pathname: currentPath } } = useHistory();
-  const { loggedIn, setLoggedIn } = useContext(AuthContext);
+  const {
+    loggedIn,
+    //setLoggedIn
+   } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = value => () => {
@@ -55,7 +58,7 @@ const MenuBar = () => {
     <>
       <AppBar position="static" style={{ zIndex: 9999 }}>
         <Container style={{ display: "flex" }} maxWidth="lg">
-          <img src={logo} style={{ height: "70px", marginLeft: '-16px' }} />
+          <img src={logo} alt="Bleib Lokal! Logo" style={{ height: "70px", marginLeft: '-16px' }} />
           <Toolbar style={{ flexGrow: 1 }}>
             <Hidden smDown>
               <MenuBarItem to="/home" currentPath={currentPath}>Home</MenuBarItem>

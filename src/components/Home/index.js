@@ -22,12 +22,13 @@ const Home = () => (
           </Grid>
           <Grid item xs={12}>
             <iframe
+              title="Bleib Lokal! Video"
               width="560"
               height="315"
               src="https://www.youtube.com/embed/EW529J86Mpk"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
           </Grid>
           <Grid item xs={12}>
