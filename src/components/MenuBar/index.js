@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 
-import { NavLink as NavLinkBase } from "react-router-dom";
+import { NavLink as NavLinkBase, useHistory } from "react-router-dom";
 
 import Container from "@material-ui/core/Container";
 import AppBar from "@material-ui/core/AppBar";
@@ -33,7 +33,17 @@ const NavLink = ({ to, children }) => (
   </NavLinkBase>
 );
 
+const MenuBarItem = ({ to, currentPath, children }) => {
+  const active = to === currentPath
+  return (
+    <NavLink to={to}>
+    <Button color={active ? 'secondary' : 'inherit'} variant={active ? 'contained' : 'default'}>{children}</Button>
+  </NavLink>
+  )
+}
+
 const MenuBar = () => {
+  const { location : { pathname: currentPath } } = useHistory();
   const { loggedIn, setLoggedIn } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
 
@@ -48,37 +58,23 @@ const MenuBar = () => {
           <img src={logo} style={{ height: "70px", marginLeft: '-16px' }} />
           <Toolbar style={{ flexGrow: 1 }}>
             <Hidden smDown>
-              <NavLink to="/home">
-                <Button color="inherit">Home</Button>
-              </NavLink>
-              <NavLink to="/maps">
-                <Button color="inherit">Karte</Button>
-              </NavLink>
-              <NavLink to="/about">
-                <Button color="inherit">Über Bleib Lokal!</Button>
-              </NavLink>
+              <MenuBarItem to="/home" currentPath={currentPath}>Home</MenuBarItem>
+              <MenuBarItem to="/maps" currentPath={currentPath}>Karte</MenuBarItem>
+              <MenuBarItem to="/about" currentPath={currentPath}>Über Bleib Lokal!</MenuBarItem>
               {featureFlags.authentication && !loggedIn && (
-                <NavLink to="/register">
-                  <Button color="inherit">Login/Registrieren</Button>
-                </NavLink>
+                <MenuBarItem to="/register" currentPath={currentPath}>Login/Registrieren</MenuBarItem>
               )}
             </Hidden>
             <div style={{ flexGrow: 1 }} />
             <Hidden smDown>
               {featureFlags.authentication && loggedIn && (
-                <NavLink to="/profil">
-                  <Button color="inherit">Profil</Button>
-                </NavLink>
+                <MenuBarItem to="/profil" currentPath={currentPath}>Profil</MenuBarItem>
               )}
               {featureFlags.authentication && loggedIn && (
-                <NavLink to="/logout">
-                  <Button color="inherit">logout</Button>
-                </NavLink>
+                <MenuBarItem to="/logout" currentPath={currentPath}>logout</MenuBarItem>
               )}
               {featureFlags.signup && (
-                <NavLink to="/signup">
-                  <Button color="inherit">Unternehmen anmleden</Button>
-                </NavLink>
+                <MenuBarItem to="/signup" currentPath={currentPath}>Unternehmen anmleden</MenuBarItem>
               )}
             </Hidden>
             <Hidden mdUp>
