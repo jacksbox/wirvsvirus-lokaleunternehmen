@@ -159,7 +159,7 @@ const MenuBar = () => {
               <ListItemIcon>
                 <BusinessCenterIcon />
               </ListItemIcon>
-              <ListItemText primary="Unternehmen anmleden" />
+              <ListItemText primary="Unternehmen anmelden" />
             </ListItem>
             </NavLink>
           )}
