@@ -94,7 +94,7 @@ const MenuBar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer open={open} onClose={toggleDrawer(false)} ModalProps={{ style: { zIndex: 9999 }}}>
         <List>
           <NavLink to="/home">
             <ListItem button>

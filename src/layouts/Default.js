@@ -18,7 +18,7 @@ const footerHeigth = "48px";
 const styles = theme => ({
   AppContainer: {
     position: "relative",
-    height: "100vH",
+    minHeight: "100vH",
     display: 'flex',
     flexDirection: 'column',
     "&:after": {
@@ -49,7 +49,10 @@ const styles = theme => ({
     top: 0,
     left: 0,
     right: 0,
-    bottom: footerHeigth
+    bottom: footerHeigth,
+    [theme.breakpoints.down('xs')]: {
+      bottom: 0
+    },
   },
   ContentContainer: {
     padding: "40px",
