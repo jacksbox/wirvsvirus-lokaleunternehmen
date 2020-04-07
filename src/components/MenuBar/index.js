@@ -37,7 +37,7 @@ const MenuBarItem = ({ to, currentPath, children }) => {
   const active = to === currentPath
   return (
     <NavLink to={to}>
-    <Button color={active ? 'secondary' : 'inherit'} variant={active ? 'contained' : 'default'}>{children}</Button>
+    <Button color={active ? 'secondary' : 'inherit'} variant={active ? 'contained' : null}>{children}</Button>
   </NavLink>
   )
 }
