@@ -77,7 +77,7 @@ const MenuBar = () => {
                 <MenuBarItem to="/logout" currentPath={currentPath}>logout</MenuBarItem>
               )}
               {featureFlags.signup && (
-                <MenuBarItem to="/signup" currentPath={currentPath}>Unternehmen anmleden</MenuBarItem>
+                <MenuBarItem to="/signup" currentPath={currentPath}>Unternehmen anmelden</MenuBarItem>
               )}
             </Hidden>
             <Hidden mdUp>
