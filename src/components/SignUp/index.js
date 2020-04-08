@@ -43,7 +43,7 @@ const SignUp = ({ saved, handleSubmit, updateBusinessHours, submitError, ...rest
             ) : (
               <>
                 <BusinessForm {...rest} />
-                <BusinessHours updateBusinessHours={updateBusinessHours} erros={rest.errors} />
+                <BusinessHours updateBusinessHours={updateBusinessHours} errors={rest.errors} />
                 <br />
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={12} md={6}>
