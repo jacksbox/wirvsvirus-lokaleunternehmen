@@ -25,9 +25,7 @@ const hoursOptions = [...new Array(24)].map((_, index) => ({
 
 const minutesOptions = [
   { label: "00", value: 0 },
-  { label: "15", value: 15 },
   { label: "30", value: 30 },
-  { label: "45", value: 45 },
 ];
 
 const renderItem = ({
