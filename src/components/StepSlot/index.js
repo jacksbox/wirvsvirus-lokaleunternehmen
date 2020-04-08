@@ -41,7 +41,7 @@ const StepSlot = ({
             handleChange={handleSlotChange}
           />
         ) : (
-          <h4>Wähle ein Datum um freie Zeitslots zu sehen.</h4>
+          <h4>Wähle ein Datum, um freie Zeitslots zu sehen.</h4>
         )}
       </Grid>
       <Grid item xs={12}>
