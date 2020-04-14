@@ -205,11 +205,8 @@ class Maps extends Component {
     );
   };
 
-  renderMap = (
-    { allCompanies: { edges: companies } = { allCompanies: { edges: [] } } } = {
-      allCompanies: { edges: [] },
-    }
-  ) => {
+  renderMap = ({ allCompanies }  = { allCompanies: null } ) => {
+    const companies = allCompanies ? allCompanies.edges : [];
     const { position, open, companyId, categories } = this.state;
 
     const markers = companies ? this.renderMarkers(companies) : [];
