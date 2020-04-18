@@ -1,5 +1,5 @@
 export const API_URL = 'https://nameless-retreat-67960.herokuapp.com/'
-export const GRAPHQL_URL = 'https://bleiblokal-dev.herokuapp.com/graphql/'
+export const GRAPHQL_URL = 'https://lokalshoppen.api.bleiblokal.com/graphql/'
 
 export const featureFlags = {
   authentication: false,
