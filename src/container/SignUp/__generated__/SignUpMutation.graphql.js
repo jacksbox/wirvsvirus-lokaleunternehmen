@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 26c12b6baa3dcf6901af6e9971476117
+ * @relayHash 8cfebe366f23f8b5871798a244e0debf
  */
 
 /* eslint-disable */
@@ -9,6 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
+export type WeekdayType = "Friday" | "Monday" | "Saturday" | "Sunday" | "Thursday" | "Tuesday" | "Wednesday" | "%future added value";
 export type CreateCompanyInput = {|
   name: string,
   address: string,
@@ -19,7 +20,13 @@ export type CreateCompanyInput = {|
   subCategoryIds?: ?$ReadOnlyArray<?string>,
   phone?: ?string,
   maxPerSlot?: ?number,
+  businessHoursSet?: ?$ReadOnlyArray<?BusinessHoursInput>,
   clientMutationId?: ?string,
+|};
+export type BusinessHoursInput = {|
+  start?: ?any,
+  end?: ?any,
+  weekday?: ?WeekdayType,
 |};
 export type SignUpMutationVariables = {|
   input: CreateCompanyInput

@@ -1,7 +1,13 @@
 # source: https://bleiblokal-dev.herokuapp.com/graphql/
-# timestamp: Sat Apr 04 2020 21:36:24 GMT+0200 (Central European Summer Time)
+# timestamp: Sat Apr 18 2020 10:21:16 GMT+0200 (Central European Summer Time)
 
-type BusinessHours implements Node {
+input BusinessHoursInput {
+  start: Time
+  end: Time
+  weekday: WeekdayType
+}
+
+type BusinessHoursNode implements Node {
   """The ID of the object."""
   id: ID!
   weekday: BusinessHoursWeekday!
@@ -10,18 +16,18 @@ type BusinessHours implements Node {
   company: CompanyNode!
 }
 
-type BusinessHoursConnection {
+type BusinessHoursNodeConnection {
   """Pagination data for this connection."""
   pageInfo: PageInfo!
 
   """Contains the nodes in this connection."""
-  edges: [BusinessHoursEdge]!
+  edges: [BusinessHoursNodeEdge]!
 }
 
-"""A Relay edge containing a `BusinessHours` and its cursor."""
-type BusinessHoursEdge {
+"""A Relay edge containing a `BusinessHoursNode` and its cursor."""
+type BusinessHoursNodeEdge {
   """The item at the end of the edge"""
-  node: BusinessHours
+  node: BusinessHoursNode
 
   """A cursor for use in pagination"""
   cursor: String!
@@ -119,7 +125,7 @@ type CompanyProperties {
   active: Boolean!
   category: CategoryNode!
   subCategories(before: String, after: String, first: Int, last: Int, name: String, slug: String): SubCategoryNodeConnection!
-  businesshoursSet(before: String, after: String, first: Int, last: Int): BusinessHoursConnection!
+  businesshoursSet(before: String, after: String, first: Int, last: Int): BusinessHoursNodeConnection!
   timeslotSet(before: String, after: String, first: Int, last: Int, start: DateTime, end: DateTime): TimeSlotNodeConnection!
   requestSet(before: String, after: String, first: Int, last: Int): RequestNodeConnection!
 }
@@ -134,6 +140,7 @@ input CreateCompanyInput {
   subCategoryIds: [ID]
   phone: String
   maxPerSlot: Int
+  businessHoursSet: [BusinessHoursInput]
   clientMutationId: String
 }
 
@@ -312,4 +319,15 @@ type TimeSlotNodeEdge {
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+"""An enumeration."""
+enum WeekdayType {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
 }
