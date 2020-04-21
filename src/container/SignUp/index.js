@@ -147,7 +147,23 @@ const SignUp = () => {
           allSubCategories: { edges: [] },
         }
       ) => {
-        setAvailableCategories({ categories, subCategories });
+        const sortedCategories = [...categories].sort((a, b) => {
+          if (a.node.name > b.node.name) {
+            return 1
+          } else if (a.node.name < b.node.name) {
+            return -1
+          }
+          return 0
+        })
+        const sortedSubCategories = [...subCategories].sort((a, b) => {
+          if (a.node.name > b.node.name) {
+            return 1
+          } else if (a.node.name < b.node.name) {
+            return -1
+          }
+          return 0
+        })
+        setAvailableCategories({ categories: sortedCategories, subCategories: sortedSubCategories });
       }
     );
   }, []);
