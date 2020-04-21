@@ -102,7 +102,15 @@ class Maps extends Component {
           allCategories: { edges: [] },
         }
       ) => {
-        this.setState({ categories });
+        const sortedCategories = [...categories].sort((a, b) => {
+          if (a.node.name > b.node.name) {
+            return 1
+          } else if (a.node.name < b.node.name) {
+            return -1
+          }
+          return 0
+        })
+        this.setState({ categories: sortedCategories });
       }
     );
   }
