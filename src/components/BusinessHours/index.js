@@ -38,7 +38,7 @@ const renderItem = ({
 }) => {
   const { day, start_hours, start_minutes, end_hours, end_minutes } = item;
   return (
-    <Grid item xs={12} container spacing={2}>
+    <Grid item xs={12} container spacing={2} key={index}>
       <Grid item xs={12} md={2}>
         <Input
           id={`day-${index}`}
